@@ -79,7 +79,7 @@ Class TripferyTheme_Post_Box extends WP_Widget {
 									the_post_thumbnail( 'tripfery-size5', ['class' => 'media-object'] );
 								} else {
 									if ( $show_no_preview_img == 'view' ) { ?>
-										<img class="rt-lazy" src="<?php echo esc_url( FAKTORIE_ASSETS_URL ); ?>img/noimage_220X175.jpg" alt="<?php the_title_attribute(); ?>">
+										<img class="rt-lazy" src="<?php echo esc_url( TRIPFERY_ASSETS_URL ); ?>img/noimage_220X175.jpg" alt="<?php the_title_attribute(); ?>">
 								<?php }
 								}
 							?></a>
@@ -115,7 +115,7 @@ Class TripferyTheme_Post_Box extends WP_Widget {
 									the_post_thumbnail( 'tripfery-size5', ['class' => 'media-object'] );
 								} else {
 									if ( $show_no_preview_img == 'view' ) { ?>
-										<img class="rt-lazy" src="<?php echo esc_url( FAKTORIE_ASSETS_URL ); ?>img/noimage_220X175.jpg" alt="<?php the_title_attribute(); ?>">
+										<img class="rt-lazy" src="<?php echo esc_url( TRIPFERY_ASSETS_URL ); ?>img/noimage_220X175.jpg" alt="<?php the_title_attribute(); ?>">
 								<?php }
 								}
 							?>

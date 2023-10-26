@@ -10,12 +10,12 @@ Author URI: https://www.radiustheme.com
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! defined( 'FAKTORIE_CORE' ) ) {
-	define( 'FAKTORIE_CORE',                   ( WP_DEBUG ) ? time() : '1.0' );
-	define( 'FAKTORIE_CORE_THEME_PREFIX',      'tripfery' );
-	define( 'FAKTORIE_CORE_THEME_PREFIX_VAR',  'tripfery' );
-	define( 'FAKTORIE_CORE_CPT_PREFIX',        'tripfery' );
-	define( 'FAKTORIE_CORE_BASE_DIR',      plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'TRIPFERY_CORE' ) ) {
+	define( 'TRIPFERY_CORE',                   ( WP_DEBUG ) ? time() : '1.0' );
+	define( 'TRIPFERY_CORE_THEME_PREFIX',      'tripfery' );
+	define( 'TRIPFERY_CORE_THEME_PREFIX_VAR',  'tripfery' );
+	define( 'TRIPFERY_CORE_CPT_PREFIX',        'tripfery' );
+	define( 'TRIPFERY_CORE_BASE_DIR',      plugin_dir_path( __FILE__ ) );
 }
 
 class Tripfery_Core {
@@ -24,7 +24,7 @@ class Tripfery_Core {
 	public $action  = 'tripfery_theme_init';
 
 	public function __construct() {
-		$prefix = FAKTORIE_CORE_THEME_PREFIX_VAR;
+		$prefix = TRIPFERY_CORE_THEME_PREFIX_VAR;
 
 		add_action( 'plugins_loaded', array( $this, 'demo_importer' ), 15 );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 16 );
@@ -123,7 +123,7 @@ class Tripfery_Core {
 			add_action( 'admin_notices', [ $this, 'php_version_message' ] );
 		}
 		if ( version_compare(phpversion(), '7.2', '>') ){
-			require_once FAKTORIE_CORE_BASE_DIR . 'lib/optimization/__init__.php';
+			require_once TRIPFERY_CORE_BASE_DIR . 'lib/optimization/__init__.php';
 		}
 	}
 
@@ -154,7 +154,7 @@ class Tripfery_Core {
 		}
 	}
 	public function after_theme_loaded() {
-		require_once FAKTORIE_CORE_BASE_DIR . 'lib/wp-svg/init.php'; // SVG support
+		require_once TRIPFERY_CORE_BASE_DIR . 'lib/wp-svg/init.php'; // SVG support
 		require_once 'widget/sidebar-generator.php'; // sidebar widget generator
 	}
 
@@ -177,7 +177,7 @@ class Tripfery_Core {
 	}
 
 	public function rewrite_flush_check() {
-		$prefix = FAKTORIE_CORE_THEME_PREFIX_VAR;
+		$prefix = TRIPFERY_CORE_THEME_PREFIX_VAR;
 		if ( get_option( "{$prefix}_rewrite_flash" ) == true ) {
 			flush_rewrite_rules();
 			update_option( "{$prefix}_rewrite_flash", false );

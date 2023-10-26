@@ -19,7 +19,7 @@ if ( !class_exists( 'RT_Postmeta' ) ) {
 
 $Postmeta = RT_Postmeta::getInstance();
 
-$prefix = FAKTORIE_CORE_CPT_PREFIX;
+$prefix = TRIPFERY_CORE_CPT_PREFIX;
 
 /*-------------------------------------
 #. Layout Settings

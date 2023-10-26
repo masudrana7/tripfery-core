@@ -9,7 +9,7 @@ if ( !class_exists( 'TripferyTheme_Sidebar_Generator' ) ) {
 
 	class TripferyTheme_Sidebar_Generator {
 
-		public $prefix = FAKTORIE_CORE_THEME_PREFIX_VAR;
+		public $prefix = TRIPFERY_CORE_THEME_PREFIX_VAR;
 		public $option_name = null;
 
 		public function __construct() {

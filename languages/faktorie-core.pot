@@ -311,7 +311,7 @@ msgid "About Company"
 msgstr ""
 
 #: elementor/widgets/rt-service-tab.php:358
-msgid "ABOUT FAKTORIE"
+msgid "ABOUT TRIPFERY"
 msgstr ""
 
 #: elementor/widgets/rt-hero-banner.php:133

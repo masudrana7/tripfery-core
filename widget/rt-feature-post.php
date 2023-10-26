@@ -80,7 +80,7 @@ Class TripferyTheme_Feature_Post extends WP_Widget {
 										the_post_thumbnail( 'tripfery-size4', ['class' => 'media-object'] );
 									} else {
 										if ( $show_no_preview_img == 'view' ) { ?>
-											<img class="rt-lazy" src="<?php echo esc_url( FAKTORIE_ASSETS_URL ); ?>img/noimage_400X400.jpg" alt="<?php the_title_attribute(); ?>">
+											<img class="rt-lazy" src="<?php echo esc_url( TRIPFERY_ASSETS_URL ); ?>img/noimage_400X400.jpg" alt="<?php the_title_attribute(); ?>">
 									<?php }
 									}
 								?></a>

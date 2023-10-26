@@ -14,7 +14,7 @@ extract($data);
 if( $data['rt_image']['url'] ) {
 	$tripfery_bg = 'url(' . $data['rt_image']['url'] . ')' ;
 } else {
-	$tripfery_img_url = FAKTORIE_ASSETS_URL . 'img/marque_bg.jpg';
+	$tripfery_img_url = TRIPFERY_ASSETS_URL . 'img/marque_bg.jpg';
 	$tripfery_bg = 'url(' . $tripfery_img_url . ')';
 }
 

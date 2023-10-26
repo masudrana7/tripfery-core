@@ -80,7 +80,7 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 									$thumbnail = wp_get_attachment_image( TripferyTheme::$options['no_preview_image']['id'], $thumb_size );						
 								}
 								elseif ( empty( TripferyTheme::$options['no_preview_image']['id'] ) ) {
-									$thumbnail = '<img class="wp-post-image" src="'.FAKTORIE_ASSETS_URL.'img/noimage_520X330.jpg" alt="'. the_title_attribute( array( 'echo'=> false ) ) .'">';
+									$thumbnail = '<img class="wp-post-image" src="'.TRIPFERY_ASSETS_URL.'img/noimage_520X330.jpg" alt="'. the_title_attribute( array( 'echo'=> false ) ) .'">';
 								}
 								echo wp_kses( $thumbnail , 'alltext_allow' );
 							}

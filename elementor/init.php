@@ -94,7 +94,7 @@ class Custom_Widget_Init {
 	}
 
 	public function widget_categoty( $class ) {
-		$id         = FAKTORIE_CORE_THEME_PREFIX . '-widgets'; // Category /@dev
+		$id         = TRIPFERY_CORE_THEME_PREFIX . '-widgets'; // Category /@dev
 		$properties = array(
 			'title' => __( 'RadiusTheme Elements', 'tripfery-core' ),
 		);

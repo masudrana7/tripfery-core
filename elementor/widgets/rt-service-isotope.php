@@ -105,20 +105,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'default'     => 'yes',
 			),
 			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'item_space',
-				'label'   => esc_html__( 'Item Space', 'tripfery-core' ),
-				'options' => array(
-					'g-0' => esc_html__( 'Gutters 0', 'tripfery-core' ),
-					'g-1' => esc_html__( 'Gutters 1', 'tripfery-core' ),
-					'g-2' => esc_html__( 'Gutters 2', 'tripfery-core' ),
-					'g-3' => esc_html__( 'Gutters 3', 'tripfery-core' ),
-					'g-4' => esc_html__( 'Gutters 4', 'tripfery-core' ),
-					'g-5' => esc_html__( 'Gutters 5', 'tripfery-core' ),
-				),
-				'default' => 'g-4',
-			),
-			array(
 				'type'    => Controls_Manager::NUMBER,
 				'id'      => 'itemnumber',
 				'label'   => esc_html__( 'Item Number', 'tripfery-core' ),
