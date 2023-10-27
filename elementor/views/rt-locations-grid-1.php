@@ -68,11 +68,11 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 				}
 
 				global $post;
-				$tripfery_location_activities 		= get_post_meta( $post->ID, 'tripfery_location_activities', true );
-				$tripfery_location_cars 			= get_post_meta( $post->ID, 'tripfery_location_cars', true );
+				$tripfery_location_activities 	= get_post_meta( $post->ID, 'tripfery_location_activities', true );
+				$tripfery_location_cars 		= get_post_meta( $post->ID, 'tripfery_location_cars', true );
 				$tripfery_location_hotel 		= get_post_meta( $post->ID, 'tripfery_location_hotel', true );
 				$tripfery_location_tours 		= get_post_meta( $post->ID, 'tripfery_location_tours', true );
-				$tripfery_location_rentals 			= get_post_meta( $post->ID, 'tripfery_location_rentals', true );
+				$tripfery_location_rentals 		= get_post_meta( $post->ID, 'tripfery_location_rentals', true );
 
 			?>
 

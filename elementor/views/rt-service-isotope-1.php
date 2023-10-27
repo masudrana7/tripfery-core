@@ -38,11 +38,24 @@ if(!empty($data['catid'])){
             'terms' => $data['catid'],                    
         ],
     ];
-
 }
 $query = new WP_Query( $args );
 $temp = TripferyTheme_Helper::wp_set_temp_query( $query );
-$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";?>
+$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}"; 
+
+//booking
+// $post = get_post( get_the_ID(), ARRAY_A);
+// $_rand      = wp_rand(5);
+// $post_id 	= $post['ID'];
+// $ba_post 	= BABE_Post_types::get_post($post_id);
+// $url   		= BABE_Functions::get_page_url_with_args($post_id, $_GET);
+// $image   	= wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $thumbnail);
+// if ( !isset($ba_post['discount_price_from']) || !isset($ba_post['price_from']) || !isset($ba_post['discount_date_to']) || !isset($ba_post['discount']) ) {
+//    $prices = BABE_Post_types::get_post_price_from($post_id);
+// } else {
+//    $prices = $ba_post;
+// }
+?>
 
 <div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
 	<div class="row justify-content-center">
@@ -55,13 +68,9 @@ $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['c
 				    'orderby' => 'include',
 				) );				
 				foreach( $terms as $term ) {
-
 					$get_color = get_term_meta( $term->term_id, 'rt_category_color', true);
-					
-
 					?>
 					<button data-filter=".<?php echo esc_attr($term->slug); ?>" class="filter-btn <?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></button>
-					
 					<?php
 				}
 				?> 
@@ -74,17 +83,14 @@ $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['c
 		if ( $query->have_posts() ) {				
 			while ( $query->have_posts() ) {
 			$query->the_post();					
-
 			$title = wp_trim_words( get_the_title(), $title_count, '' );	
 			$excerpt = wp_trim_words( get_the_excerpt(), $excerpt_count, '' );
-
 			$item_terms = get_the_terms( get_the_ID(), 'categories' ); 
 			$term_links = array(); 
 			$terms_of_item = '';
 			foreach ( $item_terms as $term ) {
 				$terms_of_item .= ''.$term->slug . ' ';
 		} ?>
-
 		<div class="<?php echo esc_attr( $col_class ); ?> card-item  <?php echo esc_attr( $terms_of_item ); ?> mb-4">
 			<div class="listing-card">
 				<a href="<?php the_permalink(); ?>" class="text-decoration-none listing-thumb-wrapper">
@@ -112,7 +118,14 @@ $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['c
 								d="M1.8101 4.24506C2.7951 -0.0849378 9.2101 -0.0799377 10.1901 4.25006C10.7651 6.79006 9.1851 8.94006 7.8001 10.2701C6.7951 11.2401 5.2051 11.2401 4.1951 10.2701C2.8151 8.94006 1.2351 6.78506 1.8101 4.24506Z"
 								stroke="currentColor" stroke-opacity="0.99" />
 							</svg>
-							<span class="badge-text">New York City</span>
+
+							<?php 
+								$address = isset($ba_post['address']) ? $ba_post['address'] : false;
+								if($address){ ?>
+								<span class="badge-text"><?php echo esc_html( $address['address'] ); ?></span>
+							<?php } ?>
+
+							
 						</div>
 						<div class="wishlist">
 							<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,6 +141,12 @@ $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['c
 					
 					<div class="d-flex align-item listing-card-review-area">
 						<div class="listing-card-review-text">Excellent</div>
+
+						<div class="rt-bookoing-rating">
+							<?php //echo BABE_Rating::post_stars_rendering($post_id); ?>
+						</div>
+
+
 						<div class="d-flex align-items-center rating-stars-area">
 							<ul class="rating-stars d-flex">
 								<li class="star-item">
