@@ -12,7 +12,6 @@ use Elementor\Icons_Manager;
 
 ?>
 <div class="rt-social-links">
-	<div class="social-label"><?php echo wp_kses_post( $data['social_label'] ); ?></div>
 	<div class="rt-social-item">		
 		<?php foreach ( $data['social_icon_list'] as $social_icons ): 
 			$attr = '';
@@ -23,7 +22,7 @@ use Elementor\Icons_Manager;
 	        }
 		?>
 		<div class="rt-social">
-			<a aria-label="Social Link" class="<?php echo wp_kses_post( $social_icons['title'] ); ?>" <?php echo $attr; ?> ><?php Icons_Manager::render_icon( $social_icons['social_icon'] ); ?></a>
+			<a aria-label="Social Link" class="<?php echo wp_kses_post( $social_icons['title'] ); ?>" <?php echo $attr; ?> ><?php Icons_Manager::render_icon( $social_icons['social_icon'] ); ?><?php echo wp_kses_post( $social_icons['title'] ); ?></a>
 		</div>
 		<?php endforeach; ?> 
 	</div>

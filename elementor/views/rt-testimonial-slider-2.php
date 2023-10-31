@@ -23,30 +23,28 @@ $has_icon = ( ! $is_new || ! empty( $testimonial['selected_icon']['value'] ) );
         <span class="tquote"><i class="icon-tripfery-quote-left"></i></span>
     <?php } ?>
     <!-- start video-thumnail-area -->
-    <div class="rt-thumnail-area <?php echo esc_attr( $data['content_align'] );?>">
-        <div class="swiper-container swiper-item-wrap horizontal-thumb-slider" data-xld ="<?php echo esc_attr( $data['swiper_data'] );?>">
-            <div class="swiper-wrapper">
-                <?php $m = $data['delay']; $n = $data['duration']; foreach ( $data['testimonials'] as $testimonial ) { ?>
-                <div class="swiper-slide">
-                    <div class="item-thumb <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="<?php echo esc_attr( $m );?>s" data-wow-duration="<?php echo esc_attr( $n );?>s">
-                        <?php if ( !empty( $testimonial['image']['id'] && $data['author_display'] == 'yes' ) ) { ?>
-                        <div class="item-img">
-                            <?php echo wp_get_attachment_image($testimonial['image']['id'],'full');?>
-                        </div>
-                        <?php } ?>
-                    </div>
-                </div>
-               <?php $m = $m + 0.2; $n = $n + 0.1; } ?>        
-            </div>
-        </div>
-    </div>
 
     <div class="swiper-container horizontal-slider" data-xld ="<?php echo esc_attr( $data['swiper_data'] );?>">
         <div class="swiper-wrapper">
         <?php foreach ( $data['testimonials'] as $testimonial ) { ?>
             <div class="swiper-slide">
                 <div class="rt-item has-animation">
-                    <div class="item-content" <?php if( $testimonial['item_color'] ) { ?> style="background-color: <?php echo esc_attr( $testimonial['item_color'] ); ?>" <?php } ?>>                    	
+                    <div class="item-content" <?php if( $testimonial['item_color'] ) { ?> style="background-color: <?php echo esc_attr( $testimonial['item_color'] ); ?>" <?php } ?>>  
+
+                    
+                        <?php if ( !empty( $testimonial['image']['id'] && $data['author_display'] == 'yes' ) ) { ?>
+                        <div class="tesimonial-author">
+                            <?php echo wp_get_attachment_image($testimonial['image']['id'],'full');?>
+                            <span class="q-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 9.26257H5.84999C6.99749 9.26257 7.785 10.1326 7.785 11.1976V13.6126C7.785 14.6776 6.99749 15.5476 5.84999 15.5476H3.43501C2.37001 15.5476 1.5 14.6776 1.5 13.6126V9.26257" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M1.5 9.26242C1.5 4.72492 2.34752 3.97496 4.89752 2.45996" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M10.2224 9.26257H14.5724C15.7199 9.26257 16.5074 10.1326 16.5074 11.1976V13.6126C16.5074 14.6776 15.7199 15.5476 14.5724 15.5476H12.1574C11.0924 15.5476 10.2224 14.6776 10.2224 13.6126V9.26257" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M10.2224 9.26242C10.2224 4.72492 11.0699 3.97496 13.6199 2.45996" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+                        </div> 
+                        <?php } ?>   
+
                        <div class="tcontent"><?php echo wp_kses_post( $testimonial['content'] );?></div>
                        <?php if( $data['rating_display'] == 'yes' ) { ?>
 						<ul class="item-rating">
@@ -62,7 +60,6 @@ $has_icon = ( ! $is_new || ! empty( $testimonial['selected_icon']['value'] ) );
 						<?php } ?>
 						<h3 class="item-title"><?php echo wp_kses_post( $testimonial['title'] );?></h3>
 						<div class="item-designation"><?php echo wp_kses_post( $testimonial['designation'] );?></div>
-                        <span class="line"></span>
 					</div>
                 </div>
             </div>
@@ -73,8 +70,8 @@ $has_icon = ( ! $is_new || ! empty( $testimonial['selected_icon']['value'] ) );
     
     <?php if ( $data['display_arrow'] == 'yes' ) { ?>
 	<div class="swiper-navigation">
-        <div class="swiper-button-prev"><i class="icon-tripfery-left-arrow"></i><?php echo esc_html__( 'Prev' , 'tripfery' ) ?></div>
-        <div class="swiper-button-next"><?php echo esc_html__( 'Next' , 'tripfery' ) ?><i class="icon-tripfery-right-arrow"></i></div>
+        <div class="swiper-button-prev"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="swiper-button-next"><i class="fa-solid fa-chevron-right"></i></div>
     </div>
 	<?php } ?>
 </div>

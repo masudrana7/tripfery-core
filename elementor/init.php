@@ -69,6 +69,7 @@ class Custom_Widget_Init {
 			'rt-image'				=> 'RT_Image',
 			'rt-shape'				=> 'RT_Shape',
 			'rt-banner-slider'		=> 'RT_Banner_Slider',
+			'rt-feature-room'		=> 'RT_Feature_Room',
 		);
 		
 

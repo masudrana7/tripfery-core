@@ -67,12 +67,6 @@ class RT_Social_Icons extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Social Icons', 'tripfery-core' ),
 			),			
 			array(
-				'type'    => Controls_Manager::TEXT,
-				'id'      => 'social_label',
-				'label'   => esc_html__( 'Social Label', 'tripfery-core' ),
-				'default' => esc_html__( 'Share', 'tripfery-core' ),
-			),
-			array(
 				'type'    => Controls_Manager::REPEATER,
 				'id'      => 'social_icon_list',
 				'label'   => esc_html__( 'Social Icons', 'tripfery-core' ),
@@ -102,8 +96,86 @@ class RT_Social_Icons extends Custom_Widget_Base {
 					],
 				),	
 			),
-
-
+			array(
+				'mode' => 'section_end',
+			),
+			
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'sec_style',
+				'label'   => esc_html__( 'Icon Style', 'tripfery-core' ),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
+			array(
+				'type' => Controls_Manager::CHOOSE,
+				'id'      => 'content_align',
+				'mode'	  => 'responsive',
+				'label'   => esc_html__( 'Alignment', 'tripfery-core' ),
+				'options' => array(
+					'left' => array(
+						'title' => __( 'Left', 'elementor' ),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'elementor' ),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => __( 'Right', 'elementor' ),
+						'icon' => 'eicon-text-align-right',
+					),
+				),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-social a' => 'text-align: {{VALUE}};',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'icon_text_color',
+				'label'   => esc_html__( 'Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-social a' => 'color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'icon_text_color_hover',
+				'label'   => esc_html__( 'Hover Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-social a:hover' => 'color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'bag_color',
+				'label'   => esc_html__( 'Background Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-social a' => 'background-color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'bag_hover_color',
+				'label'   => esc_html__( 'Background Hover Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-social a::after' => 'background-color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'button_padding',
+				'mode'    => 'responsive',
+				'label'   => esc_html__( 'Button Padding', 'tripfery-core' ),
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .rt-social a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
 			array(
 				'mode' => 'section_end',
 			),
@@ -113,9 +185,7 @@ class RT_Social_Icons extends Custom_Widget_Base {
 
 	protected function render() {
 		$data = $this->get_settings();
-
 		$template = 'rt-social-icons';
-		
 		return $this->rt_template( $template, $data );
 	}
 }

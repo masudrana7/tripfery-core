@@ -92,17 +92,17 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 						<?php if ( $tripfery_has_entry_meta ) { ?>
 						<ul class="entry-meta">
 							<?php if ( $data['post_author'] == 'yes' ) { ?>
-							<li class="post-author"><i class="icon-tripfery-user"></i><?php esc_html_e( 'by ', 'tripfery' );?><?php the_author_posts_link(); ?></li>
+							<li class="post-author"><?php esc_html_e( 'by ', 'tripfery' );?><?php the_author_posts_link(); ?></li>
 							<?php } if ( $data['post_category'] == 'yes' ) { ?>
-							<li class="entry-categories"><i class="icon-tripfery-tags"></i><?php echo the_category( ', ' );?></li>
+							<li class="entry-categories"><?php echo the_category( ', ' );?></li>
 							<?php } if ( $data['post_date'] == 'yes' ) { ?>	
-							<li class="post-date"><i class="icon-tripfery-calendar"></i><?php echo get_the_date(); ?></li>
+							<li class="post-date"><?php echo get_the_date(); ?></li>
 							<?php } if ( $data['post_comment'] == 'yes' ) { ?>
-							<li class="post-comment"><i class="icon-tripfery-comment"></i><a href="<?php echo get_comments_link( get_the_ID() ); ?>"><?php echo wp_kses( $tripfery_comments_html , 'alltext_allow' );?></a></li>
+							<li class="post-comment"><a href="<?php echo get_comments_link( get_the_ID() ); ?>"><?php echo wp_kses( $tripfery_comments_html , 'alltext_allow' );?></a></li>
 							<?php } if ( ( $data['post_length'] == 'yes' ) && function_exists( 'tripfery_reading_time' ) ) { ?>
-							<li class="post-reading-time meta-item"><i class="icon-tripfery-time"></i><?php echo tripfery_reading_time(); ?></li>
+							<li class="post-reading-time meta-item"><?php echo tripfery_reading_time(); ?></li>
 							<?php } if ( ( $data['post_view'] == 'yes' ) && function_exists( 'tripfery_views' ) ) { ?>
-							<li><i class="fa-regular fa-eye"></i><span class="post-views"><?php echo tripfery_views(); ?></span></li>
+							<li><span class="post-views"><?php echo tripfery_views(); ?></span></li>
 							<?php } ?>
 						</ul>
 						<?php } ?>

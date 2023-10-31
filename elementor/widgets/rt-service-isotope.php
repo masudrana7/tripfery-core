@@ -313,14 +313,10 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 		);
 		return $fields;
 	}
-
 	protected function render() {
-		$data = $this->get_settings();
-
 		$this->rt_load_scripts();
-
+		$data = $this->get_settings();
 		$template = 'rt-service-isotope-1';
-
-		return $this->rt_template( $template, $data );
+		$this->rt_template($template, $data);
 	}
 }

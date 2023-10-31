@@ -17,7 +17,7 @@ extract($data);
 		<span class="sub-title <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="0.2s" data-wow-duration="1.4s"><?php echo wp_kses_post( $data['sub_title'] ); ?></span>
 	
 		<?php } ?>
-		<<?php echo esc_attr( $data['heading_size'] ); ?> class="entry-title <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="0.6s" data-wow-duration="1.4s"><?php echo wp_kses_post( $data['title'] ); ?><?php if( $data['display_line'] ) { ?><span class="line"></span><?php } ?></<?php echo esc_attr( $data['heading_size'] ); ?>>
+		<<?php echo esc_attr( $data['heading_size'] ); ?> class="entry-title <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="0.6s" data-wow-duration="1.4s"><?php if( $data['display_line'] ) { ?><span class="line"></span><?php } ?><?php echo wp_kses_post( $data['title'] ); ?></<?php echo esc_attr( $data['heading_size'] ); ?>>
 
 		
 	</div>
