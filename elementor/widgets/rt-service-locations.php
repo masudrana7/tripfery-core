@@ -8,14 +8,15 @@
 namespace radiustheme\Tripfery_Core;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Css_Filter;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class RT_Logo_Slider extends Custom_Widget_Base {
+class RT_Service_Locations extends Custom_Widget_Base {
 
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Logo Grid & Slider', 'tripfery-core' );
-		$this->rt_base = 'rt-logo-slider';
+		$this->rt_name = esc_html__( 'RT Service Locations', 'tripfery-core' );
+		$this->rt_base = 'rt-service-locations';
 		$this->rt_translate = array(
 			'cols'  => array(
 				'12' => esc_html__( '1 Col', 'tripfery-core' ),
@@ -29,54 +30,61 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 	}
 
 	public function rt_fields(){
-		$repeater = new \Elementor\Repeater(); 
+		$terms = get_terms( array( 'taxonomy' => 'tripfery_locations_category', 'fields' => 'id=>name' ) );
+		$category_dropdown = array( '0' => esc_html__( 'All Categories', 'tripfery-core' ) );
+
+		foreach ( $terms as $id => $name ) {
+			$category_dropdown[$id] = $name;
+		}
+
+		$repeater = new \Elementor\Repeater();
 		$repeater->add_control(
-			'image', [
+			'image',
+			[
 				'type'  => Controls_Manager::MEDIA,
-				'label' => esc_html__( 'Image', 'tripfery-core' ),
+				'label' => esc_html__('Image', 'tripfery-core'),
 				'label_block' => true,
 			]
 		);
-		$repeater->add_control(
-			'url', [
-				'type'  => Controls_Manager::TEXT,
-				'label' => esc_html__( 'URL(optional)', 'tripfery-core' ),
-				'label_block' => true,
-			]
-		);
-		$repeater->add_control(
-			'title', [
-				'type'  => Controls_Manager::TEXT,
-				'label' => esc_html__( 'Title', 'tripfery-core' ),
-				'label_block' => true,
-			]
-		);
+
 		$fields = array(
 			array(
 				'mode'    => 'section_start',
 				'id'      => 'sec_general',
-				'label'   => esc_html__( 'General', 'tripfery-core' ),
-			),	
+				'label'   => esc_html__('General', 'tripfery-core'),
+			),
+			array(
+				'type'    => Controls_Manager::REPEATER,
+				'id'      => 'rt-service-locations',
+				'label'   => esc_html__('Add as many logos as you want', 'tripfery-core'),
+				'fields' => $repeater->get_controls(),
+			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'style',
 				'label'   => esc_html__( 'Style', 'tripfery-core' ),
 				'options' => array(
-					'style1' => esc_html__( 'Logo Slider', 'tripfery-core' ),
-					'style2' => esc_html__( 'Logo Grid', 'tripfery-core' ),
+					'style1' => esc_html__( 'Locations Grid 1', 'tripfery-core' ),
+					'style2' => esc_html__( 'Locations Grid 2', 'tripfery-core' ),
+					'style3' => esc_html__( 'Locations Grid 3', 'tripfery-core' ),
+					'style7' => esc_html__( 'Locations Grid 4', 'tripfery-core' ),
+					'style8' => esc_html__( 'Locations Grid 5', 'tripfery-core' ),
+					'style10' => esc_html__( 'Locations Grid 6', 'tripfery-core' ),
+					'style11' => esc_html__( 'Locations Grid 7', 'tripfery-core' ),
+					'style4' => esc_html__( 'Locations Slider 1', 'tripfery-core' ),
+					'style5' => esc_html__( 'Locations Slider 2', 'tripfery-core' ),
+					'style6' => esc_html__( 'Locations Slider 3', 'tripfery-core' ),
+					'style9' => esc_html__( 'Locations Slider 4', 'tripfery-core' ),
 				),
 				'default' => 'style1',
 			),
 			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'logo_color_mode',
-				'label'   => esc_html__( 'Logo Color Mode', 'tripfery-core' ),				
-				'options' => array(
-					'normal' 		=> esc_html__( 'Default Color', 'tripfery-core' ),
-					'gray' 		=> esc_html__( 'Gray Scale', 'tripfery-core' ),
-				),
-				'default' => 'gray',
-			),			
+				'type'    => Controls_Manager::NUMBER,
+				'id'      => 'number',
+				'label'   => esc_html__( 'Total number of items', 'tripfery-core' ),
+				'default' => 6,
+				'description' => esc_html__( 'Write -1 to show all', 'tripfery-core' ),
+			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'item_space',
@@ -90,80 +98,83 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 					'g-5' => esc_html__( 'Gutters 5', 'tripfery-core' ),
 				),
 				'default' => 'g-4',
-				'condition'   => array( 'style' => array( 'style2' ) ),
+				'condition'   => array( 'style' => array( 'style1', 'style2', 'style3', 'style7', 'style8', 'style10', 'style11' ) ),
 			),			
 			array(
-				'type' => Controls_Manager::CHOOSE,
-				'id'      => 'content_align',
-				'mode'    => 'responsive',
-				'label'   => esc_html__( 'Alignment', 'tripfery-core' ),
-				'options' => array(
-					'left' => array(
-						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'eicon-text-align-left',
-					),
-					'center' => array(
-						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'eicon-text-align-center',
-					),
-					'right' => array(
-						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'eicon-text-align-right',
-					),
-				),
-				'default' => '',
-				'selectors' => array(
-					'{{WRAPPER}} .rt-logo-grid .row' => 'justify-content: {{VALUE}};',
-				),
-				'condition'   => array( 'style' => array( 'style2' ) ),
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'cat',
+				'label'   => esc_html__( 'Categories', 'tripfery-core' ),
+				'options' => $category_dropdown,
+				'default' => '0',
 			),
 			array(
-				'type'    => Controls_Manager::REPEATER,
-				'id'      => 'logos',
-				'label'   => esc_html__( 'Add as many logos as you want', 'tripfery-core' ),
-				'fields' => $repeater->get_controls(),				
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'post_ordering',
+				'label'   => esc_html__( 'Post Ordering', 'tripfery-core' ),
+				'options' => array(
+					'DESC'	=> esc_html__( 'Desecending', 'tripfery-core' ),
+					'ASC'	=> esc_html__( 'Ascending', 'tripfery-core' ),
+				),
+				'default' => 'DESC',
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'post_orderby',
+				'label'   => esc_html__( 'Post Sorting', 'tripfery-core' ),				
+				'options' => array(
+					'recent' 		=> esc_html__( 'Recent Post', 'tripfery-core' ),
+					'rand' 			=> esc_html__( 'Random Post', 'tripfery-core' ),
+					'title' 		=> esc_html__( 'By Name', 'tripfery-core' ),
+				),
+				'default' => 'recent',
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'more_button',
+				'label'   => esc_html__( 'More Button', 'tripfery-core' ),
+				'options' => array(
+					'show'        => esc_html__( 'Show Read More', 'tripfery-core' ),
+					'hide'        => esc_html__( 'Show Pagination', 'tripfery-core' ),
+				),
+				'default' => 'show',
+				'condition'   => array( 'style' => array( 'style1', 'style2', 'style3', 'style7', 'style8', 'style10', 'style11' ) ),
+			),
+			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'see_button_text',
+				'label'   => esc_html__( 'Button Text', 'tripfery-core' ),
+				'condition'   => array( 'more_button' => array( 'show' ) ),
+				'default' => esc_html__( 'More Locationss', 'tripfery-core' ),
+				'condition'   => array( 'more_button' => array( 'show' ), 'style' => array( 'style1', 'style2', 'style3', 'style7', 'style8', 'style10', 'style11' ) ),
+			),
+			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'see_button_link',
+				'label'   => esc_html__( 'Button Link', 'tripfery-core' ),
+				'condition'   => array( 'more_button' => array( 'show' ), 'style' => array( 'style1', 'style2', 'style3', 'style7', 'style8', 'style10', 'style11' ) ),
 			),
 			array(
 				'mode' => 'section_end',
 			),
-			
-			// Title style
+			// Option
 			array(
-	            'mode'    => 'section_start',
-	            'id'      => 'sec_title_style',
-	            'label'   => esc_html__( 'Title Typo', 'tripfery-core' ),
-	            'tab'     => Controls_Manager::TAB_STYLE,
-	        ),
+				'mode'    => 'section_start',
+				'id'      => 'sec_option',
+				'label'   => esc_html__( 'Option', 'tripfery-core' ),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
 	        array(
 				'mode'    => 'group',
 				'type'    => Group_Control_Typography::get_type(),
 				'name'    => 'title_typo',
-				'label'   => esc_html__( 'Title Style', 'tripfery-core' ),
-				'selector' => '{{WRAPPER}} .rt-logo-default .logo-box .entry-title',
+				'label'   => esc_html__( 'Title Typo', 'tripfery-core' ),
+				'selector' => '{{WRAPPER}} .rt-locations-default .entry-title',
 			),
-			array(
-				'type'    => Controls_Manager::COLOR,
-			 	'id'      => 'title_color',				
-				'label'   => esc_html__( 'Title Color', 'tripfery-core' ),
-				'selectors' => array(
-					'{{WRAPPER}} .rt-logo-default .logo-box .entry-title' => 'color: {{VALUE}}',
-				),
-			),
-			array(
-	            'type'    => Controls_Manager::DIMENSIONS,
-	            'mode'          => 'responsive',
-	            'size_units' => [ 'px', '%', 'em' ],
-	            'id'      => 'title_margin',
-	            'label'   => __( 'Title Margin', 'tripfery-core' ),                 
-	            'selectors' => array(
-	                '{{WRAPPER}} .rt-logo-default .logo-box .entry-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                    
-	            ),
-	        ),
 			array(
 				'type'    => Controls_Manager::SLIDER,
-				'id'      => 'image_width',
+				'id'      => 'title_space',
 				'mode'          => 'responsive',
-				'label'   => esc_html__( 'Logo Width', 'tripfery-core' ),
+				'label'   => esc_html__( 'Title Space', 'tripfery-core' ),
 				'size_units' => array( '%', 'px' ),
 				'range' => array(
 					'%' => array(
@@ -172,57 +183,147 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 					),
 					'px' => array(
 						'min' => 1,
-						'max' => 300,
+						'max' => 100,
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .rt-logo-default .logo-box img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .rt-locations-default .entry-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			),
 			array(
-				'type'    => Controls_Manager::COLOR,
-			 	'id'      => 'box_bg_color',				
-				'label'   => esc_html__( 'Box BG Color', 'tripfery-core' ),
-				'selectors' => array(
-					'{{WRAPPER}} .rt-logo-grid .logo-box' => 'background-color: {{VALUE}}',
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'content_display',
+				'label'       => esc_html__( 'Content Display', 'tripfery-core' ),
+				'label_on'    => esc_html__( 'On', 'tripfery-core' ),
+				'label_off'   => esc_html__( 'Off', 'tripfery-core' ),
+				'default'     => 'no',
+				'description' => esc_html__( 'Show or Hide Content. Default: off', 'tripfery-core' ),
+				'condition'   => array( 'style!' => array( 'style11' ) ),
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'contype',
+				'label'   => esc_html__( 'Content Type', 'tripfery-core' ),
+				'options' => array(
+					'content' => esc_html__( 'Conents', 'tripfery-core' ),
+					'excerpt' => esc_html__( 'Excerpts', 'tripfery-core' ),
 				),
-				'separator' => 'before',
-				'condition'   => array( 'style' => array( 'style2' ) ),
+				'default'     => 'content',
+				'description' => esc_html__( 'Display contents from Editor or Excerpt field', 'tripfery-core' ),
+				'condition'   => array( 'content_display' => array( 'yes' ), 'style!' => array( 'style11' ) ),
+			),
+			array(
+				'type'    => Controls_Manager::NUMBER,
+				'id'      => 'count',
+				'label'   => esc_html__( 'Word count', 'tripfery-core' ),
+				'default' => 9,
+				'description' => esc_html__( 'Maximum number of words', 'tripfery-core' ),
+				'condition'   => array( 'content_display' => array( 'yes' ), 'style!' => array( 'style11' ) ),
+			),
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'category_display',
+				'label'       => esc_html__( 'Category Display', 'tripfery-core' ),
+				'label_on'    => esc_html__( 'On', 'tripfery-core' ),
+				'label_off'   => esc_html__( 'Off', 'tripfery-core' ),
+				'default'     => 'yes',
+				'description' => esc_html__( 'Show or Hide Category. Default: On', 'tripfery-core' ),
+			),
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'action_display',
+				'label'       => esc_html__( 'Action Display', 'tripfery-core' ),
+				'label_on'    => esc_html__( 'On', 'tripfery-core' ),
+				'label_off'   => esc_html__( 'Off', 'tripfery-core' ),
+				'default'     => 'yes',
+				'description' => esc_html__( 'Show or Hide Readmore. Default: On', 'tripfery-core' ),
+			),
+			array(
+				'type'    => Group_Control_Css_Filter::get_type(),
+				'mode'    => 'group',				
+				'label'   => esc_html__( 'Image Blend', 'tripfery-core' ),	
+				'name' => 'blend', 
+				'selector' => '{{WRAPPER}} .rt-locations-default .locations-figure img',		
 			),
 			array(
 	            'type'    => Controls_Manager::DIMENSIONS,
 	            'mode'          => 'responsive',
 	            'size_units' => [ 'px', '%', 'em' ],
-	            'id'      => 'box_padding',
-	            'label'   => __( 'Box Padding', 'tripfery-core' ),                 
+	            'id'      => 'border_radius',
+	            'label'   => __( 'Box Radius', 'tripfery-core' ),                 
 	            'selectors' => array(
-	                '{{WRAPPER}} .rt-logo-grid .logo-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                    
-	            ),				
-				'condition'   => array( 'style' => array( 'style2' ) ),
+	                '{{WRAPPER}} .rt-locations-default .locations-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                 
+	            ),
+	            'separator' => 'before',
 	        ),
 			array(
 	            'type'    => Controls_Manager::DIMENSIONS,
 	            'mode'          => 'responsive',
 	            'size_units' => [ 'px', '%', 'em' ],
-	            'id'      => 'box_radius',
-	            'label'   => __( 'Box Radius', 'tripfery-core' ),                 
+	            'id'      => 'border_image_radius',
+	            'label'   => __( 'Image Radius', 'tripfery-core' ),                 
 	            'selectors' => array(
-	                '{{WRAPPER}} .rt-logo-grid .logo-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                    
+	                '{{WRAPPER}} .rt-locations-multi-layout-7 .rt-locations-grid .locations-figure' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                 
 	            ),
-				'separator' => 'before',
-				'condition'   => array( 'style' => array( 'style2' ) ),
+				'condition'   => array( 'style' => array( 'style11' ) ),
 	        ),
 			array(
 				'mode' => 'section_end',
 			),
+			// Option
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'sec_style_option',
+				'label'   => esc_html__( 'Style', 'tripfery-core' ),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'title_color',
+				'label'   => esc_html__( 'Title Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-locations-default .entry-title a' => 'color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'title_hover_color',
+				'label'   => esc_html__( 'Title Hover Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-locations-default .entry-title a:hover' => 'color: {{VALUE}} !important',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'cat_color',
+				'label'   => esc_html__( 'Category Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-locations-default .locations-cat a' => 'color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'cat_hover_color',
+				'label'   => esc_html__( 'Category Hover Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-locations-default .locations-cat a:hover' => 'color: {{VALUE}} !important',
+				),
+			),
 			
+			array(
+				'mode' => 'section_end',
+			),
 			// Nav Option
 			array(
 				'mode'    => 'section_start',
 				'id'      => 'sec_nav_option',
 				'label'   => esc_html__( 'Nav Option', 'tripfery-core' ),
 				'tab'     => Controls_Manager::TAB_STYLE,
-				'condition'   => array( 'style' => array( 'style1' ) ),
+				'condition'   => array( 'style' => array( 'style4', 'style5', 'style6', 'style9' ) ),
 			),
 			array(
 				'type'        => Controls_Manager::SWITCHER,
@@ -240,6 +341,7 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 				'options' => array(
 					'default' 		=> esc_html__( 'Default', 'tripfery-core' ),
 					'top-right' 	=> esc_html__( 'Top Right', 'tripfery-core' ),
+					'bottom-center' => esc_html__( 'Bottom Center', 'tripfery-core' ),
 				),
 				'default' => 'default',
 				'condition'   => array( 'display_arrow' => array( 'yes' ) ),
@@ -256,8 +358,8 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 						'max' => 100,
 					),
 					'px' => array(
-						'min' => -200,
-						'max' => 200,
+						'min' => -1000,
+						'max' => 1000,
 					),
 				),
 				'selectors' => array(
@@ -277,8 +379,8 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 						'max' => 100,
 					),
 					'px' => array(
-						'min' => -200,
-						'max' => 200,
+						'min' => -1000,
+						'max' => 1000,
 					),
 				),
 				'selectors' => array(
@@ -298,8 +400,8 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 						'max' => 100,
 					),
 					'px' => array(
-						'min' => -200,
-						'max' => 200,
+						'min' => -1000,
+						'max' => 1000,
 					),
 				),
 				'selectors' => array(
@@ -313,8 +415,8 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 				'label'       => esc_html__( 'Pagination', 'tripfery-core' ),
 				'label_on'    => esc_html__( 'On', 'tripfery-core' ),
 				'label_off'   => esc_html__( 'Off', 'tripfery-core' ),
-				'default'     => 'no',
-				'description' => esc_html__( 'Navigation Arrow. Default: Off', 'tripfery-core' ),
+				'default'     => 'yes',
+				'description' => esc_html__( 'Navigation Arrow. Default: On', 'tripfery-core' ),
 			),
 	        array(
 				'type'    => Controls_Manager::COLOR,
@@ -437,7 +539,7 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 					'wow'        => esc_html__( 'On', 'tripfery-core' ),
 					'hide'        => esc_html__( 'Off', 'tripfery-core' ),
 				),
-				'default' => 'hide',
+				'default' => 'wow',
 			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
@@ -488,33 +590,34 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 			array(
 				'mode' => 'section_end',
 			),
+
 			// Responsive Grid Columns
 			array(
 				'mode'    => 'section_start',
 				'id'      => 'sec_responsive',
 				'label'   => esc_html__( 'Number of Responsive Columns', 'tripfery-core' ),
-				'condition'   => array( 'style' => array( 'style2' ) ),
+				'condition'   => array( 'style' => array( 'style1', 'style2', 'style3', 'style8' ) ),
 			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'col_xl',
 				'label'   => esc_html__( 'Desktops: > 1199px', 'tripfery-core' ),
 				'options' => $this->rt_translate['cols'],
-				'default' => '3',
+				'default' => '4',
 			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'col_lg',
 				'label'   => esc_html__( 'Desktops: > 991px', 'tripfery-core' ),
 				'options' => $this->rt_translate['cols'],
-				'default' => '3',
+				'default' => '4',
 			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'col_md',
 				'label'   => esc_html__( 'Tablets: > 767px', 'tripfery-core' ),
 				'options' => $this->rt_translate['cols'],
-				'default' => '4',
+				'default' => '6',
 			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
@@ -533,18 +636,20 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 			array(
 				'mode' => 'section_end',
 			),
+
 			// Responsive Slider Columns
 			array(
 				'mode'        => 'section_start',
 				'id'          => 'sec_slider_pervice',
 				'label'       => esc_html__( 'PerView Options', 'tripfery-core' ),
-				'condition'   => array( 'style' => array( 'style1' ) ),
+				'condition'   => array( 'style' => array( 'style4', 'style5', 'style6', 'style9' ) ),
 			),
+			
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'desktop',
 				'label'   => esc_html__( 'Desktops: > 1600px', 'tripfery-core' ),
-				'default' => '5',
+				'default' => '4',
 				'options' => array(
 					'1' => esc_html__( '1', 'tripfery-core' ),
 					'2' => esc_html__( '2', 'tripfery-core' ),
@@ -559,7 +664,7 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'md_desktop',
 				'label'   => esc_html__( 'Desktops: > 1200px', 'tripfery-core' ),
-				'default' => '4',
+				'default' => '3',
 				'options' => array(
 					'1' => esc_html__( '1', 'tripfery-core' ),
 					'2' => esc_html__( '2', 'tripfery-core' ),
@@ -573,7 +678,7 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'sm_desktop',
 				'label'   => esc_html__( 'Desktops: > 992px', 'tripfery-core' ),
-				'default' => '3',
+				'default' => '2',
 				'options' => array(
 					'1' => esc_html__( '1', 'tripfery-core' ),
 					'2' => esc_html__( '2', 'tripfery-core' ),
@@ -607,12 +712,13 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 			array(
 				'mode' => 'section_end',
 			),
+			
 			// Slider options
 			array(
 				'mode'        => 'section_start',
 				'id'          => 'sec_slider',
 				'label'       => esc_html__( 'Slider Options', 'tripfery-core' ),
-				'condition'   => array( 'style' => array( 'style1' ) ),
+				'condition'   => array( 'style' => array( 'style4', 'style5', 'style6', 'style9' ) ),
 			),			
 			array(
 				'type'        => Controls_Manager::SWITCHER,
@@ -674,17 +780,17 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 				'label_off'   => esc_html__( 'Off', 'tripfery-core' ),
 				'default'     => 'yes',
 				'description' => esc_html__( 'Loop to first item. Default: On', 'tripfery-core' ),
-			),
+			),			
 			array(
 				'mode' => 'section_end',
 			),
+
 		);
 		return $fields;
 	}
 
 	protected function render() {
-		$data = $this->get_settings();		
-
+		$data = $this->get_settings();
 		if($data['slider_autoplay']=='yes'){
 			$data['slider_autoplay']=true;
 		}
@@ -713,17 +819,48 @@ class RT_Logo_Slider extends Custom_Widget_Base {
 			),
 			'auto'   =>$data['slider_autoplay']
 		);
-
+		
+		
 		switch ( $data['style'] ) {
+			case 'style9':
+			$data['swiper_data'] = json_encode( $swiper_data ); 
+			$template = 'rt-locations-slider-4';
+			break;
+			case 'style6':
+			$data['swiper_data'] = json_encode( $swiper_data ); 
+			$template = 'rt-locations-slider-3';
+			break;
+			case 'style5':
+			$data['swiper_data'] = json_encode( $swiper_data ); 
+			$template = 'rt-locations-slider-2';
+			break;
+			case 'style4':
+			$data['swiper_data'] = json_encode( $swiper_data ); 
+			$template = 'rt-locations-slider-1';
+			break;
+			case 'style11':
+			$template = 'rt-locations-grid-7';
+			break;
+			case 'style10':
+			$template = 'rt-locations-grid-6';
+			break;
+			case 'style8':
+			$template = 'rt-locations-grid-5';
+			break;
+			case 'style7':
+			$template = 'rt-locations-grid-4';
+			break;
+			case 'style3':
+			$template = 'rt-locations-grid-3';
+			break;
 			case 'style2':
-			$template = 'rt-logo-grid';
+			$template = 'rt-locations-grid-2';
 			break;
 			default:
-			$data['swiper_data'] = json_encode( $swiper_data ); 
-			$template = 'rt-logo-slider';
+			$template = 'rt-servic-locations-grid-1';
 			break;
 		}
-		
+
 		return $this->rt_template( $template, $data );
 	}
 }

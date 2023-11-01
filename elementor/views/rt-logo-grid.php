@@ -23,7 +23,10 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
                     <?php if ( !empty( $logo['url'] ) ): ?>
                         <a href="<?php echo esc_url( $logo['url'] );?>" target="_blank"><?php echo wp_get_attachment_image( $logo['image']['id'], 'full' )?></a>
                     <?php else: ?>
+                        
                         <?php echo wp_get_attachment_image( $logo['image']['id'], 'full' )?>
+
+
                     <?php endif; ?>
                     <?php if ( !empty($logo['title']) ) { ?>
                         <h3 class="entry-title"><?php echo wp_kses_post( $logo['title'] ); ?></h3>				
