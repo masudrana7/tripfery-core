@@ -26,13 +26,6 @@ class RT_Feature_Room extends Custom_Widget_Base {
 			]
 		);
 		$repeater->add_control(
-			'url', [
-				'type'  => Controls_Manager::TEXT,
-				'label' => esc_html__( 'URL(optional)', 'tripfery-core' ),
-				'label_block' => true,
-			]
-		);
-		$repeater->add_control(
 			'title', [
 				'type'  => Controls_Manager::TEXT,
 				'label' => esc_html__( 'Title', 'tripfery-core' ),
@@ -44,7 +37,33 @@ class RT_Feature_Room extends Custom_Widget_Base {
 				'mode'    => 'section_start',
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
-			),			
+			),
+			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'subtitle',
+				'label'   => esc_html__('Sub Title', 'tripfery-core'),
+				'default' => esc_html__('Room', 'tripfery-core'),
+			),
+			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'title',
+				'label'   => esc_html__('Title', 'tripfery-core'),
+				'default' => esc_html__('Stay with Us', 'tripfery-core'),
+			),	
+			array(
+				'type'    => Controls_Manager::TEXTAREA,
+				'id'      => 'description',
+				'label'   => esc_html__('Description', 'tripfery-core'),
+				'default' => esc_html__('Lorem ipsum dolor sit amet consectetur adipiscing elit. Mauris nullam the as integer quam dolor nunc semper.', 'tripfery-core'),
+			),
+
+			array(
+				'type'    => Controls_Manager::REPEATER,
+				'id'      => 'rt-rooms',
+				'label'   => esc_html__('Add as many rooms as you want', 'tripfery-core'),
+				'fields' => $repeater->get_controls(),
+			),
+
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'item_space',

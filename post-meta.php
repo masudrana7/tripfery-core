@@ -117,6 +117,11 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 					),
 					'default'  => 'default',
 				),
+				"{$prefix}_header_bgcolor" => array(
+					'label' => __('Header Background Color', 'tripfery-core'),
+					'type'  => 'color_picker',
+					'desc'  => __('If not selected, default will be used', 'tripfery-core'),
+				),
 				"{$prefix}_footer" => array(
 					'label'   => __( 'Footer Layout', 'tripfery-core' ),
 					'type'    => 'select',
