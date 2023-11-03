@@ -19,12 +19,10 @@ class RT_Counter extends Custom_Widget_Base {
 		$this->rt_base = 'rt-counter';
 		parent::__construct( $data, $args );
 	}
-
 	private function rt_load_scripts(){
 		wp_enqueue_script( 'counterup' );
 		wp_enqueue_script( 'waypoints' );
 	}
-
 	public function rt_fields(){
 		$fields = array(
 			array(
@@ -118,15 +116,6 @@ class RT_Counter extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Animation Steps', 'tripfery-core' ),
 				'default' => 10,
 				'description' => esc_html__( 'Counter steps eg. 10', 'tripfery-core' ),
-			),
-			array(
-				'type'        => Controls_Manager::SWITCHER,
-				'id'          => 'item_divider',
-				'label'       => esc_html__( 'Item Divider', 'tripfery-core' ),
-				'label_on'    => esc_html__( 'Show', 'tripfery-core' ),
-				'label_off'   => esc_html__( 'Hide', 'tripfery-core' ),
-				'default'     => 'yes',
-				'condition'   => array( 'style!' => array( 'style1' ) ),
 			),
 			array(
 				'type'        => Controls_Manager::SWITCHER,
@@ -310,6 +299,76 @@ class RT_Counter extends Custom_Widget_Base {
 	            ),
 				'condition'   => array( 'style!' => array( 'style1' ) ),
 	        ),
+			array(
+				'mode' => 'section_end',
+			),
+			// General style
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'general_style_tow',
+				'label'   => esc_html__('General Style', 'tripfery-core'),
+				'tab'     => Controls_Manager::TAB_STYLE,
+				'condition'   => array('style' => array('style2')),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'box_tow_bg',
+				'label'   => esc_html__('Background Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-counter-style2 .rt-content' => 'background-color: {{VALUE}}',
+				),
+			),	
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'mode'          => 'responsive',
+				'size_units' => ['px', '%', 'em'],
+				'id'      => 'box_area_padding',
+				'label'   => __('Box Padding', 'tripfery-core'),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-counter-style2 .rt-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'box_width',
+				'mode'          => 'responsive',
+				'label'   => esc_html__('Box Width', 'tripfery-core'),
+				'size_units' => array('%', 'px'),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 300,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-counter-style2 .rt-content' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'box_height',
+				'mode'          => 'responsive',
+				'label'   => esc_html__('Box Height', 'tripfery-core'),
+				'size_units' => array('%', 'px'),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 300,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-counter-style2 .rt-content' => 'height: {{SIZE}}{{UNIT}};',
+				),
+			),
 			array(
 				'mode' => 'section_end',
 			),

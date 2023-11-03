@@ -112,29 +112,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'description' => esc_html__( 'Use -1 for showing all items( Showing items per category )', 'tripfery-core' ),
 			),
 			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'more_button',
-				'label'   => esc_html__( 'More Button', 'tripfery-core' ),
-				'options' => array(
-					'show'        => esc_html__( 'Show', 'tripfery-core' ),
-					'hide'        => esc_html__( 'Hide', 'tripfery-core' ),
-				),
-				'default' => 'show',				
-			),
-			array (
-				'type'    => Controls_Manager::TEXT,
-				'id'      => 'see_button_text',
-				'label'   => esc_html__( 'Button Text', 'tripfery-core' ),
-				'condition'   => array( 'more_button' => array( 'show' ) ),
-				'default' => esc_html__( 'Show More', 'tripfery-core' ),
-			),
-			array (
-				'type'    => Controls_Manager::TEXT,
-				'id'      => 'see_button_link',
-				'label'   => esc_html__( 'Button Link', 'tripfery-core' ),
-				'condition'   => array( 'more_button' => array( 'show' ) ),
-			),
-			array(
 				'mode' => 'section_end',
 			),
 			/*Option section*/
@@ -151,29 +128,7 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Sub Title Style', 'tripfery-core' ),
 				'selector' => '{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title',
 			),
-			array(
-				'type'    => Controls_Manager::NUMBER,
-				'id'      => 'title_count',
-				'label'   => esc_html__( 'Title count', 'tripfery-core' ),
-				'default' => 5,
-				'description' => esc_html__( 'Maximum number of words', 'tripfery-core' ),				
-			),
-			array (
-				'type'        => Controls_Manager::SWITCHER,
-				'id'          => 'excerpt_display',
-				'label'       => esc_html__( 'Excerpt/Content Display', 'tripfery-core' ),
-				'label_on'    => esc_html__( 'Show', 'tripfery-core' ),
-				'label_off'   => esc_html__( 'Hide', 'tripfery-core' ),
-				'default'     => 'false',
-			),
-			array(
-				'type'    => Controls_Manager::NUMBER,
-				'id'      => 'excerpt_count',
-				'label'   => esc_html__( 'Word count', 'tripfery-core' ),
-				'default' => 13,
-				'description' => esc_html__( 'Maximum number of words', 'tripfery-core' ),
-				'condition'   => array( 'excerpt_display' =>'yes' ),
-			),
+
 			array (
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'item_title_color',
@@ -191,16 +146,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title a:hover' => 'color: {{VALUE}}',
 				),
-			),
-			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'all_button',
-				'label'   => esc_html__( 'Show All Button', 'tripfery-core' ),
-				'options' => array(
-					'show'        => esc_html__( 'Show', 'tripfery-core' ),
-					'hide'        => esc_html__( 'Hide', 'tripfery-core' ),
-				),
-				'default' => 'show',
 			),			
 			array(
 				'mode' => 'section_end',

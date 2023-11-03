@@ -108,12 +108,33 @@ class RT_Image extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Border Radius', 'tripfery-core' ),
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .rt-image-banner .rt-banner-item img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .rt-image-banner .rt-banner-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};overflow:hidden',
 				],
 			),
 			array(
 				'mode' => 'section_end',
 			),
+			/*Animation section*/
+			array(
+	            'mode'    => 'section_start',
+	            'id'      => 'general_style',
+	            'label'   => esc_html__( 'Style', 'tripfery-core' ),
+	            'tab'     => Controls_Manager::TAB_STYLE,
+	        ),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'image_efect_style',
+				'label'   => esc_html__('Image Effect', 'tripfery-core'),
+				'options' => array(
+					'normal'        => esc_html__('Normal', 'tripfery-core'),
+					'zoom'        => esc_html__('Zoom', 'tripfery-core'),
+				),
+				'default' => 'normal',
+			),
+			array(
+				'mode' => 'section_end',
+			),
+			
 			/*Animation section*/
 			array(
 	            'mode'    => 'section_start',

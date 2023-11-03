@@ -143,6 +143,11 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 					),
 					'default'  	  => 'default',
 				),
+				"{$prefix}_footer_bgcolor" => array(
+					'label' => __('Footer Background Color', 'tripfery-core'),
+					'type'  => 'color_picker',
+					'desc'  => __('If not selected, default will be used', 'tripfery-core'),
+				),
 				"{$prefix}_copyright_area" => array(
 					'label' 	  => __( 'Copyright Area', 'tripfery-core' ),
 					'type'  	  => 'select',

@@ -33,7 +33,7 @@ namespace radiustheme\Tripfery_Core; ?>
 							<?php if (!empty($term->name)) { ?>
 								<h3 class="destination-name"><a href="<?php the_permalink(); ?>"><?php echo esc_html($term->name); ?></a></h3>
 							<?php } ?>
-							<p class="destination-tour">14 Tours</p>
+							<p class="destination-tour"><?php echo esc_html($term->count); ?> Tours</p>
 						</div>
 					</div>
 				</article>

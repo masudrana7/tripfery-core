@@ -18,7 +18,7 @@ if ( is_array( $icon_class['value'] ) ) {
 
 ?>
 <div class="rt-counter-box rt-counter-<?php echo esc_attr( $data['style'] );?>">
-	<div class="rt-item <?php if( $data['item_divider'] == 'yes' ) { ?>item-divider<?php } ?> <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="<?php echo esc_attr( $data['delay'] );?>s" data-wow-duration="<?php echo esc_attr( $data['duration'] );?>s">
+	<div class="rt-item <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="<?php echo esc_attr( $data['delay'] );?>s" data-wow-duration="<?php echo esc_attr( $data['duration'] );?>s">
 		<?php if ( $data['showhide'] == 'yes' ) { ?>
 		<div class="rt-media">
 			<?php if ( $final_icon_image_url ): ?>

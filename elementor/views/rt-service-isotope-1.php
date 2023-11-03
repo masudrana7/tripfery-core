@@ -4,8 +4,6 @@ $thumb_size = 'tripfery-size3';
 $number_of_post = $data['itemnumber'];
 $post_orderby = $data['post_orderby'];
 $post_order = $data['post_order'];
-$title_count = $data['title_count'];
-$excerpt_count = $data['excerpt_count'];
 
 $p_ids = array();
 foreach ($data['posts_not_in'] as $p_idsn) {
@@ -37,6 +35,7 @@ $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['c
 if ($posts != null) {
 ?>
 	<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
+		<?php if($data['cat_display']){ ?>
 		<div class="row justify-content-center">
 			<div class="col-auto">
 				<div class="listing-filter-btns d-flex align-items-center justify-content-center flex-wrap">
@@ -61,9 +60,9 @@ if ($posts != null) {
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 		<div class="row justify-content-center cardContainer">
 			<?php
-
 			foreach ($posts as $post) {
 				$post_id 	= $post['ID'];
 				$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
@@ -71,15 +70,7 @@ if ($posts != null) {
 				$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post['ID']), $thumbnail);
 				$image = $image_srcs ? '<a class="text-decoration-none listing-thumb-wrapper" href="' . $item_url . '"><img class="text-decoration-none listing-thumb-wrapper" src="' . $image_srcs[0] . '"></a>' : '';
 				$url   		= BABE_Functions::get_page_url_with_args($post_id, $_GET);
-
 				$item_terms = get_the_terms($post_id, 'categories');
-
-
-
-
-
-
-
 				$price_from_with_taxes = ($post['price_from'] * (100 + $post['categories_add_taxes'] * $post['categories_tax'])) / 100;
 				$price_old = $post['discount_price_from'] < $price_from_with_taxes ? '<span class="item_info_price_old">' . BABE_Currency::get_currency_price($price_from_with_taxes) . '</span>' : '';
 				$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '%</div>' : '';

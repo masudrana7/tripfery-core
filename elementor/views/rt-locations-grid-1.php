@@ -50,58 +50,48 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 
 		<div class="cards-row d-flex">
 			<?php $m = $data['delay']; $n = $data['duration']; 
-				if ( $query->have_posts() ) {
+			if ( $query->have_posts() ) {
 				while ( $query->have_posts() ) {
-				$query->the_post();
-				$id            	= get_the_id();
-				if ( $data['contype'] == 'content' ) {
-					$content = apply_filters( 'the_content', get_the_content() );
-				}
-				else {
-					$content = apply_filters( 'the_excerpt', get_the_excerpt() );;
-				}
-				$content = wp_trim_words( $content, $data['count'], '' );
-				$content = "$content";
-				$thumbnail_url ="";
-				if ( has_post_thumbnail() ) {
-					$thumbnail_url = get_the_post_thumbnail_url();
-				}
-
-				global $post;
-				$tripfery_location_activities 	= get_post_meta( $post->ID, 'tripfery_location_activities', true );
-				$tripfery_location_cars 		= get_post_meta( $post->ID, 'tripfery_location_cars', true );
-				$tripfery_location_hotel 		= get_post_meta( $post->ID, 'tripfery_location_hotel', true );
-				$tripfery_location_tours 		= get_post_meta( $post->ID, 'tripfery_location_tours', true );
-				$tripfery_location_rentals 		= get_post_meta( $post->ID, 'tripfery_location_rentals', true );
-
-			?>
-
+					$query->the_post();
+					$id            	= get_the_id();
+					if ( $data['contype'] == 'content' ) {
+						$content = apply_filters( 'the_content', get_the_content() );
+					}
+					else {
+						$content = apply_filters( 'the_excerpt', get_the_excerpt() );;
+					}
+					$content = wp_trim_words( $content, $data['count'], '' );
+					$content = "$content";
+					$thumbnail_url ="";
+					if ( has_post_thumbnail() ) {
+						$thumbnail_url = get_the_post_thumbnail_url();
+					}
+					global $post;
+					$tripfery_location_activities 	= get_post_meta( $post->ID, 'tripfery_location_activities', true );
+					$tripfery_location_cars 		= get_post_meta( $post->ID, 'tripfery_location_cars', true );
+					$tripfery_location_hotel 		= get_post_meta( $post->ID, 'tripfery_location_hotel', true );
+					$tripfery_location_tours 		= get_post_meta( $post->ID, 'tripfery_location_tours', true );
+					$tripfery_location_rentals 		= get_post_meta( $post->ID, 'tripfery_location_rentals', true );
+				?>
 				<div class="panel <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="<?php echo esc_attr( $m );?>s" data-wow-duration="<?php echo esc_attr( $n );?>s" style="background-image: url('<?php echo esc_attr($thumbnail_url);?>')">
 					<h3 class="panel-title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
 					<div class="panel-content">
 						<ul class="d-flex flex-wrap justify-content-center feature-list">
-
-
 							<?php if ( !empty( $tripfery_location_activities ) ) { ?>
 								<li><span class="feature-name"><?php echo esc_html( $tripfery_location_activities );?></span></li>
 							<?php } ?>
-
 							<?php if ( !empty( $tripfery_location_cars ) ) { ?>
 								<li><span class="feature-name"><?php echo esc_html( $tripfery_location_cars );?></span></li>
 							<?php } ?>
-
 							<?php if ( !empty( $tripfery_location_hotel ) ) { ?>
 								<li><span class="feature-name"><?php echo esc_html( $tripfery_location_hotel );?></span></li>
 							<?php } ?>
-
 							<?php if ( !empty( $tripfery_location_tours ) ) { ?>
 								<li><span class="feature-name"><?php echo esc_html( $tripfery_location_tours );?></span></li>
 							<?php } ?>
-
 							<?php if ( !empty( $tripfery_location_rentals ) ) { ?>
 								<li><span class="feature-name"><?php echo esc_html( $tripfery_location_rentals );?></span></li>
 							<?php } ?>
-							
 						</ul>
 					</div>
 				</div>

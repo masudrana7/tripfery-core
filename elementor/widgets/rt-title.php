@@ -143,6 +143,16 @@ class RT_Title extends Custom_Widget_Base {
 				'default'     => 'yes',
 			),
 			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'line_postion',
+				'label'   => esc_html__('Line Position', 'tripfery-core'),
+				'options' => array(
+					'top' => esc_html__('Top', 'tripfery-core'),
+					'bottom' => esc_html__('Bottom', 'tripfery-core'),
+				),
+				'condition' => array('display_line' => array('yes')),
+			),
+			array(
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'title_line_color',
 				'label'   => esc_html__( 'Line Color', 'tripfery-core' ),
@@ -395,7 +405,6 @@ class RT_Title extends Custom_Widget_Base {
 			$template = 'title-1';
 			break;
 		}
-
 		return $this->rt_template( $template, $data );
 	}
 }

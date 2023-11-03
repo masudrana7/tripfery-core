@@ -380,6 +380,16 @@ class RT_Info_Box extends Custom_Widget_Base {
 				),
 			),
 			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'icon_hover_bg_color',
+				'label'   => esc_html__( 'Icon Hover BG Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-info-box .rt-info-item:hover .rt-icon svg path' => 'stroke: {{VALUE}}',
+					'{{WRAPPER}} .rt-info-box .rt-info-item:hover .rt-icon' => 'background-color: {{VALUE}}',
+				),
+			),
+			array(
 				'type'    => Controls_Manager::SLIDER,
 				'id'      => 'icon_space',
 				'mode'          => 'responsive',
@@ -397,6 +407,76 @@ class RT_Info_Box extends Custom_Widget_Base {
 				),
 				'selectors' => array( 
 					'{{WRAPPER}} .rt-info-box .rt-info-item .rt-media' => 'margin-right: {{SIZE}}{{UNIT}};',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'icon_width',
+				'mode'          => 'responsive',
+				'label'   => esc_html__('Icon Width', 'tripfery-core'),
+				'size_units' => array('%', 'px'),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 300,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-info-item .rt-icon' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			),		
+			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'icon_height',
+				'mode'          => 'responsive',
+				'label'   => esc_html__('Icon Height', 'tripfery-core'),
+				'size_units' => array('%', 'px'),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 300,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-info-item .rt-icon' => 'height: {{SIZE}}{{UNIT}};',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'line_height',
+				'mode'          => 'responsive',
+				'label'   => esc_html__('Line Height', 'tripfery-core'),
+				'size_units' => array('%', 'px'),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 300,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-info-item .rt-icon' => 'line-height: {{SIZE}}{{UNIT}};',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'mode'          => 'responsive',
+				'size_units' => ['px', '%', 'em'],
+				'id'      => 'icon_radius',
+				'label'   => __('Box Radius', 'tripfery-core'),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-info-item .rt-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),		
 			array(
