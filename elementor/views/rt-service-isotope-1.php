@@ -31,12 +31,19 @@ if (class_exists('BABE_Functions')) {
 } else {
 	$posts = null;
 }
+
+if($data['cat_display'] == 'yes'){
+	$menuClass= "active";
+}else {
+	$menuClass = "hide";
+}
+
+
 $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
 if ($posts != null) {
 ?>
 	<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
-		<?php if($data['cat_display']){ ?>
-		<div class="row justify-content-center">
+		<div class="row justify-content-center rt-menu-cats-<?php echo esc_attr($menuClass); ?>">
 			<div class="col-auto">
 				<div class="listing-filter-btns d-flex align-items-center justify-content-center flex-wrap">
 					<?php
@@ -60,7 +67,6 @@ if ($posts != null) {
 				</div>
 			</div>
 		</div>
-		<?php } ?>
 		<div class="row justify-content-center cardContainer">
 			<?php
 			foreach ($posts as $post) {

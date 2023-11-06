@@ -62,7 +62,7 @@ class RT_Video extends Custom_Widget_Base {
 				'id'      => 'video_title',
 				'label'   => esc_html__( 'Video Title', 'tripfery-core' ),
 				'default' => esc_html__( 'Watch Our Presentation!', 'tripfery-core' ),
-				'condition'   => array( 'style!' => array( 'style3' ) ),
+				'condition'   => array( 'style' => array( 'style1' ) ),
 			),
 			array(
 				'type'    => Controls_Manager::URL,
@@ -78,7 +78,7 @@ class RT_Video extends Custom_Widget_Base {
                     'url' => Utils::get_placeholder_image_src(),
                 ),
 				'description' => esc_html__( 'Recommended full image', 'tripfery-core' ),
-				'condition'   => array( 'style!' => array( 'style3' ) ),
+				'condition'   => array( 'style' => array( 'style1' ) ),
 			),
 			array(
 				'type'    => Group_Control_Image_Size::get_type(),
@@ -86,7 +86,7 @@ class RT_Video extends Custom_Widget_Base {
 				'label'   => esc_html__( 'image size', 'tripfery-core' ),	
 				'name' => 'icon_image_size', 
 				'separator' => 'none',
-				'condition'   => array( 'style!' => array( 'style3' ) ),
+				'condition'   => array( 'style' => array( 'style1' ) ),
 			),	
 			array(
 				'type' => Controls_Manager::CHOOSE,

@@ -10,10 +10,10 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Css_Filter;
 if ( ! defined( 'ABSPATH' ) ) exit;
-class RT_Service_Locations extends Custom_Widget_Base {
+class RT_Service_Activiy extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Service Locations', 'tripfery-core' );
-		$this->rt_base = 'rt-service-locations';
+		$this->rt_name = esc_html__( 'RT Service Activity', 'tripfery-core' );
+		$this->rt_base = 'rt-service-activiy';
 		$this->rt_translate = array(
 			'cols'  => array(
 				'12' => esc_html__( '1 Col', 'tripfery-core' ),
@@ -28,7 +28,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 	public function rt_fields(){
 
 		$terms  = get_terms(array(
-			'taxonomy' => 'ba_booking-locations',
+			'taxonomy' => 'ba_our-activitys',
 			'fields' => 'id=>name',
 			'hide_empty' => false,
 		));
@@ -44,9 +44,9 @@ class RT_Service_Locations extends Custom_Widget_Base {
 			[
 				'type'    => Controls_Manager::SELECT2,
 				'name'    => 'cat_multi_box',
-				'label'   => esc_html__('Locations', 'tripfery-core'),
+				'label'   => esc_html__('Activitys', 'tripfery-core'),
 				'options' => $category_dropdown,
-				'default' => 'Select Location',
+				'default' => 'Select Activity',
 			]
 		); 
 		$repeater->add_control(
@@ -62,17 +62,6 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'mode'    => 'section_start',
 				'id'      => 'sec_general',
 				'label'   => esc_html__('General', 'tripfery-core'),
-			),
-			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'style',
-				'label'   => esc_html__('Style', 'tripfery-core'),
-				'options' => array(
-					'style1' => esc_html__('Style 1', 'tripfery-core'),
-					'style2' => esc_html__('Style 2', 'tripfery-core'),
-					'style3' => esc_html__('Style 3', 'tripfery-core'),
-				),
-				'default' => 'style1',
 			),
 			array(
 				'type'    => Controls_Manager::REPEATER,
@@ -93,7 +82,6 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'g-5' => esc_html__( 'Gutters 5', 'tripfery-core' ),
 				),
 				'default' => 'g-4',
-				'condition'   => array( 'style' => array( 'style1', 'style2', 'style3', 'style7', 'style8', 'style10', 'style11' ) ),
 			),			
 			array(
 				'mode' => 'section_end',
@@ -287,18 +275,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 	protected function render()
 	{
 		$data = $this->get_settings();
-		switch ($data['style']) {
-			case 'style3':
-				$template = 'rt-servic-locations-grid-3';
-				break;
-			case 'style2':
-				$template = 'rt-servic-locations-grid-2';
-				break;
-			default:
-				$template = 'rt-servic-locations-grid-1';
-				break;
-		}
-		
+		$template = 'rt-service-activity';
 		return $this->rt_template($template, $data);
 	}
 }

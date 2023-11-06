@@ -22,10 +22,8 @@ class Tripfery_Core {
 
 	public $plugin  = 'tripfery-core';
 	public $action  = 'tripfery_theme_init';
-
 	public function __construct() {
 		$prefix = TRIPFERY_CORE_THEME_PREFIX_VAR;
-
 		add_action( 'plugins_loaded', array( $this, 'demo_importer' ), 15 );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 16 );
 		add_action( 'after_setup_theme', array( $this, 'post_meta' ), 15 );
@@ -161,7 +159,6 @@ class Tripfery_Core {
 	public function get_base_url(){
 
 		$file = dirname( dirname(__FILE__) );
-
 		// Get correct URL and path to wp-content
 		$content_url = untrailingslashit( dirname( dirname( get_stylesheet_directory_uri() ) ) );
 		$content_dir = untrailingslashit( WP_CONTENT_DIR );
@@ -169,9 +166,7 @@ class Tripfery_Core {
 		// Fix path on Windows
 		$file = wp_normalize_path( $file );
 		$content_dir = wp_normalize_path( $content_dir );
-
 		$url = str_replace( $content_dir, $content_url, $file );
-
 		return $url;
 
 	}
@@ -211,7 +206,6 @@ class Tripfery_Core {
 			$params[0]['before_widget'] = preg_replace( '/class="/', "class=\"{$widget_opt[$widget_num]['classes']} ", $params[0]['before_widget'], 1 );
 		return $params;
 	}
-
 }
 
 new Tripfery_Core;

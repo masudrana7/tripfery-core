@@ -32,10 +32,8 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 	}
 
 	public function rt_fields(){
-		
 		$terms  = get_terms( array( 'taxonomy' => 'categories', 'fields' => 'id=>name' ) );
 		$category_dropdown = array( '0' => __( 'Please Selecet category', 'tripfery-core' ) );
-
 		foreach ( $terms as $id => $name ) {
 			$category_dropdown[$id] = $name;
 		}
