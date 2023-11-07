@@ -26,17 +26,28 @@ class RT_Service_Locations extends Custom_Widget_Base {
 		parent::__construct( $data, $args );
 	}
 	public function rt_fields(){
-
+		// Select Location
 		$terms  = get_terms(array(
 			'taxonomy' => 'ba_booking-locations',
 			'fields' => 'id=>name',
 			'hide_empty' => false,
 		));
 
-
 		$category_dropdown = array( '0' => esc_html__( 'Select Location', 'tripfery-core' ) );
 		foreach ( $terms as $id => $name ) {
 			$category_dropdown[$id] = $name;
+		}
+
+		// Select Category
+		$sec_cat  = get_terms(array(
+			'taxonomy' => 'categories',
+			'fields' => 'id=>name',
+			'hide_empty' => false,
+		));
+
+		$cat_dropdown = array( '0' => esc_html__( 'Select Category', 'tripfery-core' ) );
+		foreach ($sec_cat as $id => $name ) {
+			$cat_dropdown[$id] = $name;
 		}
 		$repeater = new \Elementor\Repeater();
 		$repeater->add_control(
@@ -49,6 +60,18 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'default' => 'Select Location',
 			]
 		); 
+		$repeater->add_control(
+			'sec_cat',
+			[
+				'type'    => Controls_Manager::SELECT2,
+				'name'    => 'cat_box',
+				'label'   => esc_html__('Categories', 'tripfery-core'),
+				'options' => $cat_dropdown,
+				'default' => 'Select Categories',
+				'multiple' => true,
+			]
+		); 
+
 		$repeater->add_control(
 			'image',
 			[
@@ -71,6 +94,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'style1' => esc_html__('Style 1', 'tripfery-core'),
 					'style2' => esc_html__('Style 2', 'tripfery-core'),
 					'style3' => esc_html__('Style 3', 'tripfery-core'),
+					'style4' => esc_html__('Style 4(Slider)', 'tripfery-core'),
 				),
 				'default' => 'style1',
 			),
@@ -93,7 +117,15 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'g-5' => esc_html__( 'Gutters 5', 'tripfery-core' ),
 				),
 				'default' => 'g-4',
-				'condition'   => array( 'style' => array( 'style1', 'style2', 'style3', 'style7', 'style8', 'style10', 'style11' ) ),
+			),
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'post_category',
+				'label'       => esc_html__('Show Categories', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+				'condition'   => array('style' => array('style4')),
 			),			
 			array(
 				'mode' => 'section_end',
@@ -111,7 +143,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'type'    => Group_Control_Typography::get_type(),
 				'name'    => 'title_typo',
 				'label'   => esc_html__('Title Typo', 'tripfery-core'),
-				'selector' => '{{WRAPPER}} .panel .panel-title',
+				'selector' => '{{WRAPPER}} .hotel-name, {{WRAPPER}} .panel .panel-title',
 			),
 			array(
 				'type'    => Controls_Manager::COLOR,
@@ -119,7 +151,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'label'   => esc_html__('Title Color', 'tripfery-core'),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .panel .panel-title a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .hotel-name a, {{WRAPPER}} .panel .panel-title a' => 'color: {{VALUE}}',
 				),
 			),
 			array(
@@ -128,7 +160,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'label'   => esc_html__('Title Hover Color', 'tripfery-core'),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .panel .panel-title a:hover' => 'color: {{VALUE}} !important',
+					'{{WRAPPER}} .hotel-name a:hover, {{WRAPPER}} .panel .panel-title a:hover' => 'color: {{VALUE}} !important',
 				),
 			),
 			array(
@@ -148,10 +180,9 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .panel .panel-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .hotel-name, {{WRAPPER}} .panel .panel-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			),
-			
 			array(
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'activity_color',
@@ -161,7 +192,6 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'{{WRAPPER}} .panel-content .feature-list li .feature-name' => 'color: {{VALUE}}',
 				),
 			),
-
 			array(
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'cat_hover_color',
@@ -171,7 +201,6 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'{{WRAPPER}} .panel-content .feature-list li .feature-name:hover' => 'color: {{VALUE}} !important',
 				),
 			),
-
 			array(
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'border_color',
@@ -181,7 +210,6 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'{{WRAPPER}} .panel-content .feature-list li .feature-name' => 'border-color: {{VALUE}}',
 				),
 			),
-
 			array(
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'activity_bg',
@@ -200,7 +228,6 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'{{WRAPPER}} .panel-content .feature-list li .feature-name:hover' => 'background-color: {{VALUE}} !important',
 				),
 			),
-
 			array(
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'border_hover_color',
@@ -210,7 +237,6 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'{{WRAPPER}} .panel-content .feature-list li .feature-name:hover' => 'border-color: {{VALUE}}',
 				),
 			),
-			
 			array(
 				'mode' => 'section_end',
 			),
@@ -288,6 +314,9 @@ class RT_Service_Locations extends Custom_Widget_Base {
 	{
 		$data = $this->get_settings();
 		switch ($data['style']) {
+			case 'style4':
+				$template = 'rt-servic-locations-slider-4';
+				break;
 			case 'style3':
 				$template = 'rt-servic-locations-grid-3';
 				break;

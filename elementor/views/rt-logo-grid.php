@@ -26,7 +26,6 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
                         
                         <?php echo wp_get_attachment_image( $logo['image']['id'], 'full' )?>
 
-
                     <?php endif; ?>
                     <?php if ( !empty($logo['title']) ) { ?>
                         <h3 class="entry-title"><?php echo wp_kses_post( $logo['title'] ); ?></h3>				

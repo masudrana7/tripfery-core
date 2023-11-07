@@ -26,7 +26,7 @@ namespace radiustheme\Tripfery_Core; ?>
 						</a>
 					<?php } ?>
 					<?php if (!empty($term->name)) { ?>
-						<h4 class="car-category-name"><?php echo esc_html($term->name); ?></h4>
+						<h4 class="car-category-name"><a href="<?php echo esc_url($category_link); ?>"><?php echo esc_html($term->name); ?></a></h4>
 					<?php } ?>
 				</div>
 			</article>

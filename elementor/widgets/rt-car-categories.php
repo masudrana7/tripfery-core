@@ -31,8 +31,6 @@ class RT_Car_Category extends Custom_Widget_Base {
 			'fields' => 'id=>name',
 			'hide_empty' => false,
 		));
-
-
 		$category_dropdown = array( '0' => esc_html__( 'Select Location', 'tripfery-core' ) );
 		foreach ( $terms as $id => $name ) {
 			$category_dropdown[$id] = $name;
@@ -98,7 +96,7 @@ class RT_Car_Category extends Custom_Widget_Base {
 				'type'    => Group_Control_Typography::get_type(),
 				'name'    => 'title_typo',
 				'label'   => esc_html__('Title Typo', 'tripfery-core'),
-				'selector' => '{{WRAPPER}} .panel .panel-title',
+				'selector' => '{{WRAPPER}} .car-category-name',
 			),
 			array(
 				'type'    => Controls_Manager::COLOR,
@@ -106,7 +104,7 @@ class RT_Car_Category extends Custom_Widget_Base {
 				'label'   => esc_html__('Title Color', 'tripfery-core'),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .panel .panel-title a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .car-category-name a' => 'color: {{VALUE}}',
 				),
 			),
 			array(
@@ -115,7 +113,7 @@ class RT_Car_Category extends Custom_Widget_Base {
 				'label'   => esc_html__('Title Hover Color', 'tripfery-core'),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .panel .panel-title a:hover' => 'color: {{VALUE}} !important',
+					'{{WRAPPER}} .car-category-name a:hover' => 'color: {{VALUE}} !important',
 				),
 			),
 			array(
@@ -135,69 +133,27 @@ class RT_Car_Category extends Custom_Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .panel .panel-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-				),
-			),
-			
-			array(
-				'type'    => Controls_Manager::COLOR,
-				'id'      => 'activity_color',
-				'label'   => esc_html__('Activities Color', 'tripfery-core' ),
-				'default' => '',
-				'selectors' => array(
-					'{{WRAPPER}} .panel-content .feature-list li .feature-name' => 'color: {{VALUE}}',
-				),
-			),
-
-			array(
-				'type'    => Controls_Manager::COLOR,
-				'id'      => 'cat_hover_color',
-				'label'   => esc_html__('Activities Hover Color', 'tripfery-core' ),
-				'default' => '',
-				'selectors' => array(
-					'{{WRAPPER}} .panel-content .feature-list li .feature-name:hover' => 'color: {{VALUE}} !important',
-				),
-			),
-
-			array(
-				'type'    => Controls_Manager::COLOR,
-				'id'      => 'border_color',
-				'label'   => esc_html__('Activities Border Color', 'tripfery-core'),
-				'default' => '',
-				'selectors' => array(
-					'{{WRAPPER}} .panel-content .feature-list li .feature-name' => 'border-color: {{VALUE}}',
-				),
-			),
-
-			array(
-				'type'    => Controls_Manager::COLOR,
-				'id'      => 'activity_bg',
-				'label'   => esc_html__('Activities BG Color', 'tripfery-core' ),
-				'default' => '',
-				'selectors' => array(
-					'{{WRAPPER}} .panel-content .feature-list li .feature-name' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .car-category-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			),
 			array(
 				'type'    => Controls_Manager::COLOR,
-				'id'      => 'activity_bg_hover',
-				'label'   => esc_html__('Activities Hover BG Color', 'tripfery-core' ),
+				'id'      => 'bg_color',
+				'label'   => esc_html__('Background Color', 'tripfery-core' ),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .panel-content .feature-list li .feature-name:hover' => 'background-color: {{VALUE}} !important',
+					'{{WRAPPER}} .car-category-thumb-wrapper::before' => 'background-color: {{VALUE}}',
 				),
 			),
-
 			array(
 				'type'    => Controls_Manager::COLOR,
-				'id'      => 'border_hover_color',
-				'label'   => esc_html__('Activities Border Color', 'tripfery-core'),
+				'id'      => 'active_bg_color',
+				'label'   => esc_html__('Hover Background Color', 'tripfery-core' ),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .panel-content .feature-list li .feature-name:hover' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .single-car-category:hover .car-category-thumb-wrapper::before' => 'background-color: {{VALUE}} !important',
 				),
 			),
-			
 			array(
 				'mode' => 'section_end',
 			),

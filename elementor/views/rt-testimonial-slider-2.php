@@ -29,9 +29,7 @@ $has_icon = ( ! $is_new || ! empty( $testimonial['selected_icon']['value'] ) );
         <?php foreach ( $data['testimonials'] as $testimonial ) { ?>
             <div class="swiper-slide">
                 <div class="rt-item has-animation">
-                    <div class="item-content" <?php if( $testimonial['item_color'] ) { ?> style="background-color: <?php echo esc_attr( $testimonial['item_color'] ); ?>" <?php } ?>>  
-
-                    
+                    <div class="item-content" <?php if( $testimonial['item_color'] ) { ?> style="background-color: <?php echo esc_attr( $testimonial['item_color'] ); ?>" <?php } ?>> 
                         <?php if ( !empty( $testimonial['image']['id'] && $data['author_display'] == 'yes' ) ) { ?>
                         <div class="tesimonial-author">
                             <?php echo wp_get_attachment_image($testimonial['image']['id'],'full');?>
