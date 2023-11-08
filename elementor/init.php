@@ -72,6 +72,7 @@ class Custom_Widget_Init {
 			'rt-service-locations'	=> 'RT_Service_Locations',
 			'rt-service-activity'	=> 'RT_Service_Activiy',
 			'rt-car-categories'		=> 'RT_Car_Category',
+			'rt-service-review'		=> 'RT_Service_Reviews',
 		);
 		
 

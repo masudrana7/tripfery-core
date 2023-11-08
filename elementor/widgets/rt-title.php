@@ -150,6 +150,7 @@ class RT_Title extends Custom_Widget_Base {
 					'top' => esc_html__('Top', 'tripfery-core'),
 					'bottom' => esc_html__('Bottom', 'tripfery-core'),
 				),
+				'default'     => 'top',
 				'condition' => array('display_line' => array('yes')),
 			),
 			array(

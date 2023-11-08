@@ -40,7 +40,9 @@ if(!empty($data['catid'])){
 	}
 }
 if(!empty($data['postid'])){
+	
 	if( $data['query_type'] == 'posts'){
+
 	    $args['post__in'] = $data['postid'];
 	}
 }

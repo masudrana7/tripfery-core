@@ -1,10 +1,8 @@
 <?php
-
 $thumb_size = 'tripfery-size3';
 $number_of_post = $data['itemnumber'];
 $post_orderby = $data['post_orderby'];
 $post_order = $data['post_order'];
-
 $p_ids = array();
 foreach ($data['posts_not_in'] as $p_idsn) {
 	$p_ids[] = $p_idsn['post_not_in'];
@@ -16,7 +14,6 @@ $args = array(
 	'orderby'             => $post_orderby,
 	'post__not_in'       => $p_ids,
 );
-
 if (!empty($data['catid'])) {
 	$args['tax_query'] = [
 		[
@@ -37,8 +34,6 @@ if($data['cat_display'] == 'yes'){
 }else {
 	$menuClass = "hide";
 }
-
-
 $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
 if ($posts != null) {
 ?>
