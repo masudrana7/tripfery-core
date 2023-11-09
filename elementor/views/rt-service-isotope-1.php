@@ -23,6 +23,15 @@ if (!empty($data['catid'])) {
 		],
 	];
 }
+$post_in = [];
+$query = new WP_Query($args);
+if ($query->have_posts()) :
+	while ($query->have_posts()) : $query->the_post();
+		$post_in[] = get_the_ID();
+	endwhile;
+endif;
+unset($args['tax_query']);
+$args['post__in'] = $post_in;
 if (class_exists('BABE_Functions')) {
 	$posts = BABE_Post_types::get_posts($args);
 } else {
@@ -38,6 +47,7 @@ $col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['c
 if ($posts != null) {
 ?>
 	<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
+		<?php if ($data['cat_display'] == 'yes') { ?>
 		<div class="row justify-content-center rt-menu-cats-<?php echo esc_attr($menuClass); ?>">
 			<div class="col-auto">
 				<div class="listing-filter-btns d-flex align-items-center justify-content-center flex-wrap">
@@ -62,6 +72,8 @@ if ($posts != null) {
 				</div>
 			</div>
 		</div>
+		<?php } ?>
+
 		<div class="row justify-content-center cardContainer">
 			<?php
 			foreach ($posts as $post) {
@@ -129,6 +141,7 @@ if ($posts != null) {
 					</div>
 				</div>
 			<?php }
+			wp_reset_query();
 			?>
 		</div>
 	</div>

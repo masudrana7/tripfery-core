@@ -41,7 +41,6 @@ namespace radiustheme\Tripfery_Core; ?>
 						foreach ($locterms as $locterm) {
 							$terms_ids[] = $locterm->term_id;
 						}
-
 						$args = array(
 							'post_type' => 'to_book',
 							'tax_query' => array(
@@ -58,9 +57,7 @@ namespace radiustheme\Tripfery_Core; ?>
 								),
 							),
 						);
-						$post_query = new \WP_Query($args);
-
-						?>
+						$post_query = new \WP_Query($args); ?>
 						<span class="activity-place"><?php echo $post_query->category_name; ?></span>
 					</div>
 				</div>

@@ -15,6 +15,7 @@ namespace radiustheme\Tripfery_Core; ?>
 			$n = $data['duration'];
 			foreach ($data['rt-service-locations'] as $item) :
 				$term = get_term($item['category_list'], 'ba_booking-locations');
+				$term_link = get_term_link($term);
 				$image_id = $item['image']['id'];
 				$image_attributes = wp_get_attachment_image_src($image_id, 'full');
 			?>
@@ -34,7 +35,7 @@ namespace radiustheme\Tripfery_Core; ?>
 						<div class="destination-info text-center">
 							
 							<?php if (!empty($term->name)) { ?>
-								<h3 class="destination-name"><a href="<?php the_permalink(); ?>"><?php echo esc_html($term->name); ?></a></h3>
+								<h3 class="destination-name"><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a></h3>
 							<?php } ?>
 
 							<?php if (is_array($item['sec_cat']) && count($item['sec_cat'])) {  ?>

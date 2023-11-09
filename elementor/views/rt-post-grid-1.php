@@ -40,14 +40,14 @@ if(!empty($data['catid'])){
 	}
 }
 if(!empty($data['postid'])){
-	
 	if( $data['query_type'] == 'posts'){
-
 	    $args['post__in'] = $data['postid'];
 	}
 }
 $query = new WP_Query( $args );
+
 $temp = TripferyTheme_Helper::wp_set_temp_query( $query );
+
 $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
 ?>
 <div class="rt-post-grid-default rt-post-grid-<?php echo esc_attr( $data['style'] );?>">

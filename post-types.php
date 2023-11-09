@@ -13,7 +13,6 @@ use TripferyTheme;
 if ( !class_exists( 'RT_Posts' ) ) {
 	return;
 }
-
 $post_types = array(
 	'tripfery_team'       => array(
 		'title'           => __( 'Team Member', 'tripfery-core' ),

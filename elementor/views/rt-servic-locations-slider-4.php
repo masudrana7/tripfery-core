@@ -30,10 +30,7 @@
 							<?php } ?>
 
 							<?php if (is_array($item['sec_cat']) && count($item['sec_cat'])) {  ?>
-
-
 								<?php foreach ($item['sec_cat'] as $term_id) {
-
 									$catterm = get_term($term_id, 'categories');
 									$args = array(
 										'post_type' => 'to_book',
@@ -51,17 +48,12 @@
 											),
 										),
 									);
-
-									
 									$post_query = new \WP_Query($args);
 									if (!empty($post_query->found_posts)) { ?>
 										<span class="total-hotel"> <?php echo esc_html($post_query->found_posts); ?> <?php echo $catterm->name; ?></span>
-							<?php }
+								<?php }
 								}
 							} ?>
-
-
-
 						</div>
 					</div>
 				</div>
