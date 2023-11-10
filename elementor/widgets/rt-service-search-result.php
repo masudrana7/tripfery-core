@@ -54,7 +54,10 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 	            'options' => $category_dropdown,
 	            'label_block' => true,
 	            'multiple' => true,
-			),	
+			),
+
+			
+
 			/*Post Order*/
 			array(
 				'type'    => Controls_Manager::SELECT2,
@@ -99,6 +102,17 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Item Number', 'tripfery-core' ),
 				'default' => -1,
 				'description' => esc_html__( 'Use -1 for showing all items( Showing items per category )', 'tripfery-core' ),
+			),
+			/*Post Order*/
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'post_layout',
+				'label'   => esc_html__('Post Ordering', 'tripfery-core'),
+				'options' => array(
+					'rt_grid_service'	=> esc_html__('Grid Style', 'tripfery-core'),
+					'rt_list_service'	=> esc_html__('List Style', 'tripfery-core'),
+				),
+				'default' => 'DESC',
 			),
 			array(
 				'mode' => 'section_end',
