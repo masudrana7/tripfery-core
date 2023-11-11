@@ -11,7 +11,6 @@ use Elementor\Group_Control_Typography;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class RT_Service_Isotope extends Custom_Widget_Base {
-
 	public function __construct( $data = [], $args = null ){
 		$this->rt_name = esc_html__( 'RT Services Isotope', 'tripfery-core' );
 		$this->rt_base = 'rt-services-isotope';
