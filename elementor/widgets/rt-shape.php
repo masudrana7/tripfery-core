@@ -250,9 +250,7 @@ class RT_Shape extends Custom_Widget_Base {
 
 	protected function render() {
 		$data = $this->get_settings();
-
 		$template = 'rt-shape';
-
 		return $this->rt_template( $template, $data );
 	}
 }

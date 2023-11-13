@@ -349,6 +349,61 @@ $Postmeta->add_meta_box( 'tripfery_team_contact', __( 'Team Member Contact', 'tr
 	)
 ) );
 
+
+/*-------------------------------------
+#. Booking
+---------------------------------------*/
+
+$Postmeta->add_meta_box('tripfery_booking_property', __('Booking Property', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_property_title' => array(
+			'label' => __('Property Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_property' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Property', 'tripfery-core'),
+			'value'  => array(
+				'property_name' => array(
+					'label' => __('Property Title', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+				'property_image' => array(
+					'label' => __('Property Image', 'tripfery-core'),
+					'type'  => 'image',
+					'desc'  => __('Add Icon Image', 'tripfery-core'),
+				),
+			)
+		),
+	)
+));
+
+$Postmeta->add_meta_box('tripfery_booking_rules', __('Booking Rules', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_rules_title' => array(
+			'label' => __('Rules Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_rules' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Rules', 'tripfery-core'),
+			'value'  => array(
+				'rules_name' => array(
+					'label' => __('Rules Title', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+				'rules_time' => array(
+					'label' => __('Rules Time', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('Add Time', 'tripfery-core'),
+				),
+			)
+		),
+	)
+));
+
 /*-------------------------------------
 #. Locations
 ---------------------------------------*/
