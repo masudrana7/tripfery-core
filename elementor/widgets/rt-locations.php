@@ -16,7 +16,7 @@ class RT_Locations extends Custom_Widget_Base {
 
 	public function __construct( $data = [], $args = null ){
 		$this->rt_name = esc_html__( 'RT Locations', 'tripfery-core' );
-		$this->rt_base = 'rt-locations';
+		$this->rt_base = 'rt-booking';
 		$this->rt_translate = array(
 			'cols'  => array(
 				'12' => esc_html__( '1 Col', 'tripfery-core' ),
@@ -30,7 +30,7 @@ class RT_Locations extends Custom_Widget_Base {
 	}
 
 	public function rt_fields(){
-		$terms = get_terms( array( 'taxonomy' => 'tripfery_locations_category', 'fields' => 'id=>name' ) );
+		$terms = get_terms( array( 'taxonomy' => 'tripfery_booking_category', 'fields' => 'id=>name' ) );
 		$category_dropdown = array( '0' => esc_html__( 'All Categories', 'tripfery-core' ) );
 
 		foreach ( $terms as $id => $name ) {
@@ -152,7 +152,7 @@ class RT_Locations extends Custom_Widget_Base {
 				'type'    => Group_Control_Typography::get_type(),
 				'name'    => 'title_typo',
 				'label'   => esc_html__( 'Title Typo', 'tripfery-core' ),
-				'selector' => '{{WRAPPER}} .rt-locations-default .entry-title',
+				'selector' => '{{WRAPPER}} .rt-booking-default .entry-title',
 			),
 			array(
 				'type'    => Controls_Manager::SLIDER,
@@ -171,7 +171,7 @@ class RT_Locations extends Custom_Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .rt-locations-default .entry-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .rt-booking-default .entry-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			),
 			array(
@@ -227,7 +227,7 @@ class RT_Locations extends Custom_Widget_Base {
 				'mode'    => 'group',				
 				'label'   => esc_html__( 'Image Blend', 'tripfery-core' ),	
 				'name' => 'blend', 
-				'selector' => '{{WRAPPER}} .rt-locations-default .locations-figure img',		
+				'selector' => '{{WRAPPER}} .rt-booking-default .booking-figure img',		
 			),
 			array(
 	            'type'    => Controls_Manager::DIMENSIONS,
@@ -236,7 +236,7 @@ class RT_Locations extends Custom_Widget_Base {
 	            'id'      => 'border_radius',
 	            'label'   => __( 'Box Radius', 'tripfery-core' ),                 
 	            'selectors' => array(
-	                '{{WRAPPER}} .rt-locations-default .locations-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                 
+	                '{{WRAPPER}} .rt-booking-default .booking-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                 
 	            ),
 	            'separator' => 'before',
 	        ),
@@ -247,7 +247,7 @@ class RT_Locations extends Custom_Widget_Base {
 	            'id'      => 'border_image_radius',
 	            'label'   => __( 'Image Radius', 'tripfery-core' ),                 
 	            'selectors' => array(
-	                '{{WRAPPER}} .rt-locations-multi-layout-7 .rt-locations-grid .locations-figure' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                 
+	                '{{WRAPPER}} .rt-booking-multi-layout-7 .rt-booking-grid .booking-figure' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',                 
 	            ),
 				'condition'   => array( 'style' => array( 'style11' ) ),
 	        ),
@@ -267,7 +267,7 @@ class RT_Locations extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Title Color', 'tripfery-core' ),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .rt-locations-default .entry-title a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .rt-booking-default .entry-title a' => 'color: {{VALUE}}',
 				),
 			),
 			array(
@@ -276,7 +276,7 @@ class RT_Locations extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Title Hover Color', 'tripfery-core' ),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .rt-locations-default .entry-title a:hover' => 'color: {{VALUE}} !important',
+					'{{WRAPPER}} .rt-booking-default .entry-title a:hover' => 'color: {{VALUE}} !important',
 				),
 			),
 			array(
@@ -285,7 +285,7 @@ class RT_Locations extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Category Color', 'tripfery-core' ),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .rt-locations-default .locations-cat a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .rt-booking-default .booking-cat a' => 'color: {{VALUE}}',
 				),
 			),
 			array(
@@ -294,7 +294,7 @@ class RT_Locations extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Category Hover Color', 'tripfery-core' ),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .rt-locations-default .locations-cat a:hover' => 'color: {{VALUE}} !important',
+					'{{WRAPPER}} .rt-booking-default .booking-cat a:hover' => 'color: {{VALUE}} !important',
 				),
 			),
 			
@@ -808,40 +808,40 @@ class RT_Locations extends Custom_Widget_Base {
 		switch ( $data['style'] ) {
 			case 'style9':
 			$data['swiper_data'] = json_encode( $swiper_data ); 
-			$template = 'rt-locations-slider-4';
+			$template = 'rt-booking-slider-4';
 			break;
 			case 'style6':
 			$data['swiper_data'] = json_encode( $swiper_data ); 
-			$template = 'rt-locations-slider-3';
+			$template = 'rt-booking-slider-3';
 			break;
 			case 'style5':
 			$data['swiper_data'] = json_encode( $swiper_data ); 
-			$template = 'rt-locations-slider-2';
+			$template = 'rt-booking-slider-2';
 			break;
 			case 'style4':
 			$data['swiper_data'] = json_encode( $swiper_data ); 
-			$template = 'rt-locations-slider-1';
+			$template = 'rt-booking-slider-1';
 			break;
 			case 'style11':
-			$template = 'rt-locations-grid-7';
+			$template = 'rt-booking-grid-7';
 			break;
 			case 'style10':
-			$template = 'rt-locations-grid-6';
+			$template = 'rt-booking-grid-6';
 			break;
 			case 'style8':
-			$template = 'rt-locations-grid-5';
+			$template = 'rt-booking-grid-5';
 			break;
 			case 'style7':
-			$template = 'rt-locations-grid-4';
+			$template = 'rt-booking-grid-4';
 			break;
 			case 'style3':
-			$template = 'rt-locations-grid-3';
+			$template = 'rt-booking-grid-3';
 			break;
 			case 'style2':
-			$template = 'rt-locations-grid-2';
+			$template = 'rt-booking-grid-2';
 			break;
 			default:
-			$template = 'rt-locations-grid-1';
+			$template = 'rt-booking-grid-1';
 			break;
 		}
 

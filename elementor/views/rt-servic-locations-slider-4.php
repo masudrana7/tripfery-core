@@ -7,14 +7,14 @@
  */
 
 ?>
-<div class="rt-locations-default rt-service-location-slider">
+<div class="rt-booking-default rt-service-location-slider">
 	<div class="rt-destionation-slider swiper">
 		<div class="swiper-wrapper">
 			<?php
 			$m = $data['delay'];
 			$n = $data['duration'];
-			foreach ($data['rt-service-locations'] as $item) :
-				$term = get_term($item['category_list'], 'ba_booking-locations');
+			foreach ($data['rt-service-booking'] as $item) :
+				$term = get_term($item['category_list'], 'ba_booking-booking');
 				$term_link = get_term_link($term);
 			?>
 				<div class="swiper-slide <?php echo esc_attr($data['animation']); ?> <?php echo esc_attr($data['animation_effect']); ?>" data-wow-delay="<?php echo esc_attr($m); ?>s" data-wow-duration="<?php echo esc_attr($n); ?>s">
@@ -37,7 +37,7 @@
 										'tax_query' => array(
 											'relation' => 'AND',
 											array(
-												'taxonomy' => 'ba_booking-locations',
+												'taxonomy' => 'ba_booking-booking',
 												'field' => 'term_id',
 												'terms' => $item['category_list'],
 											),

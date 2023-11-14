@@ -12,7 +12,7 @@ namespace radiustheme\Tripfery_Core; ?>
 		<?php
 		$m = $data['delay'];
 		$n = $data['duration'];
-		foreach ($data['rt-service-locations'] as $item) :
+		foreach ($data['rt-service-booking'] as $item) :
 			$term = get_term($item['category_list'], 'ba_booking-car');
 			$image_id = $item['image']['id'];
 			$image_attributes = wp_get_attachment_image_src($image_id, 'full');

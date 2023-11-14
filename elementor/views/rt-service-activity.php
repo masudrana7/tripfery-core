@@ -12,7 +12,7 @@ namespace radiustheme\Tripfery_Core; ?>
 		<?php
 		$m = $data['delay'];
 		$n = $data['duration'];
-		foreach ($data['rt-service-locations'] as $item) :
+		foreach ($data['rt-service-booking'] as $item) :
 
 			$term = get_term($item['category_list'], 'ba_our-activitys');
 			$term_link = get_term_link($term);
@@ -34,7 +34,7 @@ namespace radiustheme\Tripfery_Core; ?>
 						</h3>
 						<?php }
 						$locterms = get_terms(array(
-							'taxonomy' => 'ba_booking-locations',
+							'taxonomy' => 'ba_booking-booking',
 							'parent'   => 0
 						));
 						$terms_ids = [];
@@ -51,7 +51,7 @@ namespace radiustheme\Tripfery_Core; ?>
 									'terms' => $item['category_list'],
 								),
 								array(
-									'taxonomy' => 'ba_booking-locations',
+									'taxonomy' => 'ba_booking-booking',
 									'field' => 'term_id',
 									'terms' => $terms_ids,
 								),

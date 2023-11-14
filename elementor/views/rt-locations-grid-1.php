@@ -23,7 +23,7 @@ else {
 }
 
 $args = array(
-	'post_type'      	=> 'tripfery_locations',
+	'post_type'      	=> 'tripfery_booking',
 	'posts_per_page' 	=> $data['number'],
 	'order' 			=> $data['post_ordering'],
 	'orderby' 			=> $data['post_orderby'],
@@ -33,7 +33,7 @@ $args = array(
 if ( !empty( $data['cat'] ) ) {
 	$args['tax_query'] = array(
 		array(
-			'taxonomy' => 'tripfery_locations_category',
+			'taxonomy' => 'tripfery_booking_category',
 			'field' => 'term_id',
 			'terms' => $data['cat'],
 		)
@@ -45,7 +45,7 @@ $temp = TripferyTheme_Helper::wp_set_temp_query( $query );
 $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
 
 ?>
-<div class="rt-locations-default rt-locations-layout-1 locations-grid-<?php echo esc_attr( $data['style'] );?>">
+<div class="rt-booking-default rt-booking-layout-1 booking-grid-<?php echo esc_attr( $data['style'] );?>">
 	<div class="row <?php echo esc_attr( $data['item_space'] );?>">
 
 		<div class="cards-row d-flex">
@@ -101,7 +101,7 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 	</div>
 	<?php if ( $data['more_button'] == 'show' ) { ?>
 		<?php if ( !empty( $data['see_button_text'] ) ) { ?>
-		<div class="locations-button"><a class="button-style-2 btn-common" aria-label="Locations" href="<?php echo esc_url( $data['see_button_link'] );?>"><?php echo esc_html( $data['see_button_text'] );?></a></div>
+		<div class="booking-button"><a class="button-style-2 btn-common" aria-label="Locations" href="<?php echo esc_url( $data['see_button_link'] );?>"><?php echo esc_html( $data['see_button_text'] );?></a></div>
 		<?php } ?>
 	<?php } else { ?>
 		<?php TripferyTheme_Helper::pagination(); ?>

@@ -48,11 +48,11 @@ msgstr ""
 #: elementor/widgets/rt-logo-slider.php:579
 #: elementor/widgets/rt-logo-slider.php:591
 #: elementor/widgets/rt-logo-slider.php:602
-#: elementor/widgets/rt-locations.php:638
-#: elementor/widgets/rt-locations.php:653
-#: elementor/widgets/rt-locations.php:667
-#: elementor/widgets/rt-locations.php:679
-#: elementor/widgets/rt-locations.php:690
+#: elementor/widgets/rt-booking.php:638
+#: elementor/widgets/rt-booking.php:653
+#: elementor/widgets/rt-booking.php:667
+#: elementor/widgets/rt-booking.php:679
+#: elementor/widgets/rt-booking.php:690
 #: elementor/widgets/rt-post-slider.php:790
 #: elementor/widgets/rt-post-slider.php:804
 #: elementor/widgets/rt-post-slider.php:816
@@ -72,7 +72,7 @@ msgid "1"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:21
-#: elementor/widgets/rt-locations.php:22 elementor/widgets/rt-post-grid.php:23
+#: elementor/widgets/rt-booking.php:22 elementor/widgets/rt-post-grid.php:23
 #: elementor/widgets/rt-service.php:22 elementor/widgets/rt-team.php:22
 #: elementor/widgets/rt-testimonial.php:22
 msgid "1 Col"
@@ -115,11 +115,11 @@ msgstr ""
 #: elementor/widgets/rt-logo-slider.php:580
 #: elementor/widgets/rt-logo-slider.php:592
 #: elementor/widgets/rt-logo-slider.php:603
-#: elementor/widgets/rt-locations.php:639
-#: elementor/widgets/rt-locations.php:654
-#: elementor/widgets/rt-locations.php:668
-#: elementor/widgets/rt-locations.php:680
-#: elementor/widgets/rt-locations.php:691
+#: elementor/widgets/rt-booking.php:639
+#: elementor/widgets/rt-booking.php:654
+#: elementor/widgets/rt-booking.php:668
+#: elementor/widgets/rt-booking.php:680
+#: elementor/widgets/rt-booking.php:691
 #: elementor/widgets/rt-post-slider.php:791
 #: elementor/widgets/rt-post-slider.php:805
 #: elementor/widgets/rt-post-slider.php:817
@@ -139,7 +139,7 @@ msgid "2"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:22
-#: elementor/widgets/rt-locations.php:23 elementor/widgets/rt-post-grid.php:24
+#: elementor/widgets/rt-booking.php:23 elementor/widgets/rt-post-grid.php:24
 #: elementor/widgets/rt-service.php:23 elementor/widgets/rt-team.php:23
 #: elementor/widgets/rt-testimonial.php:23
 msgid "2 Col"
@@ -170,11 +170,11 @@ msgstr ""
 #: elementor/widgets/rt-logo-slider.php:581
 #: elementor/widgets/rt-logo-slider.php:593
 #: elementor/widgets/rt-logo-slider.php:604
-#: elementor/widgets/rt-locations.php:640
-#: elementor/widgets/rt-locations.php:655
-#: elementor/widgets/rt-locations.php:669
-#: elementor/widgets/rt-locations.php:681
-#: elementor/widgets/rt-locations.php:692
+#: elementor/widgets/rt-booking.php:640
+#: elementor/widgets/rt-booking.php:655
+#: elementor/widgets/rt-booking.php:669
+#: elementor/widgets/rt-booking.php:681
+#: elementor/widgets/rt-booking.php:692
 #: elementor/widgets/rt-post-slider.php:792
 #: elementor/widgets/rt-post-slider.php:806
 #: elementor/widgets/rt-post-slider.php:818
@@ -194,7 +194,7 @@ msgid "3"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:23
-#: elementor/widgets/rt-locations.php:24 elementor/widgets/rt-post-grid.php:25
+#: elementor/widgets/rt-booking.php:24 elementor/widgets/rt-post-grid.php:25
 #: elementor/widgets/rt-service.php:24 elementor/widgets/rt-team.php:24
 #: elementor/widgets/rt-testimonial.php:24
 msgid "3 Col"
@@ -215,10 +215,10 @@ msgstr ""
 #: elementor/widgets/rt-logo-slider.php:568
 #: elementor/widgets/rt-logo-slider.php:582
 #: elementor/widgets/rt-logo-slider.php:605
-#: elementor/widgets/rt-locations.php:641
-#: elementor/widgets/rt-locations.php:656
-#: elementor/widgets/rt-locations.php:670
-#: elementor/widgets/rt-locations.php:693
+#: elementor/widgets/rt-booking.php:641
+#: elementor/widgets/rt-booking.php:656
+#: elementor/widgets/rt-booking.php:670
+#: elementor/widgets/rt-booking.php:693
 #: elementor/widgets/rt-post-slider.php:793
 #: elementor/widgets/rt-post-slider.php:807
 #: elementor/widgets/rt-post-slider.php:819
@@ -237,7 +237,7 @@ msgid "4"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:24
-#: elementor/widgets/rt-locations.php:25 elementor/widgets/rt-post-grid.php:26
+#: elementor/widgets/rt-booking.php:25 elementor/widgets/rt-post-grid.php:26
 #: elementor/widgets/rt-service.php:25 elementor/widgets/rt-team.php:25
 #: elementor/widgets/rt-testimonial.php:25
 msgid "4 Col"
@@ -249,8 +249,8 @@ msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:554
 #: elementor/widgets/rt-logo-slider.php:569
-#: elementor/widgets/rt-locations.php:642
-#: elementor/widgets/rt-locations.php:657
+#: elementor/widgets/rt-booking.php:642
+#: elementor/widgets/rt-booking.php:657
 #: elementor/widgets/rt-post-slider.php:794
 #: elementor/widgets/rt-service.php:644 elementor/widgets/rt-service.php:659
 #: elementor/widgets/rt-team.php:697 elementor/widgets/rt-team.php:712
@@ -265,8 +265,8 @@ msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:555
 #: elementor/widgets/rt-logo-slider.php:570
-#: elementor/widgets/rt-locations.php:643
-#: elementor/widgets/rt-locations.php:658
+#: elementor/widgets/rt-booking.php:643
+#: elementor/widgets/rt-booking.php:658
 #: elementor/widgets/rt-post-slider.php:795
 #: elementor/widgets/rt-service.php:645 elementor/widgets/rt-service.php:660
 #: elementor/widgets/rt-team.php:698 elementor/widgets/rt-team.php:713
@@ -276,7 +276,7 @@ msgid "6"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:25
-#: elementor/widgets/rt-locations.php:26 elementor/widgets/rt-post-grid.php:27
+#: elementor/widgets/rt-booking.php:26 elementor/widgets/rt-post-grid.php:27
 #: elementor/widgets/rt-service.php:26 elementor/widgets/rt-team.php:26
 #: elementor/widgets/rt-testimonial.php:26
 msgid "6 Col"
@@ -328,7 +328,7 @@ msgstr ""
 msgid "Accordion"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:219
+#: elementor/widgets/rt-booking.php:219
 #: elementor/widgets/rt-service-tab.php:169
 #: elementor/widgets/rt-service.php:187
 msgid "Action Display"
@@ -403,7 +403,7 @@ msgstr ""
 msgid "Alignment"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:34 elementor/widgets/rt-service.php:34
+#: elementor/widgets/rt-booking.php:34 elementor/widgets/rt-service.php:34
 #: elementor/widgets/rt-team.php:34
 msgid "All Categories"
 msgstr ""
@@ -420,8 +420,8 @@ msgstr ""
 #: elementor/widgets/rt-info-box.php:413
 #: elementor/widgets/rt-logo-slider.php:430
 #: elementor/widgets/rt-logo-slider.php:436
-#: elementor/widgets/rt-locations.php:515
-#: elementor/widgets/rt-locations.php:521
+#: elementor/widgets/rt-booking.php:515
+#: elementor/widgets/rt-booking.php:521
 #: elementor/widgets/rt-post-grid.php:560
 #: elementor/widgets/rt-post-grid.php:566
 #: elementor/widgets/rt-post-slider.php:715
@@ -449,7 +449,7 @@ msgstr ""
 msgid "Are you sure you want to remove this custom sidebar"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:100
+#: elementor/widgets/rt-booking.php:100
 #: elementor/widgets/rt-post-grid.php:185
 #: elementor/widgets/rt-post-slider.php:135 elementor/widgets/rt-service.php:96
 #: elementor/widgets/rt-team.php:122
@@ -471,7 +471,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:768
 #: elementor/widgets/rt-logo-slider.php:621
-#: elementor/widgets/rt-locations.php:710
+#: elementor/widgets/rt-booking.php:710
 #: elementor/widgets/rt-post-slider.php:859
 #: elementor/widgets/rt-service.php:712 elementor/widgets/rt-team.php:765
 #: elementor/widgets/rt-testimonial.php:711
@@ -480,7 +480,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:804
 #: elementor/widgets/rt-logo-slider.php:657
-#: elementor/widgets/rt-locations.php:746
+#: elementor/widgets/rt-booking.php:746
 #: elementor/widgets/rt-post-slider.php:899
 #: elementor/widgets/rt-service.php:748 elementor/widgets/rt-team.php:801
 #: elementor/widgets/rt-testimonial.php:751
@@ -489,7 +489,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:812
 #: elementor/widgets/rt-logo-slider.php:665
-#: elementor/widgets/rt-locations.php:754
+#: elementor/widgets/rt-booking.php:754
 #: elementor/widgets/rt-post-slider.php:907
 #: elementor/widgets/rt-service.php:756 elementor/widgets/rt-team.php:809
 #: elementor/widgets/rt-testimonial.php:759
@@ -563,7 +563,7 @@ msgstr ""
 msgid "Border Width"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:328 elementor/widgets/rt-team.php:384
+#: elementor/widgets/rt-booking.php:328 elementor/widgets/rt-team.php:384
 msgid "Bottom Center"
 msgstr ""
 
@@ -574,7 +574,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:555 elementor/widgets/rt-image.php:140
 #: elementor/widgets/rt-info-box.php:426
 #: elementor/widgets/rt-logo-slider.php:449
-#: elementor/widgets/rt-locations.php:534
+#: elementor/widgets/rt-booking.php:534
 #: elementor/widgets/rt-post-grid.php:579
 #: elementor/widgets/rt-post-slider.php:734
 #: elementor/widgets/rt-service.php:536 elementor/widgets/rt-shape.php:143
@@ -591,7 +591,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:568 elementor/widgets/rt-image.php:153
 #: elementor/widgets/rt-info-box.php:439
 #: elementor/widgets/rt-logo-slider.php:462
-#: elementor/widgets/rt-locations.php:547
+#: elementor/widgets/rt-booking.php:547
 #: elementor/widgets/rt-post-grid.php:592
 #: elementor/widgets/rt-post-slider.php:747
 #: elementor/widgets/rt-service.php:549 elementor/widgets/rt-shape.php:156
@@ -608,7 +608,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:569 elementor/widgets/rt-image.php:154
 #: elementor/widgets/rt-info-box.php:440
 #: elementor/widgets/rt-logo-slider.php:463
-#: elementor/widgets/rt-locations.php:548
+#: elementor/widgets/rt-booking.php:548
 #: elementor/widgets/rt-post-grid.php:593
 #: elementor/widgets/rt-post-slider.php:748
 #: elementor/widgets/rt-service.php:550 elementor/widgets/rt-shape.php:157
@@ -625,7 +625,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:570 elementor/widgets/rt-image.php:155
 #: elementor/widgets/rt-info-box.php:441
 #: elementor/widgets/rt-logo-slider.php:464
-#: elementor/widgets/rt-locations.php:549
+#: elementor/widgets/rt-booking.php:549
 #: elementor/widgets/rt-post-grid.php:594
 #: elementor/widgets/rt-post-slider.php:749
 #: elementor/widgets/rt-service.php:551 elementor/widgets/rt-shape.php:158
@@ -642,7 +642,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:571 elementor/widgets/rt-image.php:156
 #: elementor/widgets/rt-info-box.php:442
 #: elementor/widgets/rt-logo-slider.php:465
-#: elementor/widgets/rt-locations.php:550
+#: elementor/widgets/rt-booking.php:550
 #: elementor/widgets/rt-post-grid.php:595
 #: elementor/widgets/rt-post-slider.php:750
 #: elementor/widgets/rt-service.php:552 elementor/widgets/rt-shape.php:159
@@ -659,7 +659,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:572 elementor/widgets/rt-image.php:157
 #: elementor/widgets/rt-info-box.php:443
 #: elementor/widgets/rt-logo-slider.php:466
-#: elementor/widgets/rt-locations.php:551
+#: elementor/widgets/rt-booking.php:551
 #: elementor/widgets/rt-post-grid.php:596
 #: elementor/widgets/rt-post-slider.php:751
 #: elementor/widgets/rt-service.php:553 elementor/widgets/rt-shape.php:160
@@ -709,7 +709,7 @@ msgstr ""
 
 #: elementor/widgets/rt-info-box.php:206
 #: elementor/widgets/rt-logo-slider.php:209
-#: elementor/widgets/rt-locations.php:237
+#: elementor/widgets/rt-booking.php:237
 #: elementor/widgets/rt-post-grid.php:333
 #: elementor/widgets/rt-post-slider.php:283
 #: elementor/widgets/rt-service.php:330 elementor/widgets/rt-team.php:318
@@ -820,7 +820,7 @@ msgstr ""
 msgid "Button Hover Color"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:137 elementor/widgets/rt-service.php:133
+#: elementor/widgets/rt-booking.php:137 elementor/widgets/rt-service.php:133
 #: elementor/widgets/rt-team.php:159
 msgid "Button Link"
 msgstr ""
@@ -867,7 +867,7 @@ msgstr ""
 #: elementor/widgets/rt-button.php:69 elementor/widgets/rt-cta.php:81
 #: elementor/widgets/rt-hero-banner.php:107
 #: elementor/widgets/rt-hero-banner.php:132
-#: elementor/widgets/rt-info-box.php:161 elementor/widgets/rt-locations.php:129
+#: elementor/widgets/rt-info-box.php:161 elementor/widgets/rt-booking.php:129
 #: elementor/widgets/rt-pricing-table.php:72
 #: elementor/widgets/rt-pricing-table.php:128
 #: elementor/widgets/rt-service-tab.php:103
@@ -899,14 +899,14 @@ msgstr ""
 msgid "Button URL"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:111
+#: elementor/widgets/rt-booking.php:111
 #: elementor/widgets/rt-post-grid.php:196
 #: elementor/widgets/rt-post-slider.php:146
 #: elementor/widgets/rt-service.php:107 elementor/widgets/rt-team.php:133
 msgid "By Name"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:90 elementor/widgets/rt-post-grid.php:224
+#: elementor/widgets/rt-booking.php:90 elementor/widgets/rt-post-grid.php:224
 #: elementor/widgets/rt-post-slider.php:174 elementor/widgets/rt-service.php:86
 #: elementor/widgets/rt-team.php:112
 msgid "Categories"
@@ -917,15 +917,15 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:285
+#: elementor/widgets/rt-booking.php:285
 msgid "Category Color"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:210
+#: elementor/widgets/rt-booking.php:210
 msgid "Category Display"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:294
+#: elementor/widgets/rt-booking.php:294
 msgid "Category Hover Color"
 msgstr ""
 
@@ -935,7 +935,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:787
 #: elementor/widgets/rt-logo-slider.php:640
-#: elementor/widgets/rt-locations.php:729
+#: elementor/widgets/rt-booking.php:729
 #: elementor/widgets/rt-post-slider.php:878
 #: elementor/widgets/rt-service.php:731 elementor/widgets/rt-team.php:784
 #: elementor/widgets/rt-testimonial.php:730
@@ -949,7 +949,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:791
 #: elementor/widgets/rt-logo-slider.php:644
-#: elementor/widgets/rt-locations.php:733 elementor/widgets/rt-service.php:735
+#: elementor/widgets/rt-booking.php:733 elementor/widgets/rt-service.php:735
 #: elementor/widgets/rt-team.php:788
 msgid "Centered Slides. Default: On"
 msgstr ""
@@ -986,7 +986,7 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:192 elementor/widgets/rt-service.php:160
+#: elementor/widgets/rt-booking.php:192 elementor/widgets/rt-service.php:160
 #: elementor/widgets/rt-team.php:213
 msgid "Conents"
 msgstr ""
@@ -1036,7 +1036,7 @@ msgstr ""
 msgid "Content Color"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:180
+#: elementor/widgets/rt-booking.php:180
 #: elementor/widgets/rt-post-grid.php:416
 #: elementor/widgets/rt-post-slider.php:366
 #: elementor/widgets/rt-service-tab.php:411
@@ -1081,7 +1081,7 @@ msgstr ""
 msgid "Content Style"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:190 elementor/widgets/rt-service.php:158
+#: elementor/widgets/rt-booking.php:190 elementor/widgets/rt-service.php:158
 #: elementor/widgets/rt-team.php:211
 msgid "Content Type"
 msgstr ""
@@ -1163,7 +1163,7 @@ msgstr ""
 #: post-meta.php:376 post-meta.php:397
 #: elementor/widgets/rt-banner-slider.php:575
 #: elementor/widgets/rt-logo-slider.php:242
-#: elementor/widgets/rt-locations.php:326
+#: elementor/widgets/rt-booking.php:326
 #: elementor/widgets/rt-post-slider.php:527 elementor/widgets/rt-team.php:382
 #: elementor/widgets/rt-testimonial.php:797
 msgid "Default"
@@ -1187,7 +1187,7 @@ msgstr ""
 #: elementor/widgets/rt-counter.php:368 elementor/widgets/rt-image.php:169
 #: elementor/widgets/rt-info-box.php:455
 #: elementor/widgets/rt-logo-slider.php:478
-#: elementor/widgets/rt-locations.php:563
+#: elementor/widgets/rt-booking.php:563
 #: elementor/widgets/rt-post-grid.php:608
 #: elementor/widgets/rt-post-slider.php:763
 #: elementor/widgets/rt-service.php:565 elementor/widgets/rt-shape.php:172
@@ -1202,7 +1202,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:99 elementor/widgets/rt-post-grid.php:184
+#: elementor/widgets/rt-booking.php:99 elementor/widgets/rt-post-grid.php:184
 #: elementor/widgets/rt-post-slider.php:134 elementor/widgets/rt-service.php:95
 #: elementor/widgets/rt-team.php:121
 msgid "Desecending"
@@ -1236,7 +1236,7 @@ msgid "Designation Typo"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:502
-#: elementor/widgets/rt-locations.php:588
+#: elementor/widgets/rt-booking.php:588
 #: elementor/widgets/rt-post-grid.php:632 elementor/widgets/rt-service.php:590
 #: elementor/widgets/rt-team.php:644 elementor/widgets/rt-testimonial.php:591
 msgid "Desktops: > 1199px"
@@ -1244,7 +1244,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:852
 #: elementor/widgets/rt-logo-slider.php:562
-#: elementor/widgets/rt-locations.php:650
+#: elementor/widgets/rt-booking.php:650
 #: elementor/widgets/rt-post-slider.php:801
 #: elementor/widgets/rt-service.php:652 elementor/widgets/rt-team.php:705
 #: elementor/widgets/rt-testimonial.php:651
@@ -1253,7 +1253,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:840
 #: elementor/widgets/rt-logo-slider.php:547
-#: elementor/widgets/rt-locations.php:635
+#: elementor/widgets/rt-booking.php:635
 #: elementor/widgets/rt-post-slider.php:787
 #: elementor/widgets/rt-service.php:637 elementor/widgets/rt-team.php:690
 #: elementor/widgets/rt-testimonial.php:637
@@ -1261,7 +1261,7 @@ msgid "Desktops: > 1600px"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:509
-#: elementor/widgets/rt-locations.php:595
+#: elementor/widgets/rt-booking.php:595
 #: elementor/widgets/rt-post-grid.php:639 elementor/widgets/rt-service.php:597
 #: elementor/widgets/rt-team.php:651 elementor/widgets/rt-testimonial.php:598
 msgid "Desktops: > 991px"
@@ -1269,7 +1269,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:864
 #: elementor/widgets/rt-logo-slider.php:576
-#: elementor/widgets/rt-locations.php:664
+#: elementor/widgets/rt-booking.php:664
 #: elementor/widgets/rt-post-slider.php:813
 #: elementor/widgets/rt-service.php:666 elementor/widgets/rt-team.php:719
 #: elementor/widgets/rt-testimonial.php:665
@@ -1290,7 +1290,7 @@ msgstr ""
 msgid "Display"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:196 elementor/widgets/rt-service.php:164
+#: elementor/widgets/rt-booking.php:196 elementor/widgets/rt-service.php:164
 #: elementor/widgets/rt-team.php:217
 msgid "Display contents from Editor or Excerpt field"
 msgstr ""
@@ -1338,7 +1338,7 @@ msgstr ""
 #: elementor/widgets/rt-counter.php:375 elementor/widgets/rt-image.php:176
 #: elementor/widgets/rt-info-box.php:462
 #: elementor/widgets/rt-logo-slider.php:485
-#: elementor/widgets/rt-locations.php:570
+#: elementor/widgets/rt-booking.php:570
 #: elementor/widgets/rt-post-grid.php:615
 #: elementor/widgets/rt-post-slider.php:770
 #: elementor/widgets/rt-service.php:572 elementor/widgets/rt-shape.php:179
@@ -1377,7 +1377,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:772
 #: elementor/widgets/rt-logo-slider.php:625
-#: elementor/widgets/rt-locations.php:714
+#: elementor/widgets/rt-booking.php:714
 #: elementor/widgets/rt-post-slider.php:863
 #: elementor/widgets/rt-service.php:716 elementor/widgets/rt-team.php:769
 #: elementor/widgets/rt-testimonial.php:715
@@ -1400,7 +1400,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:552 elementor/widgets/rt-image.php:137
 #: elementor/widgets/rt-info-box.php:423
 #: elementor/widgets/rt-logo-slider.php:446
-#: elementor/widgets/rt-locations.php:531
+#: elementor/widgets/rt-booking.php:531
 #: elementor/widgets/rt-post-grid.php:576
 #: elementor/widgets/rt-post-slider.php:731
 #: elementor/widgets/rt-service.php:533 elementor/widgets/rt-shape.php:140
@@ -1410,7 +1410,7 @@ msgstr ""
 msgid "Entrance Animation"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:193 elementor/widgets/rt-service.php:161
+#: elementor/widgets/rt-booking.php:193 elementor/widgets/rt-service.php:161
 #: elementor/widgets/rt-team.php:214
 msgid "Excerpts"
 msgstr ""
@@ -1451,7 +1451,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:563 elementor/widgets/rt-image.php:148
 #: elementor/widgets/rt-info-box.php:434
 #: elementor/widgets/rt-logo-slider.php:457
-#: elementor/widgets/rt-locations.php:542
+#: elementor/widgets/rt-booking.php:542
 #: elementor/widgets/rt-post-grid.php:587
 #: elementor/widgets/rt-post-slider.php:742
 #: elementor/widgets/rt-service.php:544 elementor/widgets/rt-shape.php:151
@@ -1468,7 +1468,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:564 elementor/widgets/rt-image.php:149
 #: elementor/widgets/rt-info-box.php:435
 #: elementor/widgets/rt-logo-slider.php:458
-#: elementor/widgets/rt-locations.php:543
+#: elementor/widgets/rt-booking.php:543
 #: elementor/widgets/rt-post-grid.php:588
 #: elementor/widgets/rt-post-slider.php:743
 #: elementor/widgets/rt-service.php:545 elementor/widgets/rt-shape.php:152
@@ -1485,7 +1485,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:565 elementor/widgets/rt-image.php:150
 #: elementor/widgets/rt-info-box.php:436
 #: elementor/widgets/rt-logo-slider.php:459
-#: elementor/widgets/rt-locations.php:544
+#: elementor/widgets/rt-booking.php:544
 #: elementor/widgets/rt-post-grid.php:589
 #: elementor/widgets/rt-post-slider.php:744
 #: elementor/widgets/rt-service.php:546 elementor/widgets/rt-shape.php:153
@@ -1502,7 +1502,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:566 elementor/widgets/rt-image.php:151
 #: elementor/widgets/rt-info-box.php:437
 #: elementor/widgets/rt-logo-slider.php:460
-#: elementor/widgets/rt-locations.php:545
+#: elementor/widgets/rt-booking.php:545
 #: elementor/widgets/rt-post-grid.php:590
 #: elementor/widgets/rt-post-slider.php:745
 #: elementor/widgets/rt-service.php:547 elementor/widgets/rt-shape.php:154
@@ -1519,7 +1519,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:567 elementor/widgets/rt-image.php:152
 #: elementor/widgets/rt-info-box.php:438
 #: elementor/widgets/rt-logo-slider.php:461
-#: elementor/widgets/rt-locations.php:546
+#: elementor/widgets/rt-booking.php:546
 #: elementor/widgets/rt-post-grid.php:591
 #: elementor/widgets/rt-post-slider.php:746
 #: elementor/widgets/rt-service.php:548 elementor/widgets/rt-shape.php:155
@@ -1620,7 +1620,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:556 elementor/widgets/rt-image.php:141
 #: elementor/widgets/rt-info-box.php:427
 #: elementor/widgets/rt-logo-slider.php:450
-#: elementor/widgets/rt-locations.php:535
+#: elementor/widgets/rt-booking.php:535
 #: elementor/widgets/rt-post-grid.php:580
 #: elementor/widgets/rt-post-slider.php:735
 #: elementor/widgets/rt-service.php:537 elementor/widgets/rt-shape.php:144
@@ -1653,7 +1653,7 @@ msgstr ""
 #: elementor/widgets/rt-image.php:31 elementor/widgets/rt-info-box.php:30
 #: elementor/widgets/rt-logo-slider.php:59
 #: elementor/widgets/rt-marquee-slider.php:43
-#: elementor/widgets/rt-locations.php:44 elementor/widgets/rt-post-grid.php:46
+#: elementor/widgets/rt-booking.php:44 elementor/widgets/rt-post-grid.php:46
 #: elementor/widgets/rt-post-slider.php:36
 #: elementor/widgets/rt-pricing-table.php:144
 #: elementor/widgets/rt-progress-bar.php:29
@@ -1690,42 +1690,42 @@ msgid ""
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:86
-#: elementor/widgets/rt-locations.php:77 elementor/widgets/rt-post-grid.php:160
+#: elementor/widgets/rt-booking.php:77 elementor/widgets/rt-post-grid.php:160
 #: elementor/widgets/rt-service.php:73 elementor/widgets/rt-team.php:99
 #: elementor/widgets/rt-testimonial.php:190
 msgid "Gutters 0"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:87
-#: elementor/widgets/rt-locations.php:78 elementor/widgets/rt-post-grid.php:161
+#: elementor/widgets/rt-booking.php:78 elementor/widgets/rt-post-grid.php:161
 #: elementor/widgets/rt-service.php:74 elementor/widgets/rt-team.php:100
 #: elementor/widgets/rt-testimonial.php:191
 msgid "Gutters 1"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:88
-#: elementor/widgets/rt-locations.php:79 elementor/widgets/rt-post-grid.php:162
+#: elementor/widgets/rt-booking.php:79 elementor/widgets/rt-post-grid.php:162
 #: elementor/widgets/rt-service.php:75 elementor/widgets/rt-team.php:101
 #: elementor/widgets/rt-testimonial.php:192
 msgid "Gutters 2"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:89
-#: elementor/widgets/rt-locations.php:80 elementor/widgets/rt-post-grid.php:163
+#: elementor/widgets/rt-booking.php:80 elementor/widgets/rt-post-grid.php:163
 #: elementor/widgets/rt-service.php:76 elementor/widgets/rt-team.php:102
 #: elementor/widgets/rt-testimonial.php:193
 msgid "Gutters 3"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:90
-#: elementor/widgets/rt-locations.php:81 elementor/widgets/rt-post-grid.php:164
+#: elementor/widgets/rt-booking.php:81 elementor/widgets/rt-post-grid.php:164
 #: elementor/widgets/rt-service.php:77 elementor/widgets/rt-team.php:103
 #: elementor/widgets/rt-testimonial.php:194
 msgid "Gutters 4"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:91
-#: elementor/widgets/rt-locations.php:82 elementor/widgets/rt-post-grid.php:165
+#: elementor/widgets/rt-booking.php:82 elementor/widgets/rt-post-grid.php:165
 #: elementor/widgets/rt-service.php:78 elementor/widgets/rt-team.php:104
 #: elementor/widgets/rt-testimonial.php:195
 msgid "Gutters 5"
@@ -1746,7 +1746,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:561 elementor/widgets/rt-image.php:146
 #: elementor/widgets/rt-info-box.php:432
 #: elementor/widgets/rt-logo-slider.php:455
-#: elementor/widgets/rt-locations.php:540
+#: elementor/widgets/rt-booking.php:540
 #: elementor/widgets/rt-post-grid.php:585
 #: elementor/widgets/rt-post-slider.php:740
 #: elementor/widgets/rt-service.php:542 elementor/widgets/rt-shape.php:149
@@ -1942,7 +1942,7 @@ msgid "Image"
 msgstr ""
 
 #: elementor/widgets/rt-about-author.php:98 elementor/widgets/rt-image.php:101
-#: elementor/widgets/rt-locations.php:228
+#: elementor/widgets/rt-booking.php:228
 #: elementor/widgets/rt-post-grid.php:324
 #: elementor/widgets/rt-post-slider.php:274
 #: elementor/widgets/rt-service-tab.php:178
@@ -1963,7 +1963,7 @@ msgstr ""
 msgid "Image Overlay Color"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:248
+#: elementor/widgets/rt-booking.php:248
 msgid "Image Radius"
 msgstr ""
 
@@ -2111,7 +2111,7 @@ msgid "Item Padding"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:84
-#: elementor/widgets/rt-locations.php:75 elementor/widgets/rt-service.php:71
+#: elementor/widgets/rt-booking.php:75 elementor/widgets/rt-service.php:71
 #: elementor/widgets/rt-team.php:97
 msgid "Item Space"
 msgstr ""
@@ -2292,7 +2292,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:820
 #: elementor/widgets/rt-logo-slider.php:673
-#: elementor/widgets/rt-locations.php:762
+#: elementor/widgets/rt-booking.php:762
 #: elementor/widgets/rt-post-slider.php:915
 #: elementor/widgets/rt-service.php:764 elementor/widgets/rt-team.php:817
 #: elementor/widgets/rt-testimonial.php:767
@@ -2301,7 +2301,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:824
 #: elementor/widgets/rt-logo-slider.php:677
-#: elementor/widgets/rt-locations.php:766
+#: elementor/widgets/rt-booking.php:766
 #: elementor/widgets/rt-post-slider.php:919
 #: elementor/widgets/rt-service.php:768 elementor/widgets/rt-team.php:821
 #: elementor/widgets/rt-testimonial.php:771
@@ -2371,7 +2371,7 @@ msgstr ""
 msgid "Maximum number of title"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:204
+#: elementor/widgets/rt-booking.php:204
 #: elementor/widgets/rt-post-grid.php:427
 #: elementor/widgets/rt-post-slider.php:377
 #: elementor/widgets/rt-service.php:172 elementor/widgets/rt-team.php:225
@@ -2411,12 +2411,12 @@ msgstr ""
 msgid "Monthly Text"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:118 elementor/widgets/rt-service.php:114
+#: elementor/widgets/rt-booking.php:118 elementor/widgets/rt-service.php:114
 #: elementor/widgets/rt-team.php:140
 msgid "More Button"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:131
+#: elementor/widgets/rt-booking.php:131
 msgid "More Locationss"
 msgstr ""
 
@@ -2452,7 +2452,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:674
 #: elementor/widgets/rt-logo-slider.php:341
-#: elementor/widgets/rt-locations.php:426
+#: elementor/widgets/rt-booking.php:426
 #: elementor/widgets/rt-post-slider.php:626
 #: elementor/widgets/rt-service.php:428 elementor/widgets/rt-team.php:482
 #: elementor/widgets/rt-testimonial.php:896
@@ -2461,7 +2461,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:683
 #: elementor/widgets/rt-logo-slider.php:350
-#: elementor/widgets/rt-locations.php:435
+#: elementor/widgets/rt-booking.php:435
 #: elementor/widgets/rt-post-slider.php:635
 #: elementor/widgets/rt-service.php:437 elementor/widgets/rt-team.php:491
 #: elementor/widgets/rt-testimonial.php:905
@@ -2470,7 +2470,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:656
 #: elementor/widgets/rt-logo-slider.php:323
-#: elementor/widgets/rt-locations.php:408
+#: elementor/widgets/rt-booking.php:408
 #: elementor/widgets/rt-post-slider.php:608
 #: elementor/widgets/rt-service.php:410 elementor/widgets/rt-team.php:464
 #: elementor/widgets/rt-testimonial.php:878
@@ -2479,7 +2479,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:701
 #: elementor/widgets/rt-logo-slider.php:368
-#: elementor/widgets/rt-locations.php:453
+#: elementor/widgets/rt-booking.php:453
 #: elementor/widgets/rt-post-slider.php:653
 #: elementor/widgets/rt-service.php:455 elementor/widgets/rt-team.php:509
 #: elementor/widgets/rt-testimonial.php:923
@@ -2488,7 +2488,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:665
 #: elementor/widgets/rt-logo-slider.php:332
-#: elementor/widgets/rt-locations.php:417
+#: elementor/widgets/rt-booking.php:417
 #: elementor/widgets/rt-post-slider.php:617
 #: elementor/widgets/rt-service.php:419 elementor/widgets/rt-team.php:473
 #: elementor/widgets/rt-testimonial.php:887
@@ -2497,7 +2497,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:558
 #: elementor/widgets/rt-logo-slider.php:224
-#: elementor/widgets/rt-locations.php:308
+#: elementor/widgets/rt-booking.php:308
 #: elementor/widgets/rt-post-slider.php:510
 #: elementor/widgets/rt-service.php:343 elementor/widgets/rt-team.php:364
 #: elementor/widgets/rt-testimonial.php:780
@@ -2506,7 +2506,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:573
 #: elementor/widgets/rt-logo-slider.php:240
-#: elementor/widgets/rt-locations.php:324
+#: elementor/widgets/rt-booking.php:324
 #: elementor/widgets/rt-post-slider.php:525 elementor/widgets/rt-team.php:380
 #: elementor/widgets/rt-testimonial.php:795
 msgid "Nav Position"
@@ -2514,7 +2514,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:711
 #: elementor/widgets/rt-logo-slider.php:378
-#: elementor/widgets/rt-locations.php:463
+#: elementor/widgets/rt-booking.php:463
 #: elementor/widgets/rt-post-slider.php:663
 #: elementor/widgets/rt-service.php:465 elementor/widgets/rt-team.php:519
 #: elementor/widgets/rt-testimonial.php:933
@@ -2523,7 +2523,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:585
 #: elementor/widgets/rt-logo-slider.php:252
-#: elementor/widgets/rt-locations.php:337
+#: elementor/widgets/rt-booking.php:337
 #: elementor/widgets/rt-post-slider.php:537 elementor/widgets/rt-team.php:393
 #: elementor/widgets/rt-testimonial.php:807
 msgid "Nav Space"
@@ -2531,7 +2531,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:692
 #: elementor/widgets/rt-logo-slider.php:359
-#: elementor/widgets/rt-locations.php:444
+#: elementor/widgets/rt-booking.php:444
 #: elementor/widgets/rt-post-slider.php:644
 #: elementor/widgets/rt-service.php:446 elementor/widgets/rt-team.php:500
 #: elementor/widgets/rt-testimonial.php:914
@@ -2540,7 +2540,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:564
 #: elementor/widgets/rt-logo-slider.php:231
-#: elementor/widgets/rt-locations.php:315
+#: elementor/widgets/rt-booking.php:315
 #: elementor/widgets/rt-post-slider.php:516
 #: elementor/widgets/rt-service.php:350 elementor/widgets/rt-team.php:371
 #: elementor/widgets/rt-testimonial.php:786
@@ -2555,8 +2555,8 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:568
 #: elementor/widgets/rt-logo-slider.php:235
-#: elementor/widgets/rt-locations.php:319
-#: elementor/widgets/rt-locations.php:403
+#: elementor/widgets/rt-booking.php:319
+#: elementor/widgets/rt-booking.php:403
 #: elementor/widgets/rt-post-slider.php:520
 #: elementor/widgets/rt-service.php:354 elementor/widgets/rt-service.php:405
 #: elementor/widgets/rt-team.php:375 elementor/widgets/rt-team.php:459
@@ -2567,7 +2567,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:627
 #: elementor/widgets/rt-logo-slider.php:294
-#: elementor/widgets/rt-locations.php:379
+#: elementor/widgets/rt-booking.php:379
 #: elementor/widgets/rt-post-slider.php:579
 #: elementor/widgets/rt-service.php:381 elementor/widgets/rt-team.php:435
 #: elementor/widgets/rt-testimonial.php:849
@@ -2581,7 +2581,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:554 elementor/widgets/rt-image.php:139
 #: elementor/widgets/rt-info-box.php:425
 #: elementor/widgets/rt-logo-slider.php:448
-#: elementor/widgets/rt-locations.php:533
+#: elementor/widgets/rt-booking.php:533
 #: elementor/widgets/rt-post-grid.php:578
 #: elementor/widgets/rt-post-slider.php:733
 #: elementor/widgets/rt-service.php:535 elementor/widgets/rt-shape.php:142
@@ -2639,7 +2639,7 @@ msgid "Number of Product to show:"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:496
-#: elementor/widgets/rt-locations.php:582
+#: elementor/widgets/rt-booking.php:582
 #: elementor/widgets/rt-post-grid.php:627 elementor/widgets/rt-service.php:584
 #: elementor/widgets/rt-team.php:638 elementor/widgets/rt-testimonial.php:585
 msgid "Number of Responsive Columns"
@@ -2666,15 +2666,15 @@ msgstr ""
 #: elementor/widgets/rt-logo-slider.php:623
 #: elementor/widgets/rt-logo-slider.php:642
 #: elementor/widgets/rt-logo-slider.php:675
-#: elementor/widgets/rt-locations.php:182
-#: elementor/widgets/rt-locations.php:212
-#: elementor/widgets/rt-locations.php:221
-#: elementor/widgets/rt-locations.php:317
-#: elementor/widgets/rt-locations.php:401
-#: elementor/widgets/rt-locations.php:524
-#: elementor/widgets/rt-locations.php:712
-#: elementor/widgets/rt-locations.php:731
-#: elementor/widgets/rt-locations.php:764
+#: elementor/widgets/rt-booking.php:182
+#: elementor/widgets/rt-booking.php:212
+#: elementor/widgets/rt-booking.php:221
+#: elementor/widgets/rt-booking.php:317
+#: elementor/widgets/rt-booking.php:401
+#: elementor/widgets/rt-booking.php:524
+#: elementor/widgets/rt-booking.php:712
+#: elementor/widgets/rt-booking.php:731
+#: elementor/widgets/rt-booking.php:764
 #: elementor/widgets/rt-post-grid.php:569
 #: elementor/widgets/rt-post-slider.php:518
 #: elementor/widgets/rt-post-slider.php:601
@@ -2750,15 +2750,15 @@ msgstr ""
 #: elementor/widgets/rt-logo-slider.php:622
 #: elementor/widgets/rt-logo-slider.php:641
 #: elementor/widgets/rt-logo-slider.php:674
-#: elementor/widgets/rt-locations.php:181
-#: elementor/widgets/rt-locations.php:211
-#: elementor/widgets/rt-locations.php:220
-#: elementor/widgets/rt-locations.php:316
-#: elementor/widgets/rt-locations.php:400
-#: elementor/widgets/rt-locations.php:523
-#: elementor/widgets/rt-locations.php:711
-#: elementor/widgets/rt-locations.php:730
-#: elementor/widgets/rt-locations.php:763
+#: elementor/widgets/rt-booking.php:181
+#: elementor/widgets/rt-booking.php:211
+#: elementor/widgets/rt-booking.php:220
+#: elementor/widgets/rt-booking.php:316
+#: elementor/widgets/rt-booking.php:400
+#: elementor/widgets/rt-booking.php:523
+#: elementor/widgets/rt-booking.php:711
+#: elementor/widgets/rt-booking.php:730
+#: elementor/widgets/rt-booking.php:763
 #: elementor/widgets/rt-post-grid.php:568
 #: elementor/widgets/rt-post-slider.php:517
 #: elementor/widgets/rt-post-slider.php:600
@@ -2813,7 +2813,7 @@ msgstr ""
 msgid "Operation failed"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:147
+#: elementor/widgets/rt-booking.php:147
 #: elementor/widgets/rt-post-grid.php:254
 #: elementor/widgets/rt-post-slider.php:204
 #: elementor/widgets/rt-service-tab.php:153
@@ -2842,7 +2842,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:647
 #: elementor/widgets/rt-logo-slider.php:314
-#: elementor/widgets/rt-locations.php:399
+#: elementor/widgets/rt-booking.php:399
 #: elementor/widgets/rt-post-slider.php:599
 #: elementor/widgets/rt-service.php:401 elementor/widgets/rt-team.php:455
 #: elementor/widgets/rt-testimonial.php:869
@@ -2851,7 +2851,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:730
 #: elementor/widgets/rt-logo-slider.php:397
-#: elementor/widgets/rt-locations.php:482
+#: elementor/widgets/rt-booking.php:482
 #: elementor/widgets/rt-post-slider.php:682
 #: elementor/widgets/rt-service.php:484 elementor/widgets/rt-team.php:538
 #: elementor/widgets/rt-testimonial.php:952
@@ -2860,7 +2860,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:721
 #: elementor/widgets/rt-logo-slider.php:388
-#: elementor/widgets/rt-locations.php:473
+#: elementor/widgets/rt-booking.php:473
 #: elementor/widgets/rt-post-slider.php:673
 #: elementor/widgets/rt-service.php:475 elementor/widgets/rt-team.php:529
 #: elementor/widgets/rt-testimonial.php:943
@@ -2869,7 +2869,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:740
 #: elementor/widgets/rt-logo-slider.php:407
-#: elementor/widgets/rt-locations.php:492
+#: elementor/widgets/rt-booking.php:492
 #: elementor/widgets/rt-post-slider.php:692
 #: elementor/widgets/rt-service.php:494 elementor/widgets/rt-team.php:548
 #: elementor/widgets/rt-testimonial.php:962
@@ -2914,7 +2914,7 @@ msgid "Percentage Height"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:541
-#: elementor/widgets/rt-locations.php:628 elementor/widgets/rt-service.php:630
+#: elementor/widgets/rt-booking.php:628 elementor/widgets/rt-service.php:630
 #: elementor/widgets/rt-team.php:684
 msgid "PerView Options"
 msgstr ""
@@ -2945,7 +2945,7 @@ msgid "Phones: < 576px"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:523
-#: elementor/widgets/rt-locations.php:609
+#: elementor/widgets/rt-booking.php:609
 #: elementor/widgets/rt-post-grid.php:653 elementor/widgets/rt-service.php:611
 #: elementor/widgets/rt-team.php:665
 msgid "Phones: < 768px"
@@ -2953,7 +2953,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:887
 #: elementor/widgets/rt-logo-slider.php:599
-#: elementor/widgets/rt-locations.php:687
+#: elementor/widgets/rt-booking.php:687
 #: elementor/widgets/rt-post-slider.php:837
 #: elementor/widgets/rt-service.php:689 elementor/widgets/rt-team.php:742
 #: elementor/widgets/rt-testimonial.php:612
@@ -3034,31 +3034,31 @@ msgstr ""
 msgid "Locations Category"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:51
+#: elementor/widgets/rt-booking.php:51
 msgid "Locations Grid 1"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:52
+#: elementor/widgets/rt-booking.php:52
 msgid "Locations Grid 2"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:53
+#: elementor/widgets/rt-booking.php:53
 msgid "Locations Grid 3"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:54
+#: elementor/widgets/rt-booking.php:54
 msgid "Locations Grid 4"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:55
+#: elementor/widgets/rt-booking.php:55
 msgid "Locations Grid 5"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:56
+#: elementor/widgets/rt-booking.php:56
 msgid "Locations Grid 6"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:57
+#: elementor/widgets/rt-booking.php:57
 msgid "Locations Grid 7"
 msgstr ""
 
@@ -3066,19 +3066,19 @@ msgstr ""
 msgid "Locations Project Information"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:58
+#: elementor/widgets/rt-booking.php:58
 msgid "Locations Slider 1"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:59
+#: elementor/widgets/rt-booking.php:59
 msgid "Locations Slider 2"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:60
+#: elementor/widgets/rt-booking.php:60
 msgid "Locations Slider 3"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:61
+#: elementor/widgets/rt-booking.php:61
 msgid "Locations Slider 4"
 msgstr ""
 
@@ -3112,13 +3112,13 @@ msgstr ""
 msgid "Post Info"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:97 elementor/widgets/rt-post-grid.php:182
+#: elementor/widgets/rt-booking.php:97 elementor/widgets/rt-post-grid.php:182
 #: elementor/widgets/rt-post-slider.php:132 elementor/widgets/rt-service.php:93
 #: elementor/widgets/rt-team.php:119
 msgid "Post Ordering"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:107
+#: elementor/widgets/rt-booking.php:107
 #: elementor/widgets/rt-post-grid.php:192
 #: elementor/widgets/rt-post-slider.php:142
 #: elementor/widgets/rt-service.php:103 elementor/widgets/rt-team.php:129
@@ -3140,7 +3140,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:606
 #: elementor/widgets/rt-logo-slider.php:273
-#: elementor/widgets/rt-locations.php:358
+#: elementor/widgets/rt-booking.php:358
 #: elementor/widgets/rt-post-slider.php:558
 #: elementor/widgets/rt-service.php:360 elementor/widgets/rt-team.php:414
 #: elementor/widgets/rt-testimonial.php:828
@@ -3231,7 +3231,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:557 elementor/widgets/rt-image.php:142
 #: elementor/widgets/rt-info-box.php:428
 #: elementor/widgets/rt-logo-slider.php:451
-#: elementor/widgets/rt-locations.php:536
+#: elementor/widgets/rt-booking.php:536
 #: elementor/widgets/rt-post-grid.php:581
 #: elementor/widgets/rt-post-slider.php:736
 #: elementor/widgets/rt-service.php:538 elementor/widgets/rt-shape.php:145
@@ -3289,7 +3289,7 @@ msgstr ""
 msgid "RadiusTheme Elements"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:110
+#: elementor/widgets/rt-booking.php:110
 #: elementor/widgets/rt-post-grid.php:195
 #: elementor/widgets/rt-post-slider.php:145
 #: elementor/widgets/rt-service.php:106 elementor/widgets/rt-team.php:132
@@ -3338,7 +3338,7 @@ msgstr ""
 msgid "Recent"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:109
+#: elementor/widgets/rt-booking.php:109
 #: elementor/widgets/rt-post-grid.php:194
 #: elementor/widgets/rt-post-slider.php:144
 #: elementor/widgets/rt-service.php:105 elementor/widgets/rt-team.php:131
@@ -3441,7 +3441,7 @@ msgstr ""
 msgid "RT Marquee Slider"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:18
+#: elementor/widgets/rt-booking.php:18
 msgid "RT Locations"
 msgstr ""
 
@@ -3504,7 +3504,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:558 elementor/widgets/rt-image.php:143
 #: elementor/widgets/rt-info-box.php:429
 #: elementor/widgets/rt-logo-slider.php:452
-#: elementor/widgets/rt-locations.php:537
+#: elementor/widgets/rt-booking.php:537
 #: elementor/widgets/rt-post-grid.php:582
 #: elementor/widgets/rt-post-slider.php:737
 #: elementor/widgets/rt-service.php:539 elementor/widgets/rt-shape.php:146
@@ -3631,7 +3631,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:814
 #: elementor/widgets/rt-logo-slider.php:667
-#: elementor/widgets/rt-locations.php:756
+#: elementor/widgets/rt-booking.php:756
 #: elementor/widgets/rt-post-slider.php:909
 #: elementor/widgets/rt-service.php:758 elementor/widgets/rt-team.php:811
 #: elementor/widgets/rt-testimonial.php:761
@@ -3642,7 +3642,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:806
 #: elementor/widgets/rt-logo-slider.php:659
-#: elementor/widgets/rt-locations.php:748
+#: elementor/widgets/rt-booking.php:748
 #: elementor/widgets/rt-post-slider.php:901
 #: elementor/widgets/rt-service.php:750 elementor/widgets/rt-team.php:803
 #: elementor/widgets/rt-testimonial.php:753
@@ -3687,7 +3687,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:559 elementor/widgets/rt-image.php:144
 #: elementor/widgets/rt-info-box.php:430
 #: elementor/widgets/rt-logo-slider.php:453
-#: elementor/widgets/rt-locations.php:538
+#: elementor/widgets/rt-booking.php:538
 #: elementor/widgets/rt-post-grid.php:583
 #: elementor/widgets/rt-post-slider.php:738
 #: elementor/widgets/rt-service.php:540 elementor/widgets/rt-shape.php:147
@@ -3704,7 +3704,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:560 elementor/widgets/rt-image.php:145
 #: elementor/widgets/rt-info-box.php:431
 #: elementor/widgets/rt-logo-slider.php:454
-#: elementor/widgets/rt-locations.php:539
+#: elementor/widgets/rt-booking.php:539
 #: elementor/widgets/rt-post-grid.php:584
 #: elementor/widgets/rt-post-slider.php:739
 #: elementor/widgets/rt-service.php:541 elementor/widgets/rt-shape.php:148
@@ -3828,7 +3828,7 @@ msgstr ""
 msgid "Show or Hide Action. Default: On"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:214
+#: elementor/widgets/rt-booking.php:214
 msgid "Show or Hide Category. Default: On"
 msgstr ""
 
@@ -3839,7 +3839,7 @@ msgstr ""
 #: elementor/widgets/rt-banner-slider.php:473
 #: elementor/widgets/rt-hero-banner.php:102
 #: elementor/widgets/rt-hero-banner.php:127
-#: elementor/widgets/rt-info-box.php:155 elementor/widgets/rt-locations.php:184
+#: elementor/widgets/rt-info-box.php:155 elementor/widgets/rt-booking.php:184
 #: elementor/widgets/rt-service.php:153 elementor/widgets/rt-team.php:206
 msgid "Show or Hide Content. Default: off"
 msgstr ""
@@ -3868,7 +3868,7 @@ msgstr ""
 msgid "Show or Hide Rating. Default: On"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:223
+#: elementor/widgets/rt-booking.php:223
 msgid "Show or Hide Readmore. Default: On"
 msgstr ""
 
@@ -3880,7 +3880,7 @@ msgstr ""
 msgid "Show or Hide Vactor. Default: On"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:121 elementor/widgets/rt-service.php:117
+#: elementor/widgets/rt-booking.php:121 elementor/widgets/rt-service.php:117
 #: elementor/widgets/rt-team.php:143
 msgid "Show Pagination"
 msgstr ""
@@ -3890,7 +3890,7 @@ msgstr ""
 msgid "Show Post Image : "
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:120
+#: elementor/widgets/rt-booking.php:120
 #: elementor/widgets/rt-post-grid.php:316
 #: elementor/widgets/rt-post-slider.php:266
 #: elementor/widgets/rt-service.php:116 elementor/widgets/rt-team.php:142
@@ -3964,7 +3964,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:573 elementor/widgets/rt-image.php:158
 #: elementor/widgets/rt-info-box.php:444
 #: elementor/widgets/rt-logo-slider.php:467
-#: elementor/widgets/rt-locations.php:552
+#: elementor/widgets/rt-booking.php:552
 #: elementor/widgets/rt-post-grid.php:597
 #: elementor/widgets/rt-post-slider.php:752
 #: elementor/widgets/rt-service.php:554 elementor/widgets/rt-shape.php:161
@@ -3981,7 +3981,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:574 elementor/widgets/rt-image.php:159
 #: elementor/widgets/rt-info-box.php:445
 #: elementor/widgets/rt-logo-slider.php:468
-#: elementor/widgets/rt-locations.php:553
+#: elementor/widgets/rt-booking.php:553
 #: elementor/widgets/rt-post-grid.php:598
 #: elementor/widgets/rt-post-slider.php:753
 #: elementor/widgets/rt-service.php:555 elementor/widgets/rt-shape.php:162
@@ -3998,7 +3998,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:575 elementor/widgets/rt-image.php:160
 #: elementor/widgets/rt-info-box.php:446
 #: elementor/widgets/rt-logo-slider.php:469
-#: elementor/widgets/rt-locations.php:554
+#: elementor/widgets/rt-booking.php:554
 #: elementor/widgets/rt-post-grid.php:599
 #: elementor/widgets/rt-post-slider.php:754
 #: elementor/widgets/rt-service.php:556 elementor/widgets/rt-shape.php:163
@@ -4015,7 +4015,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:576 elementor/widgets/rt-image.php:161
 #: elementor/widgets/rt-info-box.php:447
 #: elementor/widgets/rt-logo-slider.php:470
-#: elementor/widgets/rt-locations.php:555
+#: elementor/widgets/rt-booking.php:555
 #: elementor/widgets/rt-post-grid.php:600
 #: elementor/widgets/rt-post-slider.php:755
 #: elementor/widgets/rt-service.php:557 elementor/widgets/rt-shape.php:164
@@ -4055,7 +4055,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:763
 #: elementor/widgets/rt-logo-slider.php:615
-#: elementor/widgets/rt-locations.php:704
+#: elementor/widgets/rt-booking.php:704
 #: elementor/widgets/rt-post-slider.php:854
 #: elementor/widgets/rt-service.php:706 elementor/widgets/rt-team.php:759
 #: elementor/widgets/rt-testimonial.php:705
@@ -4072,7 +4072,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:778
 #: elementor/widgets/rt-logo-slider.php:631
-#: elementor/widgets/rt-locations.php:720
+#: elementor/widgets/rt-booking.php:720
 #: elementor/widgets/rt-post-slider.php:869
 #: elementor/widgets/rt-service.php:722 elementor/widgets/rt-team.php:775
 #: elementor/widgets/rt-testimonial.php:721
@@ -4081,7 +4081,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:782
 #: elementor/widgets/rt-logo-slider.php:635
-#: elementor/widgets/rt-locations.php:724
+#: elementor/widgets/rt-booking.php:724
 #: elementor/widgets/rt-post-slider.php:873
 #: elementor/widgets/rt-service.php:726 elementor/widgets/rt-team.php:779
 #: elementor/widgets/rt-testimonial.php:725
@@ -4094,7 +4094,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:797
 #: elementor/widgets/rt-logo-slider.php:650
-#: elementor/widgets/rt-locations.php:739
+#: elementor/widgets/rt-booking.php:739
 #: elementor/widgets/rt-post-slider.php:888
 #: elementor/widgets/rt-service.php:741 elementor/widgets/rt-team.php:794
 #: elementor/widgets/rt-testimonial.php:740
@@ -4103,7 +4103,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:799
 #: elementor/widgets/rt-logo-slider.php:652
-#: elementor/widgets/rt-locations.php:741 elementor/widgets/rt-service.php:743
+#: elementor/widgets/rt-booking.php:741 elementor/widgets/rt-service.php:743
 #: elementor/widgets/rt-team.php:796
 msgid "Slides Space. Default: 10"
 msgstr ""
@@ -4114,7 +4114,7 @@ msgid "Slides Space. Default: 24"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:530
-#: elementor/widgets/rt-locations.php:616
+#: elementor/widgets/rt-booking.php:616
 #: elementor/widgets/rt-post-grid.php:660 elementor/widgets/rt-service.php:618
 #: elementor/widgets/rt-team.php:672
 msgid "Small Phones: < 480px"
@@ -4176,7 +4176,7 @@ msgstr ""
 #: elementor/widgets/rt-about-author.php:109
 #: elementor/widgets/rt-info-box.php:35 elementor/widgets/rt-logo-slider.php:64
 #: elementor/widgets/rt-marquee-slider.php:48
-#: elementor/widgets/rt-locations.php:49 elementor/widgets/rt-locations.php:261
+#: elementor/widgets/rt-booking.php:49 elementor/widgets/rt-booking.php:261
 #: elementor/widgets/rt-post-grid.php:51
 #: elementor/widgets/rt-pricing-table.php:149
 #: elementor/widgets/rt-service.php:49 elementor/widgets/rt-shape.php:191
@@ -4259,7 +4259,7 @@ msgstr ""
 #: elementor/widgets/rt-hero-banner.php:562 elementor/widgets/rt-image.php:147
 #: elementor/widgets/rt-info-box.php:433
 #: elementor/widgets/rt-logo-slider.php:456
-#: elementor/widgets/rt-locations.php:541
+#: elementor/widgets/rt-booking.php:541
 #: elementor/widgets/rt-post-grid.php:586
 #: elementor/widgets/rt-post-slider.php:741
 #: elementor/widgets/rt-service.php:543 elementor/widgets/rt-shape.php:150
@@ -4302,7 +4302,7 @@ msgid "Tab Title"
 msgstr ""
 
 #: elementor/widgets/rt-logo-slider.php:516
-#: elementor/widgets/rt-locations.php:602
+#: elementor/widgets/rt-booking.php:602
 #: elementor/widgets/rt-post-grid.php:646 elementor/widgets/rt-service.php:604
 #: elementor/widgets/rt-team.php:658 elementor/widgets/rt-testimonial.php:605
 msgid "Tablets: > 767px"
@@ -4310,7 +4310,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:876
 #: elementor/widgets/rt-logo-slider.php:588
-#: elementor/widgets/rt-locations.php:676
+#: elementor/widgets/rt-booking.php:676
 #: elementor/widgets/rt-post-slider.php:825
 #: elementor/widgets/rt-service.php:678 elementor/widgets/rt-team.php:731
 #: elementor/widgets/rt-testimonial.php:677
@@ -4473,7 +4473,7 @@ msgstr ""
 #: elementor/widgets/rt-info-box.php:250
 #: elementor/widgets/rt-logo-slider.php:148
 #: elementor/widgets/rt-marquee-slider.php:99
-#: elementor/widgets/rt-locations.php:267
+#: elementor/widgets/rt-booking.php:267
 #: elementor/widgets/rt-post-grid.php:377
 #: elementor/widgets/rt-post-slider.php:327
 #: elementor/widgets/rt-pricing-table.php:362
@@ -4493,7 +4493,7 @@ msgstr ""
 msgid "Title count"
 msgstr ""
 
-#: elementor/widgets/rt-info-box.php:260 elementor/widgets/rt-locations.php:276
+#: elementor/widgets/rt-info-box.php:260 elementor/widgets/rt-booking.php:276
 #: elementor/widgets/rt-post-grid.php:386
 #: elementor/widgets/rt-post-slider.php:336
 msgid "Title Hover Color"
@@ -4514,7 +4514,7 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:196
 #: elementor/widgets/rt-hero-banner.php:174
-#: elementor/widgets/rt-info-box.php:270 elementor/widgets/rt-locations.php:161
+#: elementor/widgets/rt-info-box.php:270 elementor/widgets/rt-booking.php:161
 #: elementor/widgets/rt-service-tab.php:251
 #: elementor/widgets/rt-service.php:282 elementor/widgets/rt-team.php:183
 #: elementor/widgets/rt-testimonial.php:306
@@ -4562,7 +4562,7 @@ msgstr ""
 #: elementor/widgets/rt-info-box.php:244
 #: elementor/widgets/rt-logo-slider.php:135
 #: elementor/widgets/rt-marquee-slider.php:86
-#: elementor/widgets/rt-locations.php:154
+#: elementor/widgets/rt-booking.php:154
 #: elementor/widgets/rt-post-grid.php:371
 #: elementor/widgets/rt-post-slider.php:321
 #: elementor/widgets/rt-pricing-table.php:356
@@ -4592,13 +4592,13 @@ msgstr ""
 
 #: elementor/widgets/rt-banner-slider.php:576
 #: elementor/widgets/rt-logo-slider.php:243
-#: elementor/widgets/rt-locations.php:327
+#: elementor/widgets/rt-booking.php:327
 #: elementor/widgets/rt-post-slider.php:528 elementor/widgets/rt-team.php:383
 #: elementor/widgets/rt-testimonial.php:798
 msgid "Top Right"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:68 elementor/widgets/rt-service.php:64
+#: elementor/widgets/rt-booking.php:68 elementor/widgets/rt-service.php:64
 #: elementor/widgets/rt-team.php:90
 msgid "Total number of items"
 msgstr ""
@@ -4729,14 +4729,14 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:202
+#: elementor/widgets/rt-booking.php:202
 #: elementor/widgets/rt-post-grid.php:424
 #: elementor/widgets/rt-post-slider.php:374
 #: elementor/widgets/rt-service.php:170 elementor/widgets/rt-team.php:223
 msgid "Word count"
 msgstr ""
 
-#: elementor/widgets/rt-locations.php:70 elementor/widgets/rt-service.php:66
+#: elementor/widgets/rt-booking.php:70 elementor/widgets/rt-service.php:66
 #: elementor/widgets/rt-team.php:92
 msgid "Write -1 to show all"
 msgstr ""

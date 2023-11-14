@@ -28,7 +28,7 @@ $nav_menus = wp_get_nav_menus( array( 'fields' => 'id=>name' ) );
 $nav_menus = array( 'default' => __( 'Default', 'tripfery-core' ) ) + $nav_menus;
 $sidebars  = array( 'default' => __( 'Default', 'tripfery-core' ) ) + TripferyTheme_Helper::custom_sidebar_fields();
 
-$Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'tripfery-core' ), array( 'page', 'post', 'tripfery_team', 'tripfery_locations', 'tripfery_service', 'product' ), '', '', 'high', array(
+$Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'tripfery-core' ), array( 'page', 'post', 'tripfery_team', 'tripfery_booking', 'tripfery_service', 'product' ), '', '', 'high', array(
 	'fields' => array(
 	
 		"{$prefix}_layout_settings" => array(
@@ -396,7 +396,7 @@ $Postmeta->add_meta_box('tripfery_booking_rules', __('Booking Rules', 'tripfery-
 				),
 				'rules_time' => array(
 					'label' => __('Rules Time', 'tripfery-core'),
-					'type'  => 'text',
+					'type'  => 'time_picker',
 					'desc'  => __('Add Time', 'tripfery-core'),
 				),
 			)
@@ -407,7 +407,7 @@ $Postmeta->add_meta_box('tripfery_booking_rules', __('Booking Rules', 'tripfery-
 /*-------------------------------------
 #. Locations
 ---------------------------------------*/
-$Postmeta->add_meta_box( 'tripfery_locations_info', __( 'Locations Area Information', 'tripfery-core' ), array( 'tripfery_locations' ), '', '', 'high', array(
+$Postmeta->add_meta_box( 'tripfery_booking_info', __( 'Locations Area Information', 'tripfery-core' ), array( 'tripfery_booking' ), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_location_activities' => array(
 			'label' => __( 'Location Activities', 'tripfery-core' ),

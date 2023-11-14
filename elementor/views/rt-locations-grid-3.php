@@ -23,7 +23,7 @@ else {
 }
 
 $args = array(
-	'post_type'      	=> 'tripfery_locations',
+	'post_type'      	=> 'tripfery_booking',
 	'posts_per_page' 	=> $data['number'],
 	'order' 			=> $data['post_ordering'],
 	'orderby' 			=> $data['post_orderby'],
@@ -33,7 +33,7 @@ $args = array(
 if ( !empty( $data['cat'] ) ) {
 	$args['tax_query'] = array(
 		array(
-			'taxonomy' => 'tripfery_locations_category',
+			'taxonomy' => 'tripfery_booking_category',
 			'field' => 'term_id',
 			'terms' => $data['cat'],
 		)
@@ -44,7 +44,7 @@ $query = new WP_Query( $args );
 $temp = TripferyTheme_Helper::wp_set_temp_query( $query );
 $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
 ?>
-<div class="rt-locations-default rt-locations-multi-layout-3 locations-grid-<?php echo esc_attr( $data['style'] );?>">
+<div class="rt-booking-default rt-booking-multi-layout-3 booking-grid-<?php echo esc_attr( $data['style'] );?>">
 	<div class="row <?php echo esc_attr( $data['item_space'] );?>">
 		<?php $m = $data['delay']; $n = $data['duration']; 
 			if ( $query->have_posts() ) {
@@ -61,8 +61,8 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 			$content = "$content";
 		?>
 		<div class="<?php echo esc_attr( $col_class );?> <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="<?php echo esc_attr( $m );?>s" data-wow-duration="<?php echo esc_attr( $n );?>s">
-			<div class="locations-item">
-				<div class="locations-figure">
+			<div class="booking-item">
+				<div class="booking-figure">
 					<a aria-label="Locations" href="<?php the_permalink(); ?>">
 						<?php
 							if ( has_post_thumbnail() ){
@@ -77,16 +77,16 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 						?>
 					</a>			
 				</div>
-				<div class="locations-content">
+				<div class="booking-content">
 					<div class="content-info">
 						<h3 class="entry-title"><a aria-label="Locations" href="<?php the_permalink();?>"><?php the_title();?></a></h3>
 						<?php if ( $data['category_display']  == 'yes' ) { ?>
-						<span class="locations-cat"><?php
+						<span class="booking-cat"><?php
 							$i = 1;
-							$term_lists = get_the_terms( get_the_ID(), 'tripfery_locations_category' );
+							$term_lists = get_the_terms( get_the_ID(), 'tripfery_booking_category' );
 							if( $term_lists ) {
 							foreach ( $term_lists as $term_list ){ 
-							$link = get_term_link( $term_list->term_id, 'tripfery_locations_category' ); ?><?php if ( $i > 1 ){ echo esc_html( ', ' ); } ?><a aria-label="Locations" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $term_list->name ); ?></a><?php $i++; } } ?>
+							$link = get_term_link( $term_list->term_id, 'tripfery_booking_category' ); ?><?php if ( $i > 1 ){ echo esc_html( ', ' ); } ?><a aria-label="Locations" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $term_list->name ); ?></a><?php $i++; } } ?>
 						</span>
 						<?php } ?>
 						<?php if ( $data['content_display']  == 'yes' ) { ?>
@@ -106,7 +106,7 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 	</div>
 	<?php if ( $data['more_button'] == 'show' ) { ?>
 		<?php if ( !empty( $data['see_button_text'] ) ) { ?>
-		<div class="locations-button"><a class="button-style-2 btn-common" aria-label="Locations" href="<?php echo esc_url( $data['see_button_link'] );?>"><?php echo esc_html( $data['see_button_text'] );?><i class="icon-tripfery-right-arrow"></i></a></div>
+		<div class="booking-button"><a class="button-style-2 btn-common" aria-label="Locations" href="<?php echo esc_url( $data['see_button_link'] );?>"><?php echo esc_html( $data['see_button_text'] );?><i class="icon-tripfery-right-arrow"></i></a></div>
 		<?php } ?>
 	<?php } else { ?>
 		<?php TripferyTheme_Helper::pagination(); ?>

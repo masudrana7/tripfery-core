@@ -13,7 +13,7 @@ use \WP_Query;
 $thumb_size  = 'tripfery-size5';
 
 $args = array(
-	'post_type'      	=> 'tripfery_locations',
+	'post_type'      	=> 'tripfery_booking',
 	'posts_per_page' 	=> $data['number'],
 	'order' 			=> $data['post_ordering'],
 	'orderby' 			=> $data['post_orderby'],
@@ -22,7 +22,7 @@ $args = array(
 if ( !empty( $data['cat'] ) ) {
 	$args['tax_query'] = array(
 		array(
-			'taxonomy' => 'tripfery_locations_category',
+			'taxonomy' => 'tripfery_booking_category',
 			'field' => 'term_id',
 			'terms' => $data['cat'],
 		)
@@ -32,7 +32,7 @@ if ( !empty( $data['cat'] ) ) {
 $query = new WP_Query( $args );
 
 ?>
-<div class="rt-locations-default rt-locations-multi-layout-5 locations-slider-<?php echo esc_attr( $data['style'] );?> <?php echo esc_attr( $data['nav_position'] ) ?>">
+<div class="rt-booking-default rt-booking-multi-layout-5 booking-slider-<?php echo esc_attr( $data['style'] );?> <?php echo esc_attr( $data['nav_position'] ) ?>">
 	<div class="rt-swiper-slider swiper-slider rt-swiper-nav" data-xld ="<?php echo esc_attr( $data['swiper_data'] );?>">
 		<div class="swiper-wrapper">
 		<?php $m = $data['delay']; $n = $data['duration'];
@@ -49,8 +49,8 @@ $query = new WP_Query( $args );
 				$content = wp_trim_words( $content, $data['count'], '' );
 				$content = "$content";
 				?>
-				<div class="locations-item swiper-slide <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="<?php echo esc_attr( $m );?>s" data-wow-duration="<?php echo esc_attr( $n );?>s">
-					<div class="locations-figure">
+				<div class="booking-item swiper-slide <?php echo esc_attr( $data['animation'] );?> <?php echo esc_attr( $data['animation_effect'] );?>" data-wow-delay="<?php echo esc_attr( $m );?>s" data-wow-duration="<?php echo esc_attr( $n );?>s">
+					<div class="booking-figure">
 						<a aria-label="Locations" href="<?php the_permalink(); ?>">
 							<?php
 								if ( has_post_thumbnail() ){
@@ -65,16 +65,16 @@ $query = new WP_Query( $args );
 							?>
 						</a>			
 					</div>
-					<div class="locations-content">
+					<div class="booking-content">
 						<div class="content-info">
 							<h3 class="entry-title"><a aria-label="Locations" href="<?php the_permalink();?>"><?php the_title();?></a></h3>
 							<?php if ( $data['category_display']  == 'yes' ) { ?>
-							<span class="locations-cat"><?php
+							<span class="booking-cat"><?php
 								$i = 1;
-								$term_lists = get_the_terms( get_the_ID(), 'tripfery_locations_category' );
+								$term_lists = get_the_terms( get_the_ID(), 'tripfery_booking_category' );
 								if( $term_lists ) {
 								foreach ( $term_lists as $term_list ){ 
-								$link = get_term_link( $term_list->term_id, 'tripfery_locations_category' ); ?><?php if ( $i > 1 ){ echo esc_html( ', ' ); } ?><a aria-label="Locations" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $term_list->name ); ?></a><?php $i++; } } ?>
+								$link = get_term_link( $term_list->term_id, 'tripfery_booking_category' ); ?><?php if ( $i > 1 ){ echo esc_html( ', ' ); } ?><a aria-label="Locations" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $term_list->name ); ?></a><?php $i++; } } ?>
 							</span>
 							<?php } ?>
 							<?php if ( $data['content_display']  == 'yes' ) { ?>

@@ -65,7 +65,7 @@ class RT_Service_Activiy extends Custom_Widget_Base {
 			),
 			array(
 				'type'    => Controls_Manager::REPEATER,
-				'id'      => 'rt-service-locations',
+				'id'      => 'rt-service-booking',
 				'label'   => esc_html__('Add as many logos as you want', 'tripfery-core'),
 				'fields' => $repeater->get_controls(),
 			),

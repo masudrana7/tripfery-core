@@ -31,11 +31,11 @@ $post_types = array(
 		'rewrite'         => TripferyTheme::$options['service_slug'],
 		'supports'        => array( 'title', 'thumbnail', 'editor', 'excerpt', 'page-attributes' ),
 	),
-	'tripfery_locations'  => array(
+	'tripfery_booking'  => array(
 		'title'           => __( 'Locations', 'tripfery-core' ),
 		'plural_title'    => __( 'Locationss', 'tripfery-core' ),
 		'menu_icon'       => 'dashicons-book',
-		'rewrite'         => TripferyTheme::$options['locations_slug'],
+		'rewrite'         => TripferyTheme::$options['booking_slug'],
 		'supports'        => array( 'title', 'thumbnail', 'editor', 'excerpt', 'page-attributes' ),
 		'taxonomies' 	  => array( 'post_tag' ),
 	),
@@ -54,11 +54,11 @@ $taxonomies = array(
 		'post_types'   => 'tripfery_service',
 		'rewrite'      => array( 'slug' => TripferyTheme::$options['service_cat_slug'] ),
 	),
-	'tripfery_locations_category' => array(
+	'tripfery_booking_category' => array(
 		'title'        => __( 'Locations Category', 'tripfery-core' ),
 		'plural_title' => __( 'Locations Categories', 'tripfery-core' ),
-		'post_types'   => 'tripfery_locations',
-		'rewrite'      => array( 'slug' => TripferyTheme::$options['locations_cat_slug'] ),
+		'post_types'   => 'tripfery_booking',
+		'rewrite'      => array( 'slug' => TripferyTheme::$options['booking_cat_slug'] ),
 	),
 );
 
