@@ -372,22 +372,22 @@ $Postmeta->add_meta_box('tripfery_booking_layout', __('Booking Layout', 'tripfer
 /*-------------------------------------
 #. Locations
 ---------------------------------------*/
-$Postmeta->add_meta_box('tripfery_booking_info', __('Booking Area Information', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+$Postmeta->add_meta_box('tripfery_booking_info', __('Booking Information', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_languages' => array(
 			'label' => __('Languages', 'tripfery-core'),
 			'type'  => 'text',
 		),
-		'tripfery_location_cars' => array(
-			'label' => __('Location Cars', 'tripfery-core'),
+		'tripfery_itinerary_title' => array(
+			'label' => __('Itinerary Title', 'tripfery-core'),
 			'type'  => 'text',
 		),
-		'tripfery_location_hotel' => array(
-			'label' => __('Location Hotel', 'tripfery-core'),
+		'tripfery_faq_title' => array(
+			'label' => __('Faqs Title', 'tripfery-core'),
 			'type'  => 'text',
 		),
-		'tripfery_location_tours' => array(
-			'label' => __('Location Tours', 'tripfery-core'),
+		'tripfery_map_title' => array(
+			'label' => __('Map Title', 'tripfery-core'),
 			'type'  => 'text',
 		),
 		'tripfery_location_rentals' => array(
@@ -458,16 +458,15 @@ $Postmeta->add_meta_box('tripfery_booking_highlights', __('Booking Highlights', 
 			'button' => __('Add New Title', 'tripfery-core'),
 			'value'  => array(
 				'rules_name' => array(
-					'label' => __('Title Title', 'tripfery-core'),
+					'label' => __('Highlight Title', 'tripfery-core'),
 					'type'  => 'text',
-					'desc'  => __('City Centre', 'tripfery-core'),
 				),
 			)
 		),
 	)
 ));
 
-$Postmeta->add_meta_box('tripfery_booking_included', __('Booking Highlights', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+$Postmeta->add_meta_box('tripfery_booking_included', __('Booking Included/Excluded', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_booking_included_title' => array(
 			'label' => __('Included Title', 'tripfery-core'),
@@ -478,9 +477,8 @@ $Postmeta->add_meta_box('tripfery_booking_included', __('Booking Highlights', 't
 			'button' => __('Add New Title', 'tripfery-core'),
 			'value'  => array(
 				'rules_name' => array(
-					'label' => __('Title Title', 'tripfery-core'),
+					'label' => __('Included Title', 'tripfery-core'),
 					'type'  => 'text',
-					'desc'  => __('City Centre', 'tripfery-core'),
 				),
 			)
 		),
@@ -489,9 +487,104 @@ $Postmeta->add_meta_box('tripfery_booking_included', __('Booking Highlights', 't
 			'button' => __('Add New Title', 'tripfery-core'),
 			'value'  => array(
 				'rules_name' => array(
-					'label' => __('Title Title', 'tripfery-core'),
+					'label' => __('Excluded Title', 'tripfery-core'),
 					'type'  => 'text',
 					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+			)
+		),
+	)
+));
+
+$Postmeta->add_meta_box('tripfery_booking_durations', __('Booking Durations', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_durations_title' => array(
+			'label' => __('Durations Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_durations' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Title', 'tripfery-core'),
+			'value'  => array(
+				'duration_name' => array(
+					'label' => __('Duration Title', 'tripfery-core'),
+					'type'  => 'text',
+				),
+			)
+		),
+	)
+));
+
+$Postmeta->add_meta_box('tripfery_booking_languages', __('Booking Language', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_language_title' => array(
+			'label' => __('Language Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_languages' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Title', 'tripfery-core'),
+			'value'  => array(
+				'language_name' => array(
+					'label' => __('Language Title', 'tripfery-core'),
+					'type'  => 'text',
+				),
+			)
+		),
+	)
+));
+
+// car service features
+$Postmeta->add_meta_box('tripfery_car_specifications', __('Car Specifications', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_car_specifications' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Specification', 'tripfery-core'),
+			'value'  => array(
+				'specification_name' => array(
+					'label' => __('Specification Title', 'tripfery-core'),
+					'type'  => 'text',
+				),
+			)
+		),
+	)
+));
+
+// Car features
+$Postmeta->add_meta_box('tripfery_booking_features', __('Car Feature', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_feature_title' => array(
+			'label' => __('Feature Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_features' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Feature', 'tripfery-core'),
+			'value'  => array(
+				'features_name' => array(
+					'label' => __('Feature Title', 'tripfery-core'),
+					'type'  => 'text',
+				),
+			)
+		),
+	)
+));
+
+
+// Car Brands
+$Postmeta->add_meta_box('tripfery_booking_brands', __('Car Brand', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_brand_title' => array(
+			'label' => __('Brand Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_brands' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Brand', 'tripfery-core'),
+			'value'  => array(
+				'brand_name' => array(
+					'label' => __('Brand Title', 'tripfery-core'),
+					'type'  => 'text',
 				),
 			)
 		),
