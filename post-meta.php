@@ -353,6 +353,49 @@ $Postmeta->add_meta_box( 'tripfery_team_contact', __( 'Team Member Contact', 'tr
 /*-------------------------------------
 #. Booking
 ---------------------------------------*/
+$Postmeta->add_meta_box('tripfery_booking_layout', __('Booking Layout', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		"tripfery_booking_style" => array(
+			'label'   => __('Booking Sinlge Layout', 'tripfery-core'),
+			'type'    => 'select',
+			'options' => array(
+				'default' => __('Default', 'tripfery-core'),
+				'style1'       => __('Layout 1', 'tripfery-core'),
+				'style2'       => __('Layout 2', 'tripfery-core'),
+				'style3'       => __('Layout 3', 'tripfery-core'),
+			),
+			'default'  => 'default',
+		),
+	)
+));
+
+/*-------------------------------------
+#. Locations
+---------------------------------------*/
+$Postmeta->add_meta_box('tripfery_booking_info', __('Booking Area Information', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_languages' => array(
+			'label' => __('Languages', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_location_cars' => array(
+			'label' => __('Location Cars', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_location_hotel' => array(
+			'label' => __('Location Hotel', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_location_tours' => array(
+			'label' => __('Location Tours', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_location_rentals' => array(
+			'label' => __('Location Rentals', 'tripfery-core'),
+			'type'  => 'text',
+		),
+	)
+));
 
 $Postmeta->add_meta_box('tripfery_booking_property', __('Booking Property', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
@@ -404,33 +447,59 @@ $Postmeta->add_meta_box('tripfery_booking_rules', __('Booking Rules', 'tripfery-
 	)
 ));
 
-/*-------------------------------------
-#. Locations
----------------------------------------*/
-$Postmeta->add_meta_box( 'tripfery_booking_info', __( 'Locations Area Information', 'tripfery-core' ), array( 'tripfery_booking' ), '', '', 'high', array(
+$Postmeta->add_meta_box('tripfery_booking_highlights', __('Booking Highlights', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
-		'tripfery_location_activities' => array(
-			'label' => __( 'Location Activities', 'tripfery-core' ),
+		'tripfery_booking_highlights_title' => array(
+			'label' => __('Highlights Title', 'tripfery-core'),
 			'type'  => 'text',
 		),
-		'tripfery_location_cars' => array(
-			'label' => __( 'Location Cars', 'tripfery-core' ),
-			'type'  => 'text',
+		'tripfery_booking_highlights' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Title', 'tripfery-core'),
+			'value'  => array(
+				'rules_name' => array(
+					'label' => __('Title Title', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+			)
 		),
-		'tripfery_location_hotel' => array(
-			'label' => __( 'Location Hotel', 'tripfery-core' ),
-			'type'  => 'text',
-		),
-		'tripfery_location_tours' => array(
-			'label' => __( 'Location Tours', 'tripfery-core' ),
-			'type'  => 'text',
-		),
-		'tripfery_location_rentals' => array(
-			'label' => __( 'Location Rentals', 'tripfery-core' ),
-			'type'  => 'text',
-		),			
 	)
-) );
+));
+
+$Postmeta->add_meta_box('tripfery_booking_included', __('Booking Highlights', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_included_title' => array(
+			'label' => __('Included Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_included' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Title', 'tripfery-core'),
+			'value'  => array(
+				'rules_name' => array(
+					'label' => __('Title Title', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+			)
+		),
+		'tripfery_booking_excluded' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Title', 'tripfery-core'),
+			'value'  => array(
+				'rules_name' => array(
+					'label' => __('Title Title', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+			)
+		),
+	)
+));
+
+
+
 
 /*-------------------------------------
 #. Service
