@@ -11,7 +11,7 @@ use Elementor\Group_Control_Typography;
 if ( ! defined( 'ABSPATH' ) ) exit;
 class RT_Car_Category extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Car Booking', 'tripfery-core' );
+		$this->rt_name = esc_html__( 'RT Car Category', 'tripfery-core' );
 		$this->rt_base = 'rt-car-category';
 		$this->rt_translate = array(
 			'cols'  => array(

@@ -12,7 +12,7 @@ use Elementor\Group_Control_Css_Filter;
 if ( ! defined( 'ABSPATH' ) ) exit;
 class RT_Service_Locations extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Service Locations', 'tripfery-core' );
+		$this->rt_name = esc_html__('RT Destinations', 'tripfery-core' );
 		$this->rt_base = 'rt-service-booking';
 		$this->rt_translate = array(
 			'cols'  => array(
@@ -28,7 +28,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 	public function rt_fields(){
 		// Select Location
 		$terms  = get_terms(array(
-			'taxonomy' => 'ba_booking-booking',
+			'taxonomy' => 'ba_booking-locations',
 			'fields' => 'id=>name',
 			'hide_empty' => false,
 		));
@@ -315,19 +315,18 @@ class RT_Service_Locations extends Custom_Widget_Base {
 		$data = $this->get_settings();
 		switch ($data['style']) {
 			case 'style4':
-				$template = 'rt-servic-booking-slider-4';
+				$template = 'rt-servic-locations-slider-4';
 				break;
 			case 'style3':
-				$template = 'rt-servic-booking-grid-3';
+				$template = 'rt-servic-locations-grid-3';
 				break;
 			case 'style2':
-				$template = 'rt-servic-booking-grid-2';
+				$template = 'rt-servic-locations-grid-2';
 				break;
 			default:
-				$template = 'rt-servic-booking-grid-1';
+				$template = 'rt-servic-locations-grid-1';
 				break;
 		}
-		
 		return $this->rt_template($template, $data);
 	}
 }

@@ -13,9 +13,8 @@
 			<?php
 			$m = $data['delay'];
 			$n = $data['duration'];
-
 			foreach ($data['rt-service-booking'] as $item) :
-				$term = get_term($item['category_list'], 'ba_booking-booking');
+				$term = get_term($item['category_list'], 'ba_booking-locations');
 				$term_link = get_term_link($term);
 				$image_id = $item['image']['id'];
 				$image_attributes = wp_get_attachment_image_src($image_id, 'full');
@@ -38,7 +37,7 @@
 							'tax_query' => array(
 								'relation' => 'AND',
 								array(
-									'taxonomy' => 'ba_booking-booking',
+									'taxonomy' => 'ba_booking-locations',
 									'field' => 'term_id',
 									'terms' => $item['category_list'],
 								),

@@ -34,7 +34,7 @@ namespace radiustheme\Tripfery_Core; ?>
 						</h3>
 						<?php }
 						$locterms = get_terms(array(
-							'taxonomy' => 'ba_booking-booking',
+							'taxonomy' => 'ba_booking-locations',
 							'parent'   => 0
 						));
 						$terms_ids = [];
@@ -51,7 +51,7 @@ namespace radiustheme\Tripfery_Core; ?>
 									'terms' => $item['category_list'],
 								),
 								array(
-									'taxonomy' => 'ba_booking-booking',
+									'taxonomy' => 'ba_booking-locations',
 									'field' => 'term_id',
 									'terms' => $terms_ids,
 								),

@@ -70,10 +70,11 @@
 				</div>
 				<?php } ?>
 
-				<div class="row justify-content-center cardContainer">
+				<div class="row cardContainer">
 					<?php
 					foreach ($posts as $post) {
 						$post_id 	= $post['ID'];
+						$ba_info 	= BABE_Post_types::get_post($post_id);
 						$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
 						$item_url = BABE_Functions::get_page_url_with_args($post['ID'], $_GET);
 						$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post['ID']), $thumbnail);
@@ -84,7 +85,7 @@
 						$price_old = $post['discount_price_from'] < $price_from_with_taxes ? '<span class="item_info_price_old">' . BABE_Currency::get_currency_price($price_from_with_taxes) . '</span>' : '';
 						$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '%</div>' : '';
 						$item_info_price = '';
-						$ba_info 	= BABE_Post_types::get_post($post_id);
+						
 						if (!empty($post['discount_price_from'])) {
 							$item_info_price = '
 								<div class="rt-price">	
@@ -123,12 +124,14 @@
 									<h3 class="listing-card-title">
 										<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 									</h3>
+									<?php if(!empty(BABE_Rating::post_stars_rendering($post['ID']))){?>	
 									<div class="d-flex align-item listing-card-review-area">
 										<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
 										<div class="rt-bookoing-rating">
 											<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
 										</div>
 									</div>
+									<?php } ?>
 									<div class="d-flex align-items-center justify-content-between price-area">
 										<?php echo wp_kses_post($item_info_price); ?>
 										<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated"><?php echo esc_html('View Availability', 'tripfery-core') ?></a>

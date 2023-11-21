@@ -14,7 +14,7 @@
 			$m = $data['delay'];
 			$n = $data['duration'];
 			foreach ($data['rt-service-booking'] as $item) :
-				$term = get_term($item['category_list'], 'ba_booking-booking');
+				$term = get_term($item['category_list'], 'ba_booking-locations');
 				$term_link = get_term_link($term);
 			?>
 				<div class="swiper-slide <?php echo esc_attr($data['animation']); ?> <?php echo esc_attr($data['animation_effect']); ?>" data-wow-delay="<?php echo esc_attr($m); ?>s" data-wow-duration="<?php echo esc_attr($n); ?>s">
@@ -37,7 +37,7 @@
 										'tax_query' => array(
 											'relation' => 'AND',
 											array(
-												'taxonomy' => 'ba_booking-booking',
+												'taxonomy' => 'ba_booking-locations',
 												'field' => 'term_id',
 												'terms' => $item['category_list'],
 											),
