@@ -1,73 +1,42 @@
 <?php
-	$thumb_size = 'tripfery-size3';
-	$number_of_post = $data['itemnumber'];
-	$post_orderby = $data['post_orderby'];
-	$post_order = $data['post_order'];
-	$p_ids = array();
-	foreach ($data['posts_not_in'] as $p_idsn) {
-		$p_ids[] = $p_idsn['post_not_in'];
-	}
-	if (get_query_var('paged')) {
-		$paged = get_query_var('paged');
-	} else if (get_query_var('page')) {
-		$paged = get_query_var('page');
-	} else {
-		$paged = 1;
-	}
-	$args = array(
-		'post_type'            => 'to_book',
-		'posts_per_page'     => $number_of_post,
-		'order'             => $post_order,
-		'orderby'             => $post_orderby,
-		'post__not_in'       => $p_ids,
-		'post_status'		=> 'publish',
-		'paged'             => $paged,
-	);
-	if (!empty($data['catid'])) {
-		$args['tax_query'] = [
-			[
-				'taxonomy' => 'categories',
-				'field' => 'term_id',
-				'terms' => $data['catid'],
-			],
-		];
-	}
-	$post_in = [];
-	$query = new WP_Query($args);
-	if ($query->have_posts()) :
-		while ($query->have_posts()) : $query->the_post();
-			$post_in[] = get_the_ID();
-		endwhile;
-	endif;
-	unset($args['tax_query']);
-	$args['post__in'] = $post_in;
-
 if (class_exists('BABE_Functions')) {
+		$output = '';
+		$args = wp_parse_args($_GET, array(
+			'request_search_results' => '',
+			'date_from' => '', //// d/m/Y or m/d/Y format
+			'date_to' => '',
+			'time_from' => '00:00',
+			'time_to' => '23:59',
+			'categories' => [], //// term_taxonomy_ids from categories
+			'terms' => [], //// term_taxonomy_ids from custom taxonomies in $taxonomies_list
+			'search_results_sort_by' => 'title_asc',
+			'keyword' => '',
+		));
+		if (!$args['request_search_results']) {
+			return $output;
+		}
+		if (isset($_GET['guests'])) {
+			$guests = array_map('absint', $_GET['guests']);
+			$args['guests'] = array_sum($guests);
+		}
+		// sanitize args
+		foreach ($args as $arg_key => $arg_value) {
+			$args[sanitize_title($arg_key)] = is_array($arg_value) ? array_map('absint', $arg_value) : sanitize_text_field($arg_value);
+		}
+		///// categories
+		if (!empty(BABE_Search_From::$search_form_tabs) && is_array(BABE_Search_From::$search_form_tabs) && isset($_GET['search_tab']) && isset(BABE_Search_From::$search_form_tabs[$_GET['search_tab']])) {
+			$args['categories'] = BABE_Search_From::$search_form_tabs[$_GET['search_tab']]['categories'];
+		}
+		$args = apply_filters('babe_search_result_args', $args);
+		$args = BABE_Post_types::search_filter_to_get_posts_args($args);
 		$posts = BABE_Post_types::get_posts($args);
+		$posts_pages = BABE_Post_types::$get_posts_pages;
 		$total_post = count($posts);
 		$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}"; ?>
 		<div class="rt-fillter-inner babe_search_results">
 			<div class="d-flex align-items-center justify-content-between view-switch-bar position-relative">
-
-				<?php if($data['cat_display']){?>
-				<p class="search-result mb-0">
-					<?php echo esc_attr($total_post) . ' ';
-					$terms = get_terms(array(
-						'taxonomy' => 'categories',
-						'include'  => $data['catid'],
-						'orderby' => 'include',
-					));
-					foreach ($terms as $term) {
-						echo esc_html($term->name);
-					}
-					echo esc_html(' found', 'tripfery'); ?>
-				</p>
-				<?php } ?>
-
 				<div class="d-flex view-switch-right">
 					<?php
-						$results = $this->get_search_result($data);
-						if (isset($results['posts_count']) && !empty($results['posts_count'])) {
 						?>
 						<div class="babe_search_results_filters">
 							<div class="sort-and-filter">
@@ -76,7 +45,7 @@ if (class_exists('BABE_Functions')) {
 								} ?>
 							</div>
 						</div>
-						<?php } ?>
+						
 						<ul class="nav" id="pills-tab" role="tablist">
 							<li class="rt_grid_btn nav-item" role="presentation">
 								<button class="nav-btn">
@@ -174,4 +143,8 @@ if (class_exists('BABE_Functions')) {
 					?>
 				</div>
 			</div>
+		</div>
 	<?php } ?>
+
+
+

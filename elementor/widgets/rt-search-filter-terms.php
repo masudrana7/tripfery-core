@@ -6,41 +6,41 @@
  */
 
 namespace radiustheme\Tripfery_Core;
-
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use BABE_Post_types;
 if ( ! defined( 'ABSPATH' ) ) exit;
-class RT_Service_Search_Form extends Custom_Widget_Base {
+class RT_Search_Filter_Terms extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Services Search Form', 'tripfery-core' );
-		$this->rt_base = 'rt-services-search-form';
+		$this->rt_name = esc_html__( 'BA Search Filter Terms', 'tripfery-core' );
+		$this->rt_base = 'rt-be-filter-terms';
 		parent::__construct( $data, $args );
 	}
 	public function rt_fields(){
-		$repeater = new \Elementor\Repeater();
-		$repeater->add_control(
-			'post_not_in', [
-				'type'    => Controls_Manager::NUMBER,
-				'label'   => esc_html__( 'Post ID', 'tripfery-core' ),
-				'default' => '0',
-				'label_block' => true,
-			]
-		);
+
+		$terms  = get_terms(array(
+			'taxonomy' => 'taxonomies_list',
+			'fields' => 'id=>name',
+			'hide_empty' => false,
+		));
+
+		$category_dropdown = array('0' => esc_html__('Select Category', 'tripfery-core'));
+		foreach ($terms as $id => $name) {
+			$category_dropdown[$id] = $name;
+		}
 		$fields = array(
 			array(
 				'mode'    => 'section_start',
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
 			),
-
 			array(
-				'type'    => Controls_Manager::TEXT,
-				'id'      => 'price',
-				'label'   => esc_html__('Price', 'tripfery-core'),
-				'default' => 'Price',
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'category_list',
+				'label'   => esc_html__('Select Category', 'tripfery-core'),
+				'options' => $category_dropdown,
+				'default' => 'Select Category',
 			),
-
 			array(
 				'mode' => 'section_end',
 			),
@@ -80,15 +80,12 @@ class RT_Service_Search_Form extends Custom_Widget_Base {
 			array(
 				'mode' => 'section_end',
 			),
-
-			
-			
 		);
 		return $fields;
 	}
 	protected function render() {
 		$data = $this->get_settings();
-		$template = 'rt-service-search-form';
+		$template = 'rt-search-filter-terms';
 		$this->rt_template($template, $data);
 	}
 }

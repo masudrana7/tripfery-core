@@ -14,10 +14,10 @@ use BABE_Functions;
 use BABE_html;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class RT_Service_Search_Result extends Custom_Widget_Base {
+class RT_Service_Search_Result_Two extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Services Search Result', 'tripfery-core' );
-		$this->rt_base = 'rt-services-search-result';
+		$this->rt_name = esc_html__( 'RT Services Search Result Two', 'tripfery-core' );
+		$this->rt_base = 'rt-services-search-result-two';
 		$this->rt_translate = array(
 			'cols'  => array(
 				'12' => esc_html__( '1 Col', 'tripfery-core' ),
@@ -264,41 +264,9 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 	}
 	protected function render() {
 		$data = $this->get_settings();
-		$template = 'rt-service-search-result';
+		$template = 'rt-service-search-result-two';
 		$this->rt_template($template, $data);
-	}
-	public static function get_search_result(){
-		$output = '';
-		$args = wp_parse_args($_GET, array(
-			'request_search_results' 	=> '',
-			'date_from' 				 	=> '', 
-			'date_to' 					 	=> '',
-			'time_from' 				 	=> '00:00',
-			'time_to' 					 	=> '00:00',
-			'categories' 				 	=> [], 
-			'terms' 						 	=> [], 
-			'search_results_sort_by' 	=> 'title_asc',
-			'keyword' 					 	=> '',
-			'return_total_count'     	=> 1
-		));
-
-		$args = apply_filters('babe_search_result_args', $args);
-		$args = BABE_Post_types::search_filter_to_get_posts_args($args);
-		$posts = BABE_Post_types::get_posts($args);
-		$posts_pages = BABE_Post_types::$get_posts_pages;
 		
-		foreach ($posts as $post) {
-			ob_start();
-				echo ' ';
-			$output .= ob_get_clean();
-		} 
-		$results = array();
-		if ($output) {
-			$results['output'] = $output;
-			$results['sort_by_filter'] = $sort_by_filter = BABE_html::input_select_field_with_order('sr_sort_by', '', BABE_Post_types::get_search_filter_sort_by_args(), $args['search_results_sort_by']);
-			$results['page']           = BABE_Functions::pager($posts_pages);
-			$results['posts_count']    = BABE_Post_types::$get_posts_count;
-		}
-		return $results;
 	}
+
 }
