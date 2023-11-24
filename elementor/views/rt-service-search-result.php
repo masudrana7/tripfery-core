@@ -42,31 +42,31 @@
 	unset($args['tax_query']);
 	$args['post__in'] = $post_in;
 
-if (class_exists('BABE_Functions')) {
+	if (class_exists('BABE_Functions')) {
 		$posts = BABE_Post_types::get_posts($args);
 		$total_post = count($posts);
+		$results = $this->get_search_result($data);
 		$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}"; ?>
 		<div class="rt-fillter-inner babe_search_results">
-			<div class="d-flex align-items-center justify-content-between view-switch-bar position-relative">
+				<div class="d-flex align-items-center justify-content-between view-switch-bar position-relative">
+					<?php if($data['cat_display']){?>
+						<p class="search-result mb-0">
+							<?php echo esc_html($results['posts_count']) . ' ';
+							$terms = get_terms(array(
+								'taxonomy' => 'categories',
+								'include'  => $data['catid'],
+								'orderby' => 'include',
+							));
+							foreach ($terms as $term) {
+								echo esc_html($term->name);
+							}
+							echo esc_html(' found', 'tripfery'); ?>
+						</p>
+					<?php } ?>
 
-				<?php if($data['cat_display']){?>
-				<p class="search-result mb-0">
-					<?php echo esc_attr($total_post) . ' ';
-					$terms = get_terms(array(
-						'taxonomy' => 'categories',
-						'include'  => $data['catid'],
-						'orderby' => 'include',
-					));
-					foreach ($terms as $term) {
-						echo esc_html($term->name);
-					}
-					echo esc_html(' found', 'tripfery'); ?>
-				</p>
-				<?php } ?>
-
-				<div class="d-flex view-switch-right">
-					<?php
-						$results = $this->get_search_result($data);
+					<div class="d-flex view-switch-right">
+						<?php
+						
 						if (isset($results['posts_count']) && !empty($results['posts_count'])) {
 						?>
 						<div class="babe_search_results_filters">
@@ -77,6 +77,7 @@ if (class_exists('BABE_Functions')) {
 							</div>
 						</div>
 						<?php } ?>
+
 						<ul class="nav" id="pills-tab" role="tablist">
 							<li class="rt_grid_btn nav-item" role="presentation">
 								<button class="nav-btn">
@@ -100,7 +101,7 @@ if (class_exists('BABE_Functions')) {
 								</button>
 							</li>
 						</ul>
-						</div>
+					</div>
 				</div>
 				<div class="row rt-search-services">
 					<?php
@@ -127,46 +128,46 @@ if (class_exists('BABE_Functions')) {
 						</div>';
 						}
 					?>
-						<div class="<?php echo esc_attr($col_class); ?> mb-4">
-							<div class="listing-card">
-								<div class="rt-service-image">
-									<?php echo wp_kses_post($image); ?>
-								</div>
-								<div class="listing-card-content">
-									<div class="d-flex justify-content-between">
-										<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
-										if ($address) {
-										?>
-											<div class="badge bage-pink">
-												<svg class="badge-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M5.99994 6.71503C6.86151 6.71503 7.55994 6.0166 7.55994 5.15503C7.55994 4.29347 6.86151 3.59503 5.99994 3.59503C5.13838 3.59503 4.43994 4.29347 4.43994 5.15503C4.43994 6.0166 5.13838 6.71503 5.99994 6.71503Z" stroke="currentColor" stroke-opacity="0.99" />
-													<path d="M1.8101 4.24506C2.7951 -0.0849378 9.2101 -0.0799377 10.1901 4.25006C10.7651 6.79006 9.1851 8.94006 7.8001 10.2701C6.7951 11.2401 5.2051 11.2401 4.1951 10.2701C2.8151 8.94006 1.2351 6.78506 1.8101 4.24506Z" stroke="currentColor" stroke-opacity="0.99" />
-												</svg>
-												<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
-											</div>
-										<?php } ?>
-										<div class="wishlist">
-											<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+					<div class="<?php echo esc_attr($col_class); ?> mb-4">
+						<div class="listing-card">
+							<div class="rt-service-image">
+								<?php echo wp_kses_post($image); ?>
+							</div>
+							<div class="listing-card-content">
+								<div class="d-flex justify-content-between">
+									<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
+									if ($address) {
+									?>
+										<div class="badge bage-pink">
+											<svg class="badge-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M5.99994 6.71503C6.86151 6.71503 7.55994 6.0166 7.55994 5.15503C7.55994 4.29347 6.86151 3.59503 5.99994 3.59503C5.13838 3.59503 4.43994 4.29347 4.43994 5.15503C4.43994 6.0166 5.13838 6.71503 5.99994 6.71503Z" stroke="currentColor" stroke-opacity="0.99" />
+												<path d="M1.8101 4.24506C2.7951 -0.0849378 9.2101 -0.0799377 10.1901 4.25006C10.7651 6.79006 9.1851 8.94006 7.8001 10.2701C6.7951 11.2401 5.2051 11.2401 4.1951 10.2701C2.8151 8.94006 1.2351 6.78506 1.8101 4.24506Z" stroke="currentColor" stroke-opacity="0.99" />
 											</svg>
+											<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
 										</div>
+									<?php } ?>
+									<div class="wishlist">
+										<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
 									</div>
-									<h3 class="listing-card-title">
-										<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-									</h3>
-									<div class="d-flex align-item listing-card-review-area">
-										<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-										<div class="rt-bookoing-rating">
-											<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
-										</div>
+								</div>
+								<h3 class="listing-card-title">
+									<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
+								</h3>
+								<div class="d-flex align-item listing-card-review-area">
+									<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+									<div class="rt-bookoing-rating">
+										<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
 									</div>
-									<div class="d-flex align-items-center justify-content-between price-area">
-										<?php echo wp_kses_post($item_info_price); ?>
-										<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated"><?php echo esc_html('View Availability', 'tripfery-core') ?></a>
-									</div>
+								</div>
+								<div class="d-flex align-items-center justify-content-between price-area">
+									<?php echo wp_kses_post($item_info_price); ?>
+									<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated"><?php echo esc_html('View Availability', 'tripfery-core') ?></a>
 								</div>
 							</div>
 						</div>
+					</div>
 					<?php }
 					$posts_pages = BABE_Post_types::$get_posts_pages;
 					$pagination = BABE_Functions::pager($total_post);

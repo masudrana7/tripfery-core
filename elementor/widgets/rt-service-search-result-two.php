@@ -262,11 +262,64 @@ class RT_Service_Search_Result_Two extends Custom_Widget_Base {
 		);
 		return $fields;
 	}
+	
+	
 	protected function render() {
+		if (class_exists('BABE_Functions')) {
+			remove_filter('the_content', array( \BABE_html::class, 'page_search_result'), 10, 1);
+		}
 		$data = $this->get_settings();
 		$template = 'rt-service-search-result-two';
 		$this->rt_template($template, $data);
-		
 	}
 
+	public static function get_search_result()
+	{
+		$output = '';
+		$args = wp_parse_args($_GET, array(
+			'request_search_results' 	=> '',
+			'date_from' 				 	=> '',
+			'date_to' 					 	=> '',
+			'time_from' 				 	=> '00:00',
+			'time_to' 					 	=> '00:00',
+			'categories' 				 	=> [],
+			'terms' 						 	=> [],
+			'search_results_sort_by' 	=> 'title_asc',
+			'keyword' 					 	=> '',
+			'return_total_count'     	=> 1
+		));
+		if (!$args['request_search_results']) {
+			return $output;
+		}
+		if (isset($_GET['guests'])) {
+			$guests = array_map('absint', $_GET['guests']);
+			$args['guests'] = array_sum($guests);
+		}
+		// sanitize args
+		foreach ($args as $arg_key => $arg_value) {
+			$args[sanitize_title($arg_key)] = is_array($arg_value) ? array_map('absint', $arg_value) : sanitize_text_field($arg_value);
+		}
+		///// categories
+		if (!empty(BABE_Search_From::$search_form_tabs) && is_array(BABE_Search_From::$search_form_tabs) && isset($_GET['search_tab']) && isset(BABE_Search_From::$search_form_tabs[$_GET['search_tab']])) {
+			$args['categories'] = BABE_Search_From::$search_form_tabs[$_GET['search_tab']]['categories'];
+		}
+		$args = apply_filters('babe_search_result_args', $args);
+		$args = BABE_Post_types::search_filter_to_get_posts_args($args);
+		$posts = BABE_Post_types::get_posts($args);
+		$posts_pages = BABE_Post_types::$get_posts_pages;
+		foreach ($posts as $post) {
+			ob_start();
+			echo ' ';
+			$output .= ob_get_clean();
+		}
+		$results = array();
+		if ($output) {
+			$results['output'] = $output;
+			$results['sort_by_filter'] = $sort_by_filter = BABE_html::input_select_field_with_order('sr_sort_by', '', BABE_Post_types::get_search_filter_sort_by_args(), $args['search_results_sort_by']);
+			$results['page']           = BABE_Functions::pager($posts_pages);
+			$results['posts_count']    = BABE_Post_types::$get_posts_count;
+		}
+		return $results;
+	}
+	
 }
