@@ -30,7 +30,6 @@ if (class_exists('BABE_Functions')) {
 	$args = apply_filters('babe_search_result_args', $args);
 	$args = BABE_Post_types::search_filter_to_get_posts_args($args);
 	$posts = BABE_Post_types::get_posts($args);
-	$posts_pages = BABE_Post_types::$get_posts_pages;
 	$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}"; ?>
 	<div class="rt-fillter-inner babe_search_results">
 		<?php

@@ -50,7 +50,15 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
 			),
-			/*Start category*/			
+			/*Start category*/
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'cat_display',
+				'label'       => esc_html__('Category Name Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+			),		
 			array(
 				'id'      => 'catid',
 				'label' => esc_html__( 'Categories', 'tripfery-core' ),
@@ -88,14 +96,6 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 				'id'      => 'posts_not_in',
 				'label'   => esc_html__( 'Enter Post ID that will not display', 'tripfery-core' ),
 				'fields' => $repeater->get_controls(),
-			),
-			array (
-				'type'        => Controls_Manager::SWITCHER,
-				'id'          => 'cat_display',
-				'label'       => esc_html__( 'Category Name Display', 'tripfery-core' ),
-				'label_on'    => esc_html__( 'Show', 'tripfery-core' ),
-				'label_off'   => esc_html__( 'Hide', 'tripfery-core' ),
-				'default'     => 'yes',
 			),
 			array(
 				'type'    => Controls_Manager::NUMBER,
@@ -263,42 +263,11 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 		return $fields;
 	}
 	protected function render() {
+		if (class_exists('BABE_Functions')) {
+			remove_filter('the_content', array(\BABE_html::class, 'page_search_result'), 10, 1);
+		}
 		$data = $this->get_settings();
 		$template = 'rt-service-search-result';
 		$this->rt_template($template, $data);
-	}
-	public static function get_search_result(){
-		$output = '';
-		$args = wp_parse_args($_GET, array(
-			'request_search_results' 	=> '',
-			'date_from' 				 	=> '', 
-			'date_to' 					 	=> '',
-			'time_from' 				 	=> '00:00',
-			'time_to' 					 	=> '00:00',
-			'categories' 				 	=> [], 
-			'terms' 						 	=> [], 
-			'search_results_sort_by' 	=> 'title_asc',
-			'keyword' 					 	=> '',
-			'return_total_count'     	=> 1
-		));
-
-		$args = apply_filters('babe_search_result_args', $args);
-		$args = BABE_Post_types::search_filter_to_get_posts_args($args);
-		$posts = BABE_Post_types::get_posts($args);
-		$posts_pages = BABE_Post_types::$get_posts_pages;
-		
-		foreach ($posts as $post) {
-			ob_start();
-				echo ' ';
-			$output .= ob_get_clean();
-		} 
-		$results = array();
-		if ($output) {
-			$results['output'] = $output;
-			$results['sort_by_filter'] = $sort_by_filter = BABE_html::input_select_field_with_order('sr_sort_by', '', BABE_Post_types::get_search_filter_sort_by_args(), $args['search_results_sort_by']);
-			$results['page']           = BABE_Functions::pager($posts_pages);
-			$results['posts_count']    = BABE_Post_types::$get_posts_count;
-		}
-		return $results;
 	}
 }

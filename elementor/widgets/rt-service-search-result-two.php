@@ -262,8 +262,6 @@ class RT_Service_Search_Result_Two extends Custom_Widget_Base {
 		);
 		return $fields;
 	}
-	
-	
 	protected function render() {
 		if (class_exists('BABE_Functions')) {
 			remove_filter('the_content', array( \BABE_html::class, 'page_search_result'), 10, 1);
@@ -272,11 +270,11 @@ class RT_Service_Search_Result_Two extends Custom_Widget_Base {
 		$template = 'rt-service-search-result-two';
 		$this->rt_template($template, $data);
 	}
-
 	public static function get_search_result()
 	{
 		$output = '';
 		$args = wp_parse_args($_GET, array(
+			'post_type'            => 'to_book',
 			'request_search_results' 	=> '',
 			'date_from' 				 	=> '',
 			'date_to' 					 	=> '',
@@ -303,6 +301,7 @@ class RT_Service_Search_Result_Two extends Custom_Widget_Base {
 		if (!empty(BABE_Search_From::$search_form_tabs) && is_array(BABE_Search_From::$search_form_tabs) && isset($_GET['search_tab']) && isset(BABE_Search_From::$search_form_tabs[$_GET['search_tab']])) {
 			$args['categories'] = BABE_Search_From::$search_form_tabs[$_GET['search_tab']]['categories'];
 		}
+		
 		$args = apply_filters('babe_search_result_args', $args);
 		$args = BABE_Post_types::search_filter_to_get_posts_args($args);
 		$posts = BABE_Post_types::get_posts($args);

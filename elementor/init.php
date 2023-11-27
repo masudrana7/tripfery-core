@@ -74,16 +74,9 @@ class Custom_Widget_Init {
 			'rt-car-categories'				=> 'RT_Car_Category',
 			'rt-service-review'				=> 'RT_Service_Reviews',
 			'rt-service-search-result'		=> 'RT_Service_Search_Result',
-			'rt-service-search-result-two'	=> 'RT_Service_Search_Result_Two',
 			'rt-be-price-filter'			=> 'RT_BE_Price_Filter',
 			'rt-be-price-filter'			=> 'RT_BE_Price_Filter',
 			'rt-search-filter-terms'		=> 'RT_Search_Filter_Terms',
-
-
-			// 'rt-post-title'					=> 'RT_Post_Title',
-			// 'rt-booking-rating'				=> 'RT_Booking_Rating',
-			// 'rt-booking-address'			=> 'RT_Booking_Address',
-			// 'rt-booking-price'				=> 'RT_Booking_Price',
 		);
 		
 

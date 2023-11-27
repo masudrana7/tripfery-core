@@ -4,7 +4,6 @@
  * @since   1.0
  * @version 1.0
  */
-
 namespace radiustheme\Tripfery_Core;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
@@ -17,13 +16,11 @@ class RT_Search_Filter_Terms extends Custom_Widget_Base {
 		parent::__construct( $data, $args );
 	}
 	public function rt_fields(){
-
 		$terms  = get_terms(array(
 			'taxonomy' => 'taxonomies_list',
 			'fields' => 'id=>name',
 			'hide_empty' => false,
 		));
-
 		$category_dropdown = array('0' => esc_html__('Select Category', 'tripfery-core'));
 		foreach ($terms as $id => $name) {
 			$category_dropdown[$id] = $name;
@@ -58,7 +55,6 @@ class RT_Search_Filter_Terms extends Custom_Widget_Base {
 				'label'   => esc_html__( 'Sub Title Style', 'tripfery-core' ),
 				'selector' => '{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title',
 			),
-
 			array (
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'item_title_color',
