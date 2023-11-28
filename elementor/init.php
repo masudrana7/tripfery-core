@@ -77,6 +77,7 @@ class Custom_Widget_Init {
 			'rt-be-price-filter'			=> 'RT_BE_Price_Filter',
 			'rt-be-price-filter'			=> 'RT_BE_Price_Filter',
 			'rt-search-filter-terms'		=> 'RT_Search_Filter_Terms',
+			'rt-be-search-form'				=> 'RT_BE_Search_Form',
 		);
 		
 

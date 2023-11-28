@@ -62,7 +62,23 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 	            'options' => $category_dropdown,
 	            'label_block' => true,
 	            'multiple' => true,
-			),	
+			),
+			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'btn_text',
+				'label'   => esc_html__('Button Text', 'tripfery-core'),
+				'default' => esc_html__('View Availability', 'tripfery-core'),
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'rating_position',
+				'label'   => esc_html__('Rating Position', 'tripfery-core'),
+				'options' => array(
+					'top'	=> esc_html__('Top', 'tripfery-core'),
+					'bottom'	=> esc_html__('Bottom', 'tripfery-core'),
+				),
+				'default' => 'bottom',
+			),
 			/*Post Order*/
 			array(
 				'type'    => Controls_Manager::SELECT2,

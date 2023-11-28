@@ -78,7 +78,13 @@ if (class_exists('BABE_Functions')) {
 					$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
 					$item_url = BABE_Functions::get_page_url_with_args($post['ID'], $_GET);
 					$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post['ID']), $thumbnail);
-					$image = $image_srcs ? '<a class="text-decoration-none listing-thumb-wrapper" href="' . $item_url . '"><img class="text-decoration-none listing-thumb-wrapper" src="' . $image_srcs[0] . '"></a>' : '';
+
+
+					$image = $image_srcs ? '<a class="text-decoration-none listing-thumb-wrapper" href="' . $item_url . '">
+
+					<img class="text-decoration-none listing-thumb-wrapper" src="' . $image_srcs[0] . '">
+
+					</a>' : '';
 					$url   		= BABE_Functions::get_page_url_with_args($post_id, $_GET);
 					$item_terms = get_the_terms($post_id, 'categories');
 					$price_from_with_taxes = ($post['price_from'] * (100 + $post['categories_add_taxes'] * $post['categories_tax'])) / 100;
@@ -99,7 +105,19 @@ if (class_exists('BABE_Functions')) {
 					} ?>
 					<div class="<?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($terms_of_item); ?> mb-4">
 						<div class="listing-card">
-							<?php echo wp_kses_post($image); ?>
+
+							<?php if (!empty($image_srcs)) { ?>
+								<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+									<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
+									<?php if ($data['rating_position'] == 'top') {
+										echo '<span class="booking-top-rating">';
+										echo '<i class="fa-solid fa-star"></i>';
+										echo BABE_Rating::get_post_total_votes($post_id);
+										echo '</span>';
+									} ?>
+								</a>
+							<?php } ?>
+
 							<div class="listing-card-content">
 								<div class="d-flex justify-content-between">
 									<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
@@ -122,17 +140,21 @@ if (class_exists('BABE_Functions')) {
 								<h3 class="listing-card-title">
 									<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 								</h3>
-								<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
-									<div class="d-flex align-item listing-card-review-area">
-										<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-										<div class="rt-bookoing-rating">
-											<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
+								<?php if ($data['rating_position'] == 'bottom') { ?>
+									<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
+										<div class="d-flex align-item listing-card-review-area">
+											<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+											<div class="rt-bookoing-rating">
+												<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
+											</div>
 										</div>
-									</div>
+									<?php } ?>
 								<?php } ?>
 								<div class="d-flex align-items-center justify-content-between price-area">
 									<?php echo wp_kses_post($item_info_price); ?>
-									<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated"><?php echo esc_html('View Availability', 'tripfery-core') ?></a>
+									<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated">
+										<?php echo esc_html($data['btn_text']) ?>
+									</a>
 								</div>
 							</div>
 						</div>
