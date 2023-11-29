@@ -36,9 +36,7 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 		foreach ( $terms as $id => $name ) {
 			$category_dropdown[$id] = $name;
 		}
-
 		$repeater = new \Elementor\Repeater();
-
 		$repeater->add_control(
 			'post_not_in', [
 				'type'    => Controls_Manager::NUMBER,
@@ -53,6 +51,16 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'mode'    => 'section_start',
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'style',
+				'label'   => esc_html__('Style', 'tripfery-core'),
+				'options' => array(
+					'style1' => esc_html__('Style One', 'tripfery-core'),
+					'style2' => esc_html__('Style Two (Car)', 'tripfery-core'),
+				),
+				'default' => 'style1',
 			),
 			/*Start category*/			
 			array(
@@ -70,6 +78,39 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'default' => esc_html__('View Availability', 'tripfery-core'),
 			),
 			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'act_text',
+				'label'   => esc_html__('Activity Text', 'tripfery-core'),
+			),
+			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'manual',
+				'label'   => esc_html__('Manual Text', 'tripfery-core'),
+				'default' => esc_html__('Manual', 'tripfery-core'),
+				'condition'   => array('style' => array('style2')),
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'title_position',
+				'label'   => esc_html__('Tilte Position', 'tripfery-core'),
+				'options' => array(
+					'top'	=> esc_html__('Top', 'tripfery-core'),
+					'bottom'	=> esc_html__('Bottom', 'tripfery-core'),
+				),
+				'default' => 'bottom',
+				'condition'   => array('style' => array('style1')),
+			),
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'rating_display',
+				'label'       => esc_html__('Rating Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+				'condition'   => array('style' => array('style1')),
+				
+			),
+			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'rating_position',
 				'label'   => esc_html__('Rating Position', 'tripfery-core'),
@@ -78,7 +119,40 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 					'bottom'	=> esc_html__('Bottom', 'tripfery-core'),
 				),
 				'default' => 'bottom',
+				'condition'   => array('rating_display' => array('yes')),
 			),
+
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'wishlist_position',
+				'label'   => esc_html__('Wishlist Position', 'tripfery-core'),
+				'options' => array(
+					'top'	=> esc_html__('Top', 'tripfery-core'),
+					'bottom'	=> esc_html__('Bottom', 'tripfery-core'),
+				),
+				'default' => 'bottom',
+				'condition'   => array('style' => array('style1')),
+			),
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'button_display',
+				'label'       => esc_html__('Button Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+				'condition'   => array('style' => array('style1')),
+				
+			),
+
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'price_display',
+				'label'       => esc_html__('Price Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+			),
+			
 			/*Post Order*/
 			array(
 				'type'    => Controls_Manager::SELECT2,
@@ -127,39 +201,298 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 			array(
 				'mode' => 'section_end',
 			),
-			/*Option section*/
+
+			/*Location Style*/
 			array(
-	            'mode'    => 'section_start',
-	            'id'      => 'sec_option_style',
-	            'label'   => esc_html__( 'Option', 'tripfery-core' ),
-	            'tab'     => Controls_Manager::TAB_STYLE,
-	        ),
+				'mode'    => 'section_start',
+				'id'      => 'location_style',
+				'label'   => esc_html__('Location Style', 'tripfery-core'),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
+			
 			array (
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'loc_color',
+				'label'   => esc_html__( 'Text Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .badge .badge-text' => 'color: {{VALUE}}',
+				),
+			),
+			array (
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'loc_hover_color',
+				'label'   => esc_html__( 'Text Hover Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .badge:hover .badge-text' => 'color: {{VALUE}}',
+				),
+			),	
+			array (
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'loc_icon',
+				'label'   => esc_html__( 'Icon Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .badge .badge-icon' => 'color: {{VALUE}}',
+				),
+			),	
+			array (
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'loc_hover_icon',
+				'label'   => esc_html__( 'Icon Hover Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .badge:hover .badge-icon' => 'color: {{VALUE}}',
+				),
+			),	
+			array (
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'loc_bg',
+				'label'   => esc_html__( 'Background Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .badge' => 'background-color: {{VALUE}}',
+				),
+			),	
+			array (
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'loc_hover_bg',
+				'label'   => esc_html__( 'Background Hover Color', 'tripfery-core' ),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .badge:hover' => 'background-color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'badge_padding',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Padding', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Typography::get_type(),
+				'name'    => 'loc_typo',
+				'label'   => esc_html__('Typography', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .badge .badge-text',
+			),	
+			array(
+				'mode' => 'section_end',
+			),
+
+			/*Title Style*/
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'title_style',
+				'label'   => esc_html__('Title Style', 'tripfery-core'),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'title_color',
+				'label'   => esc_html__('Title Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .listing-card .listing-card-title a' => 'color: {{VALUE}}',
+				),
+			),
+
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'title_hover_color',
+				'label'   => esc_html__('Title Hover Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .listing-card:hover .listing-card-title a' => 'color: {{VALUE}}',
+				),
+			),
+			array(
 				'mode'    => 'group',
 				'type'    => Group_Control_Typography::get_type(),
 				'name'    => 'title_typo',
-				'label'   => esc_html__( 'Sub Title Style', 'tripfery-core' ),
-				'selector' => '{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title',
+				'label'   => esc_html__('Typography', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .listing-card-title',
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'title_margin',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Padding', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .listing-card-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
+			array(
+				'mode' => 'section_end',
 			),
 
-			array (
-				'type'    => Controls_Manager::COLOR,
-				'id'      => 'item_title_color',
-				'label'   => esc_html__( 'Item Title Color', 'tripfery-core' ),
-				'default' => '',
-				'selectors' => array( 
-					'{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title a' => 'color: {{VALUE}}',
-				),
+			/*Price Style*/
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'price_style',
+				'label'   => esc_html__('Price Style', 'tripfery-core'),
+				'tab'     => Controls_Manager::TAB_STYLE,
 			),
-			array (
+			array(
 				'type'    => Controls_Manager::COLOR,
-				'id'      => 'item_title_hov_color',
-				'label'   => esc_html__( 'Item Hover Color', 'tripfery-core' ),
+				'id'      => 'price_color',
+				'label'   => esc_html__('Price Color', 'tripfery-core'),
 				'default' => '',
 				'selectors' => array(
-					'{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title a:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .listing-card .price-text' => 'color: {{VALUE}}',
 				),
-			),			
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Typography::get_type(),
+				'name'    => 'prcie_typo',
+				'label'   => esc_html__('Typography', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .listing-card .price-text',
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'price_padding',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Price Area Padding', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .price-area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
+			array(
+				'mode' => 'section_end',
+			),
+
+			/*Button Style*/
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'button_style',
+				'label'   => esc_html__('Button Style', 'tripfery-core'),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'btn_color',
+				'label'   => esc_html__('Button Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .price-area a' => 'color: {{VALUE}}',
+				),
+			),
+
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'btn_hover_color',
+				'label'   => esc_html__('Button Hover Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .price-area a:hover' => 'color: {{VALUE}}',
+				),
+			),
+
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'btn_bg_color',
+				'label'   => esc_html__('Button Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .price-area a' => 'background-color: {{VALUE}}',
+				),
+			),
+
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'btn_bg_hover_color',
+				'label'   => esc_html__('Button BG Hover Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .price-area a:hover' => 'background-color: {{VALUE}}',
+				),
+			),
+
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'btn_padding',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Padding', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .price-area a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Typography::get_type(),
+				'name'    => 'btn_typo',
+				'label'   => esc_html__('Typography', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .price-area a',
+			),
+			
+			array(
+				'mode' => 'section_end',
+			),
+			// Global Style
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'sec_option_style',
+				'label'   => esc_html__('Global Option', 'tripfery-core'),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
+			
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'wishlist_icon_color',
+				'label'   => esc_html__('Wishlist Icon Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .wishlist svg' => 'color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::COLOR,
+				'id'      => 'wishlist_icon_hover_color',
+				'label'   => esc_html__('Wishlist Icon Hover Color', 'tripfery-core'),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .wishlist svg:hover' => 'color: {{VALUE}}',
+				),
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'sec_padding',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Padding', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .listing-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'img_radius',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Image Radius', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .listing-card .listing-thumb-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'sec_radius',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Button Radius', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .listing-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			),
 			array(
 				'mode' => 'section_end',
 			),
@@ -271,10 +604,18 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 		);
 		return $fields;
 	}
-	protected function render() {
+	protected function render()
+	{
 		$this->rt_load_scripts();
 		$data = $this->get_settings();
-		$template = 'rt-service-isotope-1';
-		$this->rt_template($template, $data);
+		switch ($data['style']) {
+			case 'style2':
+				$template = 'rt-service-isotope-2';
+				break;
+			default:
+				$template = 'rt-service-isotope-1';
+				break;
+		}
+		return $this->rt_template($template, $data);
 	}
 }

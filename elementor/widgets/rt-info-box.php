@@ -554,7 +554,6 @@ class RT_Info_Box extends Custom_Widget_Base {
 
 	protected function render() {
 		$data = $this->get_settings();
-
 		switch ( $data['style'] ) {
 			case 'style9':
 			$template = 'rt-info-box-9';
@@ -584,7 +583,6 @@ class RT_Info_Box extends Custom_Widget_Base {
 			$template = 'rt-info-box-1';
 			break;
 		}
-
 		return $this->rt_template( $template, $data );
 	}
 }

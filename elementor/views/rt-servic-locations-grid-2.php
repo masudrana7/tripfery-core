@@ -15,7 +15,7 @@ namespace radiustheme\Tripfery_Core; ?>
 			$n = $data['duration'];
 
 			foreach ($data['rt-service-booking'] as $item) :
-				$term = get_term($item['category_list'], 'ba_booking-booking');
+				$term = get_term($item['category_list'], 'ba_booking-locations');
 				$term_link = get_term_link($term);
 				$image_id = $item['image']['id'];
 				$image_attributes = wp_get_attachment_image_src($image_id, 'full');
@@ -30,10 +30,13 @@ namespace radiustheme\Tripfery_Core; ?>
 						<div class="destination-info text-center">
 							<?php if (!empty($term->name)) { ?>
 								<h3 class="destination-name"><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a></h3>
+
 							<?php } ?>
+
 							<?php if (is_array($item['sec_cat']) && count($item['sec_cat'])) {  ?>
 								<?php foreach ($item['sec_cat'] as $term_id) {
 									$catterm = get_term($term_id, 'categories');
+									$loc_term = get_term($term_id, 'ba_booking-locations');
 									$args = array(
 										'post_type' => 'to_book',
 										'tax_query' => array(
@@ -50,14 +53,17 @@ namespace radiustheme\Tripfery_Core; ?>
 											),
 										),
 									);
+
 									$post_query = new \WP_Query($args);
+
 									if (!empty($post_query->found_posts)) { ?>
-										<p class="destination-tour"><?php echo esc_html($post_query->found_posts); ?> <?php echo $catterm->name; ?></span>
-								<?php }
+											<p class="destination-tour"><?php echo esc_html($post_query->found_posts); ?> <?php echo $catterm->name; ?></p>
+									<?php }
 								}
 							} ?>
 						</div>
 					</div>
+
 				</article>
 			<?php
 				$m = $m + 0.2;
