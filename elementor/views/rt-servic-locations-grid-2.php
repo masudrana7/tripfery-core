@@ -15,7 +15,7 @@ namespace radiustheme\Tripfery_Core; ?>
 			$n = $data['duration'];
 
 			foreach ($data['rt-service-booking'] as $item) :
-				$term = get_term($item['category_list'], 'ba_booking-locations');
+				$term = get_term($item['category_list'], 'ba_locations');
 				$term_link = get_term_link($term);
 				$image_id = $item['image']['id'];
 				$image_attributes = wp_get_attachment_image_src($image_id, 'full');
@@ -36,13 +36,13 @@ namespace radiustheme\Tripfery_Core; ?>
 							<?php if (is_array($item['sec_cat']) && count($item['sec_cat'])) {  ?>
 								<?php foreach ($item['sec_cat'] as $term_id) {
 									$catterm = get_term($term_id, 'categories');
-									$loc_term = get_term($term_id, 'ba_booking-locations');
+									$loc_term = get_term($term_id, 'ba_locations');
 									$args = array(
 										'post_type' => 'to_book',
 										'tax_query' => array(
 											'relation' => 'AND',
 											array(
-												'taxonomy' => 'ba_booking-locations',
+												'taxonomy' => 'ba_locations',
 												'field' => 'term_id',
 												'terms' => $item['category_list'],
 											),

@@ -66,6 +66,7 @@
 
 	$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}"; ?>
 	<div class="rt-fillter-inner babe_search_results">
+
 		<div class="d-flex align-items-center justify-content-between view-switch-bar position-relative">
 			<p class="search-result mb-0">
 				<?php echo esc_html($results['posts_count']) . ' ';

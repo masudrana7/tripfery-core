@@ -28,7 +28,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 	public function rt_fields(){
 		// Select Location
 		$terms  = get_terms(array(
-			'taxonomy' => 'ba_booking-locations',
+			'taxonomy' => 'ba_locations',
 			'fields' => 'id=>name',
 			'hide_empty' => false,
 		));
