@@ -9,7 +9,8 @@ namespace radiustheme\Tripfery_Core;
 
 use TripferyTheme;
 use TripferyTheme_Helper;
-use \RT_Postmeta;
+use RT_Postmeta;
+use RT_TaxMeta;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -636,3 +637,16 @@ $Postmeta->add_meta_box( 'tripfery_woo_product', __( 'Product Background', 'trip
 		),
 	)
 ) );
+
+
+/*-------------------------------------
+#. Taxonomy Field
+---------------------------------------*/
+$TaxMeta = RT_TaxMeta::getInstance();
+$TaxMeta->add_tax_meta( 'this_is_id', 'ba_locations', 10, [
+	'rt_location_gallery' => array(
+		'label' => __('Product Background Color', 'tripfery-core'),
+		'type'  => 'gallery',
+		'desc'  => 'Galley image add here...',
+	),
+] );
