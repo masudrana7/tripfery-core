@@ -95,9 +95,11 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'style2' => esc_html__('Style 2', 'tripfery-core'),
 					'style3' => esc_html__('Style 3', 'tripfery-core'),
 					'style4' => esc_html__('Style 4(Slider)', 'tripfery-core'),
+					'style5' => esc_html__('Style 5(Grid)', 'tripfery-core'),
 				),
 				'default' => 'style1',
 			),
+			
 			array(
 				'type'    => Controls_Manager::REPEATER,
 				'id'      => 'rt-service-booking',
@@ -121,12 +123,12 @@ class RT_Service_Locations extends Custom_Widget_Base {
 			array(
 				'type'        => Controls_Manager::SWITCHER,
 				'id'          => 'post_category',
-				'label'       => esc_html__('Show Categories', 'tripfery-core'),
+				'label'       => esc_html__('Show Navigation', 'tripfery-core'),
 				'label_on'    => esc_html__('Show', 'tripfery-core'),
 				'label_off'   => esc_html__('Hide', 'tripfery-core'),
 				'default'     => 'yes',
 				'condition'   => array('style' => array('style4')),
-			),			
+			),	
 			array(
 				'mode' => 'section_end',
 			),
@@ -184,6 +186,27 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				),
 			),
 			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'border_height',
+				'mode'          => 'responsive',
+				'label'   => esc_html__('Border Height', 'tripfery-core'),
+				'size_units' => array('%', 'px'),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 300,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-destionation-slider .destination-info::after' => 'height: {{SIZE}}{{UNIT}};',
+				),
+				'condition'   => array('style' => array('style4', 'style5')),
+			),
+			array(
 				'type'    => Controls_Manager::COLOR,
 				'id'      => 'activity_color',
 				'label'   => esc_html__('Activities Color', 'tripfery-core' ),
@@ -236,6 +259,51 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .panel-content .feature-list li .feature-name:hover' => 'border-color: {{VALUE}}',
 				),
+			),
+			array(
+				'mode' => 'section_end',
+			),
+			// Responsive Grid Columns
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'sec_responsive',
+				'label'   => esc_html__('Number of Responsive Columns', 'tripfery-core'),
+				'condition'   => array('style' => array('style5')),
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'col_xl',
+				'label'   => esc_html__('Desktops: > 1199px', 'tripfery-core'),
+				'options' => $this->rt_translate['cols'],
+				'default' => '4',
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'col_lg',
+				'label'   => esc_html__('Desktops: > 991px', 'tripfery-core'),
+				'options' => $this->rt_translate['cols'],
+				'default' => '4',
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'col_md',
+				'label'   => esc_html__('Tablets: > 767px', 'tripfery-core'),
+				'options' => $this->rt_translate['cols'],
+				'default' => '6',
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'col_sm',
+				'label'   => esc_html__('Phones: < 768px', 'tripfery-core'),
+				'options' => $this->rt_translate['cols'],
+				'default' => '6',
+			),
+			array(
+				'type'    => Controls_Manager::SELECT2,
+				'id'      => 'col_xs',
+				'label'   => esc_html__('Small Phones: < 480px', 'tripfery-core'),
+				'options' => $this->rt_translate['cols'],
+				'default' => '12',
 			),
 			array(
 				'mode' => 'section_end',
@@ -307,6 +375,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 			array(
 				'mode' => 'section_end',
 			),
+			
 		);
 		return $fields;
 	}
@@ -314,6 +383,9 @@ class RT_Service_Locations extends Custom_Widget_Base {
 	{
 		$data = $this->get_settings();
 		switch ($data['style']) {
+			case 'style5':
+				$template = 'rt-servic-locations-grid-5';
+				break;
 			case 'style4':
 				$template = 'rt-servic-locations-slider-4';
 				break;

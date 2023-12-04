@@ -56,6 +56,15 @@ class RT_BE_Search_Form extends Custom_Widget_Base {
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
 			),
+
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'display_menu',
+				'label'       => esc_html__('Display Menu', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+			),
 			array(
 				'type'    => Controls_Manager::TEXT,
 				'id'      => 'start_date',
@@ -87,31 +96,36 @@ class RT_BE_Search_Form extends Custom_Widget_Base {
 	            'label'   => esc_html__( 'Option', 'tripfery-core' ),
 	            'tab'     => Controls_Manager::TAB_STYLE,
 	        ),
-			array (
-				'mode'    => 'group',
-				'type'    => Group_Control_Typography::get_type(),
-				'name'    => 'title_typo',
-				'label'   => esc_html__( 'Sub Title Style', 'tripfery-core' ),
-				'selector' => '{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title',
-			),
-
-			array (
-				'type'    => Controls_Manager::COLOR,
-				'id'      => 'item_title_color',
-				'label'   => esc_html__( 'Item Title Color', 'tripfery-core' ),
-				'default' => '',
-				'selectors' => array( 
-					'{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title a' => 'color: {{VALUE}}',
+			array(
+				'type' => Controls_Manager::CHOOSE,
+				'id'      => 'content_align',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Alignment', 'tripfery-core'),
+				'options' => array(
+					'left' => array(
+						'title' => __('Left', 'elementor'),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => __('Center', 'elementor'),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => __('Right', 'elementor'),
+						'icon' => 'eicon-text-align-right',
+					),
 				),
-			),
-			array (
-				'type'    => Controls_Manager::COLOR,
-				'id'      => 'item_title_hov_color',
-				'label'   => esc_html__( 'Item Hover Color', 'tripfery-core' ),
 				'default' => '',
-				'selectors' => array(
-					'{{WRAPPER}} .rt-case-isotope .rtin-item .rtin-title a:hover' => 'color: {{VALUE}}',
-				),
+			),
+			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'id'      => 'button_radius',
+				'mode'    => 'responsive',
+				'label'   => esc_html__('Form Radius', 'tripfery-core'),
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .rt-search-customize .babe-search-form' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			),			
 			array(
 				'mode' => 'section_end',

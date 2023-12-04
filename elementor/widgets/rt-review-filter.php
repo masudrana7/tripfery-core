@@ -10,10 +10,10 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class RT_Service_Isotope extends Custom_Widget_Base {
+class RT_Reviews_Filter extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Category Filter', 'tripfery-core' );
-		$this->rt_base = 'rt-services-isotope';
+		$this->rt_name = esc_html__( 'RT Reviews Filter', 'tripfery-core' );
+		$this->rt_base = 'rt-review-filter';
 		$this->rt_translate = array(
 			'cols'  => array(
 				'12' => esc_html__( '1 Col', 'tripfery-core' ),
@@ -70,6 +70,25 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 	            'options' => $category_dropdown,
 	            'label_block' => true,
 	            'multiple' => true,
+			),
+			array(
+				'type'    => Controls_Manager::TEXT,
+				'id'      => 'all_text',
+				'label'   => esc_html__('All', 'tripfery-core'),
+				'default' => esc_html__('All', 'tripfery-core'),
+			),
+			array(
+				'id'      => 'select_reviews',
+				'label' => esc_html__('Select Filter', 'tripfery-core'),
+				'type' => Controls_Manager::SELECT2,
+				'options' => array(
+					'top' => esc_html__('Top', 'tripfery-core'),
+					'new' => esc_html__('New', 'tripfery-core'),
+					'most_review' => esc_html__('Most Review', 'tripfery-core'),
+					'offer' => esc_html__('Offer', 'tripfery-core'),
+				),
+				'label_block' => true,
+				'multiple' => true,
 			),
 			array(
 				'type'    => Controls_Manager::TEXT,
@@ -613,7 +632,7 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				$template = 'rt-service-isotope-2';
 				break;
 			default:
-				$template = 'rt-service-isotope-1';
+				$template = 'rt-review-filter-1';
 				break;
 		}
 		return $this->rt_template($template, $data);
