@@ -1,56 +1,71 @@
 <?php
-$thumb_size = 'tripfery-size3';
-$number_of_post = $data['itemnumber'];
-$post_orderby = $data['post_orderby'];
-$post_order = $data['post_order'];
-$p_ids = array();
-foreach ($data['posts_not_in'] as $p_idsn) {
-	$p_ids[] = $p_idsn['post_not_in'];
-}
-$args = array(
-	'post_type'            => 'to_book',
-	'posts_per_page'     => $number_of_post,
-	'order'             => $post_order,
-	'orderby'             => $post_orderby,
-	'post__not_in'       => $p_ids,
-);
-if (!empty($data['catid'])) {
-	$args['tax_query'] = [
-		[
-			'taxonomy' => 'categories',
-			'field' => 'term_id',
-			'terms' => $data['catid'],
-		],
-	];
-}
-$post_in = [];
-$query = new WP_Query($args);
-if ($query->have_posts()) :
-	while ($query->have_posts()) : $query->the_post();
-		$post_in[] = get_the_ID();
-	endwhile;
-endif;
-unset($args['tax_query']);
-$args['post__in'] = $post_in;
-if (class_exists('BABE_Functions')) {
-	$posts = BABE_Post_types::get_posts($args);
-	if ($data['cat_display'] == 'yes') {
-		$menuClass = "active";
-	} else {
-		$menuClass = "hide";
+	if (!empty($data['tab_items'])) {
+		foreach ($data['tab_items'] as $cat) {
+			$cats = explode(',', $cat['sec_cat']);
+		}
 	}
-	$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
-	if ($posts != null) {
-?>
+	$thumb_size = 'tripfery-size3';
+	$number_of_post = $data['itemnumber'];
+	$post_orderby = $data['post_orderby'];
+	$post_order = $data['post_order'];
+	$p_ids = array();
+	foreach ($data['posts_not_in'] as $p_idsn) {
+		$p_ids[] = $p_idsn['post_not_in'];
+	}
+	$args = array(
+		'post_type'            => 'to_book',
+		'posts_per_page'     => $number_of_post,
+		'order'             => $post_order,
+		'orderby'             => $post_orderby,
+		'post__not_in'       => $p_ids,
+	);
+	if (!empty($cats)) {
+		$args['tax_query'] = [
+			[
+				'taxonomy' => 'categories',
+				'field' => 'term_id',
+				'terms' => $cats,
+			],
+		];
+	}
+	$post_in = [];
+	$query = new WP_Query($args);
+	if ($query->have_posts()) :
+		while ($query->have_posts()) : $query->the_post();
+			$post_in[] = get_the_ID();
+		endwhile;
+	endif;
+	unset($args['tax_query']);
+	$args['post__in'] = $post_in;
+	if (class_exists('BABE_Functions')) {
+		$posts = BABE_Post_types::get_posts($args);
+		if ($data['cat_display'] == 'yes') {
+			$menuClass = "active";
+		} else {
+			$menuClass = "hide";
+		}
+		$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
+		if ($posts != null) {
+	?>
+
+
+
 		<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
+
+
+
+
 			<?php if ($data['cat_display'] == 'yes') { ?>
 				<div class="row justify-content-center rt-menu-cats-<?php echo esc_attr($menuClass); ?>">
 					<div class="col-auto">
 						<div class="listing-filter-btns d-flex align-items-center justify-content-center flex-wrap">
+
+
+
 							<?php
 							$terms = get_terms(array(
 								'taxonomy' => 'categories',
-								'include'  => $data['catid'],
+								'include'  => $cats,
 								'orderby' => 'include',
 							));
 							foreach ($terms as $term) {
@@ -60,15 +75,21 @@ if (class_exists('BABE_Functions')) {
 								$g = hexdec(substr($get_color, 2, 2));
 								$b = hexdec(substr($get_color, 4, 2));
 							?>
-								<button style="--tripfery-red: <?php echo absint($r); ?>;--tripfery-green: <?php echo absint($g); ?>; --tripfery-blue: <?php echo absint($b); ?>;" data-filter=".<?php echo esc_attr($term->slug); ?>" class="filter-btn <?php echo esc_attr($term->slug); ?>"><i class="icon-tripfery-hotel">
-									</i><?php echo esc_html($term->name); ?></button>
-							<?php
-							}
-							?>
+							<button style="--tripfery-red: <?php echo absint($r); ?>;--tripfery-green: <?php echo absint($g); ?>; --tripfery-blue: <?php echo absint($b); ?>;" data-filter=".<?php echo esc_attr($term->slug); ?>" class="filter-btn <?php echo esc_attr($term->slug); ?>">
+								<i class="icon-tripfery-hotel"></i>
+								<?php echo esc_html($term->name); ?></button>
+							<?php } ?>
+
+
+
 						</div>
 					</div>
 				</div>
 			<?php } ?>
+
+
+
+
 
 			<div class="row cardContainer">
 				<?php
@@ -103,7 +124,6 @@ if (class_exists('BABE_Functions')) {
 					} ?>
 					<div class="<?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($terms_of_item); ?> mb-4">
 						<div class="listing-card">
-
 							<?php if (!empty($image_srcs)) { ?>
 								<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 									<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
@@ -191,6 +211,9 @@ if (class_exists('BABE_Functions')) {
 				wp_reset_query();
 				?>
 			</div>
+
+
+
 		</div>
 <?php }
 } ?>

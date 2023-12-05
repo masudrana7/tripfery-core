@@ -30,9 +30,7 @@ Class TripferyTheme_Post_Box extends WP_Widget {
 		$show_post_image = ( !empty( $instance['show_post_image'] ) ) ? $instance['show_post_image'] : 'yes';
 		$post_display_order = ( !empty( $instance['post_display_order'] ) ) ? $instance['post_display_order'] : 'view';
 		$show_no_preview_img = ( !empty( $instance['show_no_preview_img'] ) ) ? $instance['show_no_preview_img'] : 'none';
-		
 		if ( $post_display_order == 'view' ) {
-		
 			$result_query = new WP_Query( apply_filters( 'widget_posts_args', array(
 				'posts_per_page'      => $number,
 				'no_found_rows'       => true,
@@ -61,8 +59,7 @@ Class TripferyTheme_Post_Box extends WP_Widget {
 			) ) );			
 		}
 		
-		if ($result_query->have_posts()) :
-		?>
+		if ($result_query->have_posts()) : ?>
 		<?php echo wp_kses_post($args['before_widget']); ?>
 		<?php if ( $title ) {
 			echo wp_kses_post($args['before_title']) . $title . wp_kses_post($args['after_title']);
