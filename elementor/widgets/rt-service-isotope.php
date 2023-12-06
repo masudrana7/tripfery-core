@@ -53,13 +53,51 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'type' => Controls_Manager::SELECT2,
 				'label' => esc_html__('Select Style', 'tripfery-core'),
 				'options' => array(
-					'style1' => esc_html__('Style One', 'tripfery-core'),
-					'style2' => esc_html__('Style Two (Car)', 'tripfery-core'),
+					'style1' => esc_html__('Style 1(Hotel)', 'tripfery-core'),
+					'style2' => esc_html__('Style 2(Car)', 'tripfery-core'),
+					'style3' => esc_html__('Style 3(Tour)', 'tripfery-core'),
+					'style4' => esc_html__('Style 4(Activity)', 'tripfery-core'),
+					'style5' => esc_html__('Style 5(Rental)', 'tripfery-core'),
+					'style6' => esc_html__('Style 6(Restaurant)', 'tripfery-core'),
 				),
 				'label_block' => true,
 			)
 		);
+		$repeater->add_control(
+			'cat_icon',
+			[
+				'type' => Controls_Manager::SELECT2,
+				'label' => esc_html__('Select Icon', 'tripfery-core'),
+				'options' => array(
+					'icon-tripfery-hotel' => esc_html__('Hotel', 'tripfery-core'),
+					'icon-tripfery-tours' => esc_html__('Tours', 'tripfery-core'),
+					'icon-tripfery-activity' => esc_html__('Activity', 'tripfery-core'),
+					'icon-tripfery-hostel' => esc_html__('Hostel', 'tripfery-core'),
+					'icon-tripfery-car' => esc_html__('Car', 'tripfery-core'),
+					'icon-tripfery-restaurant' => esc_html__('Restaurant', 'tripfery-core'),
+				),
+				'label_block' => true,
+				'default' => 'icon-tripfery-hotel',
+			]
+		);
+		$repeater->add_control(
+			'activity_text',
+			[
+				'type'    => Controls_Manager::TEXT,
+				'label'   => esc_html__('Activity Text', 'tripfery-core'),
+				'label_block' => true,
+			]
+		);
 
+		$repeater->add_control(
+			'button_text',
+			[
+				'type'    => Controls_Manager::TEXT,
+				'label'   => esc_html__('Button Text', 'tripfery-core'),
+				'default' => 'View Availability',
+				'label_block' => true,
+			]
+		);
 		$repeater->add_control(
 			'post_not_in',
 			[
@@ -69,7 +107,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'label_block' => true,
 			]
 		);
-		
 		$fields = array(
 			array(
 				'mode'    => 'section_start',

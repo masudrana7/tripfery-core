@@ -638,6 +638,37 @@ $Postmeta->add_meta_box( 'tripfery_woo_product', __( 'Product Background', 'trip
 	)
 ) );
 
+/*-------------------------------------
+#. Booking Guided
+---------------------------------------*/
+
+$args = array(
+	'posts_per_page' => -1,
+	'exclude'        => !empty($_GET['post']) ? $_GET['post'] : '',
+	'orderby'        => 'title',
+	'order'          => 'DESC',
+	'post_type'      => "tripfery_guided",
+);
+
+$bookings = get_posts($args);
+$booking_array = array();
+foreach ($bookings as $booking) {
+	$booking_array[$booking->ID] = $booking->post_title;
+}
+
+
+$Postmeta->add_meta_box( 'booker_guided', esc_html__('Guided Select', 'tripfery-core'),array('to_book'), '', '', 'high',
+	array(
+		'fields' => array(
+			'booking_guided' => array(
+				'label' => esc_html__('Guided', 'tripfery-core'),
+				'type'  => 'select',
+				'options' => $booking_array,
+				'desc'  => esc_html__('Select your Guided', 'tripfery-core'),
+			),
+		)
+	)
+);
 
 /*-------------------------------------
 #. Taxonomy Field
@@ -650,3 +681,5 @@ $TaxMeta->add_tax_meta( 'this_is_id', 'ba_locations', 10, [
 		'desc'  => 'Galley image add here...',
 	),
 ] );
+
+

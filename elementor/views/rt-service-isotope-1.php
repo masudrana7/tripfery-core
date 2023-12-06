@@ -114,9 +114,7 @@
 						<div class="rt-price">	
 							' . $price_old . '
 							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>
-							' . $discount . '<span class="activity-person">' . $data['act_text'] . '</span>
-
-						</div>';
+							' . $discount . '';
 					}
 					$terms_of_item = '';
 					foreach ($item_terms as $term) {

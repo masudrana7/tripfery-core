@@ -24,6 +24,18 @@ $post_types = array(
 		'rewrite'         => TripferyTheme::$options['team_slug'],
 		'supports'        => array( 'title', 'thumbnail', 'editor', 'excerpt', 'page-attributes' )
 	),
+
+	'tripfery_guided'       => array(
+		'title'           => __('Guided Member', 'tripfery-core' ),
+		'plural_title'    => __('Guided', 'tripfery-core' ),
+		'menu_icon'       => 'dashicons-businessman',
+		'labels_override' => array(
+			'menu_name'   => __('Guided', 'tripfery-core' ),
+		),
+		//'rewrite'         => TripferyTheme::$options['team_slug'],
+		'supports'        => array( 'title', 'thumbnail', 'editor')
+	),
+
 	'tripfery_service'  => array(
 		'title'           => __( 'Service', 'tripfery-core' ),
 		'plural_title'    => __( 'Services', 'tripfery-core' ),
