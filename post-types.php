@@ -33,7 +33,7 @@ $post_types = array(
 			'menu_name'   => __('Guided', 'tripfery-core' ),
 		),
 		//'rewrite'         => TripferyTheme::$options['team_slug'],
-		'supports'        => array( 'title', 'thumbnail', 'editor')
+		'supports'        => array( 'title', 'thumbnail', 'editor', 'comments')
 	),
 
 	'tripfery_service'  => array(

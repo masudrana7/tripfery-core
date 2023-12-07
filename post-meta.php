@@ -592,9 +592,6 @@ $Postmeta->add_meta_box('tripfery_booking_brands', __('Car Brand', 'tripfery-cor
 	)
 ));
 
-
-
-
 /*-------------------------------------
 #. Service
 ---------------------------------------*/
@@ -653,10 +650,9 @@ $args = array(
 $bookings = get_posts($args);
 $booking_array = array();
 foreach ($bookings as $booking) {
+	$booking_array[0] = esc_html__('Defult', 'tripfery-core');
 	$booking_array[$booking->ID] = $booking->post_title;
 }
-
-
 $Postmeta->add_meta_box( 'booker_guided', esc_html__('Guided Select', 'tripfery-core'),array('to_book'), '', '', 'high',
 	array(
 		'fields' => array(
@@ -669,6 +665,30 @@ $Postmeta->add_meta_box( 'booker_guided', esc_html__('Guided Select', 'tripfery-
 		)
 	)
 );
+
+// Guided features
+$Postmeta->add_meta_box('tripfery_guided_specifications', __('Guided verified', 'tripfery-core'), array('tripfery_guided'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_guided_since' => array(
+			'label' => __('Member since Date', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_guided_verifieds' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New', 'tripfery-core'),
+			'value'  => array(
+				'verified_name' => array(
+					'label' => __('Verified Title', 'tripfery-core'),
+					'type'  => 'text',
+				),
+				'verified_value' => array(
+					'label' => __('Verified Value', 'tripfery-core'),
+					'type'  => 'text',
+				),
+			)
+		),
+	)
+));
 
 /*-------------------------------------
 #. Taxonomy Field

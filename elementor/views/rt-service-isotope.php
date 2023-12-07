@@ -255,6 +255,7 @@ if (class_exists('BABE_Functions')) { ?>
 												</div>
 											<?php } ?>
 
+											<?php if ($guide_id) { ?>
 											<div class="d-flex flex-column">
 												<span class="text-gray"><?php echo esc_html('Guided By', 'tripfery-core') ?></span>
 												<div class="d-flex align-items-center">
@@ -263,11 +264,12 @@ if (class_exists('BABE_Functions')) { ?>
 															<img src="<?php echo esc_html($post_thumbnail_url); ?>" class="author-avatar" alt="People">
 														</div>
 													<?php } ?>
-													<?php if ($guided_title) { ?>
-														<h4><a href="<?php echo esc_url($guided_link); ?>" class="author-name"><?php echo esc_html($guided_title); ?></a></h4>
-													<?php } ?>
+
+													<h4><a href="<?php echo esc_url($guided_link); ?>" class="author-name"><?php echo esc_html($guided_title); ?></a></h4>
+
 												</div>
 											</div>
+											<?php } ?>
 										</div>
 
 										<?php if ($data['rating_display'] == 'yes') { ?>
@@ -407,7 +409,7 @@ if (class_exists('BABE_Functions')) { ?>
 									</div>
 								</div>
 							</div>
-						<!-- Restaurants Style	 -->
+							<!-- Restaurants Style	 -->
 						<?php } elseif ($cat['sec_style'] == 'style6') { ?>
 							<div class="rt_booking_<?php echo esc_attr($cat['sec_style']); ?> <?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($name_list->slug); ?> mb-4">
 								<div class="listing-card">
