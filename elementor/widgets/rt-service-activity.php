@@ -33,7 +33,6 @@ class RT_Service_Activiy extends Custom_Widget_Base {
 			'hide_empty' => false,
 		));
 
-
 		$category_dropdown = array( '0' => esc_html__( 'Select Location', 'tripfery-core' ) );
 		foreach ( $terms as $id => $name ) {
 			$category_dropdown[$id] = $name;

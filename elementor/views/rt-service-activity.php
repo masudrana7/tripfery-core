@@ -33,32 +33,46 @@ namespace radiustheme\Tripfery_Core; ?>
 							<a href="<?php echo esc_url($term_link) ?>"><?php echo esc_html($term->name); ?></a>
 						</h3>
 						<?php }
-						$locterms = get_terms(array(
-							'taxonomy' => 'ba_locations',
-							'parent'   => 0
-						));
-						$terms_ids = [];
-						foreach ($locterms as $locterm) {
-							$terms_ids[] = $locterm->term_id;
-						}
-						$args = array(
-							'post_type' => 'to_book',
-							'tax_query' => array(
-								'relation' => 'AND',
-								array(
-									'taxonomy' => 'ba_our-activitys',
-									'field' => 'term_id',
-									'terms' => $item['category_list'],
+							$locterms = get_terms(array(
+								'taxonomy' => 'ba_locations',
+								'parent'   => 0
+							));
+							$terms_ids = [];
+							foreach ($locterms as $locterm) {
+								$terms_ids[] = $locterm->term_id;
+							}
+							$args = array(
+								'post_type' => 'to_book',
+								'tax_query' => array(
+									'relation' => 'AND',
+									array(
+										'taxonomy' => 'ba_our-activitys',
+										'field' => 'term_id',
+										'terms' => $item['category_list'],
+									),
+									array(
+										'taxonomy' => 'ba_locations',
+										'field' => 'term_id',
+										'terms' => $terms_ids,
+									),
 								),
-								array(
-									'taxonomy' => 'ba_locations',
-									'field' => 'term_id',
-									'terms' => $terms_ids,
-								),
-							),
-						);
-						$post_query = new \WP_Query($args); ?>
-						<span class="activity-place"><?php echo $post_query->category_name; ?></span>
+							);
+							$post_query = new \WP_Query($args);
+							if ($post_query->have_posts()) :
+								while ($post_query->have_posts()) :
+									$post_query->the_post();
+									$location_terms = get_the_terms(get_the_ID(), 'ba_locations');
+									if (!empty($location_terms)) {
+										foreach ($location_terms as $location_term) {
+											echo '<span class="activity-place">' . esc_html($location_term->name) . '</span>';
+										}
+									}
+								endwhile;
+								wp_reset_postdata();
+							endif;
+							?>
+
+
 					</div>
 				</div>
 			</article>

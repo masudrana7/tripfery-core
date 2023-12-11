@@ -6,36 +6,30 @@ if (class_exists('BABE_Functions')) { ?>
 				<div class="col-auto">
 					<div class="listing-filter-btns d-flex align-items-center justify-content-center flex-wrap">
 						<?php
-						if (!empty($data['tab_items'])) {
+							if (!empty($data['tab_items'])) {
 							foreach ($data['tab_items'] as $cat) {
 								$get_color = get_term_meta($cat['sec_cat'], 'rt_category_color', true);
 								$hexcolor = tripferyTheme_Helper::hex2rgb($get_color);
 								$r = hexdec(substr($get_color, 0, 2));
 								$g = hexdec(substr($get_color, 2, 2));
 								$b = hexdec(substr($get_color, 4, 2));
-
 								$cats = explode(',', $cat['sec_cat']);
 								$terms = get_terms(array(
 									'taxonomy' => 'categories',
 									'include'  => $cats,
 									'orderby' => 'include',
 								));
-
 								$name_list = $terms[0]; ?>
-
 								<button style="--tripfery-red: <?php echo absint($r); ?>;--tripfery-green: <?php echo absint($g); ?>; --tripfery-blue: <?php echo absint($b); ?>;" data-filter=".<?php echo esc_attr($name_list->slug); ?>" class="filter-btn <?php echo esc_attr($name_list->slug); ?>">
 									<i class="<?php echo esc_attr($cat['cat_icon']); ?>"></i>
 									<?php echo $name_list->name; ?>
 								</button>
 
-						<?php }
-						}	?>
+						<?php }	} ?>
 					</div>
 				</div>
 			</div>
 		<?php } ?>
-
-
 		<div class="row justify-content-center cardContainer">
 			<?php
 			if (!empty($data['tab_items'])) {
@@ -104,7 +98,9 @@ if (class_exists('BABE_Functions')) { ?>
 						$group_max_size = $ba_info['guests'];
 						$url   		= BABE_Functions::get_page_url_with_args($post_id, $_GET);
 						$item_terms = get_the_terms($post_id, 'categories');
+
 						$price_from_with_taxes = ($post['price_from'] * (100 + $post['categories_add_taxes'] * $post['categories_tax'])) / 100;
+
 						$price_old = $post['discount_price_from'] < $price_from_with_taxes ? '<span class="item_info_price_old">' . BABE_Currency::get_currency_price($price_from_with_taxes) . '</span>' : '';
 
 						$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '%</div>' : '';
@@ -115,7 +111,11 @@ if (class_exists('BABE_Functions')) { ?>
 							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>
 							' . $discount . '';
 						}
-			?>
+
+						
+
+
+						?>
 
 						<!--  Car Style	-->
 						<?php if ($cat['sec_style'] == 'style2') { ?>
@@ -188,6 +188,8 @@ if (class_exists('BABE_Functions')) { ?>
 											<?php } ?>
 										</div>
 									</div>
+
+
 								</div>
 							</div>
 							<!-- Tour Style -->
@@ -578,6 +580,8 @@ if (class_exists('BABE_Functions')) { ?>
 											<?php } ?>
 										</div>
 									</div>
+
+
 								</div>
 							</div>
 						<?php } ?>

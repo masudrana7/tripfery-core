@@ -49,6 +49,8 @@ if (class_exists('BABE_Functions')) {
 	if ($posts != null) {
 ?>
 	<div class="rt-isotope-style2 rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
+
+	
 		<?php if ($data['cat_display'] == 'yes') { ?>
 			<div class="row justify-content-center rt-menu-cats-<?php echo esc_attr($menuClass); ?>">
 				<div class="col-auto">
@@ -76,6 +78,8 @@ if (class_exists('BABE_Functions')) {
 			</div>
 		<?php } ?>
 
+
+
 		<div class="row cardContainer">
 			<?php
 			foreach ($posts as $post) {
@@ -92,10 +96,14 @@ if (class_exists('BABE_Functions')) {
 
 				$url   		= BABE_Functions::get_page_url_with_args($post_id, $_GET);
 				$item_terms = get_the_terms($post_id, 'categories');
+
+
 				$price_from_with_taxes = ($post['price_from'] * (100 + $post['categories_add_taxes'] * $post['categories_tax'])) / 100;
 				$price_old = $post['discount_price_from'] < $price_from_with_taxes ? '<span class="item_info_price_old">' . BABE_Currency::get_currency_price($price_from_with_taxes) . '</span>' : '';
 				$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '%</div>' : '';
 				$item_info_price = '';
+
+
 
 				if (!empty($post['discount_price_from'])) {
 					$item_info_price = '
@@ -106,6 +114,7 @@ if (class_exists('BABE_Functions')) {
 
 					</div>';
 				}
+				
 				$terms_of_item = '';
 				foreach ($item_terms as $term) {
 					$terms_of_item .= '' . $term->slug . ' ';

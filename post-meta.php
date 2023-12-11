@@ -592,6 +592,17 @@ $Postmeta->add_meta_box('tripfery_booking_brands', __('Car Brand', 'tripfery-cor
 	)
 ));
 
+
+// Car Gear
+$Postmeta->add_meta_box('tripfery_car_gear', __('Car Gear Position', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_gea_text' => array(
+			'label' => __('Car Gear', 'tripfery-core'),
+			'type'  => 'text',
+		),
+	)
+));
+
 /*-------------------------------------
 #. Service
 ---------------------------------------*/
