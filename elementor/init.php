@@ -79,6 +79,7 @@ class Custom_Widget_Init {
 			'rt-search-filter-terms'		=> 'RT_Search_Filter_Terms',
 			'rt-be-search-form'				=> 'RT_BE_Search_Form',
 			'rt-review-filter'				=> 'RT_Reviews_Filter',
+			'rt-search-filter-rating'		=> 'RT_Search_Filter_Rating',
 		);
 		
 

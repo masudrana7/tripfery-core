@@ -6,7 +6,7 @@ if (class_exists('BABE_Functions')) { ?>
 				<div class="col-auto">
 					<div class="listing-filter-btns d-flex align-items-center justify-content-center flex-wrap">
 						<?php
-							if (!empty($data['tab_items'])) {
+						if (!empty($data['tab_items'])) {
 							foreach ($data['tab_items'] as $cat) {
 								$get_color = get_term_meta($cat['sec_cat'], 'rt_category_color', true);
 								$hexcolor = tripferyTheme_Helper::hex2rgb($get_color);
@@ -25,7 +25,8 @@ if (class_exists('BABE_Functions')) { ?>
 									<?php echo $name_list->name; ?>
 								</button>
 
-						<?php }	} ?>
+						<?php }
+						} ?>
 					</div>
 				</div>
 			</div>
@@ -88,8 +89,9 @@ if (class_exists('BABE_Functions')) { ?>
 						$image = $image_srcs ? '<a class="text-decoration-none listing-thumb-wrapper" href="' . $item_url . '">
 						<img class="text-decoration-none listing-thumb-wrapper" src="' . $image_srcs[0] . '">
 						</a>' : '';
-
+						$gea_text = get_post_meta($post_id, 'tripfery_gea_text', true);
 						$guide_id = get_post_meta($post['ID'], 'booking_guided', true);
+						$featured_text = get_post_meta($post['ID'], 'tripfery_featured_check', true);
 						if ($guide_id) {
 							$guided_title = get_the_title($guide_id);
 							$guided_link = get_the_permalink($guide_id);
@@ -100,22 +102,15 @@ if (class_exists('BABE_Functions')) { ?>
 						$item_terms = get_the_terms($post_id, 'categories');
 
 						$price_from_with_taxes = ($post['price_from'] * (100 + $post['categories_add_taxes'] * $post['categories_tax'])) / 100;
-
 						$price_old = $post['discount_price_from'] < $price_from_with_taxes ? '<span class="item_info_price_old">' . BABE_Currency::get_currency_price($price_from_with_taxes) . '</span>' : '';
-
-						$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '%</div>' : '';
+						'';
+						$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '% Off</div>' : '';
 
 						if (!empty($post['discount_price_from'])) {
 							$item_info_price =
 								'' . $price_old . '
-							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>
-							' . $discount . '';
-						}
-
-						
-
-
-						?>
+							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>';
+						} ?>
 
 						<!--  Car Style	-->
 						<?php if ($cat['sec_style'] == 'style2') { ?>
@@ -131,7 +126,6 @@ if (class_exists('BABE_Functions')) { ?>
 											?>
 												<div class="badge2 bage-pink">
 													<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
-
 												</div>
 											<?php } ?>
 											<div class="wishlist">
@@ -141,14 +135,16 @@ if (class_exists('BABE_Functions')) { ?>
 											</div>
 										</div>
 									</div>
-
 									<?php if (!empty($image_srcs)) { ?>
 										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
+											<?php echo wp_kses_post($discount); ?>
+											<?php if ('on' == $featured_text) { ?>
+												<?php echo wp_kses_post('Featured', 'tripfery') ?>
+											<?php } ?>
 										</a>
 									<?php } ?>
-
-									<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
+									<div class="listing-card-content">
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<div class="card-bottom-info-left d-flex">
 												<?php if ($group_max_size) { ?>
@@ -162,7 +158,7 @@ if (class_exists('BABE_Functions')) { ?>
 														<span class="valu"><?php echo esc_attr($group_max_size); ?></span>
 													</span>
 												<?php } ?>
-												<?php if ($data['manual']) { ?>
+												<?php if (!empty($gea_text)) { ?>
 													<span class="manual">
 														<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 															<path d="M16.6667 11.6667C17.5871 11.6667 18.3333 10.9205 18.3333 10C18.3333 9.07952 17.5871 8.33333 16.6667 8.33333C15.7462 8.33333 15 9.07952 15 10C15 10.9205 15.7462 11.6667 16.6667 11.6667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -172,7 +168,7 @@ if (class_exists('BABE_Functions')) { ?>
 															<path d="M5 10H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 															<path d="M15.0003 3.33333H11.667C10.0003 3.33333 9.16699 4.16667 9.16699 5.83333V14.1667C9.16699 15.8333 10.0003 16.6667 11.667 16.6667H15.0003" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 														</svg>
-														<span class="valu"><?php echo wp_kses_post($data['manual']); ?></span>
+														<span class="valu"><?php echo wp_kses_post($gea_text); ?></span>
 													</span>
 												<?php } ?>
 											</div>
@@ -188,8 +184,6 @@ if (class_exists('BABE_Functions')) { ?>
 											<?php } ?>
 										</div>
 									</div>
-
-
 								</div>
 							</div>
 							<!-- Tour Style -->
@@ -200,20 +194,14 @@ if (class_exists('BABE_Functions')) { ?>
 									if (!empty($image_srcs)) { ?>
 										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
-											<?php if ($data['wishlist_position'] == 'top') { ?>
-												<div class="wishlist">
-													<i class="fa-regular fa-heart"></i>
-												</div>
+											<?php echo wp_kses_post($discount); ?>
+											<?php if ('on' == $featured_text) { ?>
+												<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
 											<?php } ?>
 										</a>
 									<?php } ?>
 
-									<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
-										<?php if ($data['title_position'] == 'top') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
+									<div class="listing-card-content">
 										<div class="d-flex justify-content-between">
 											<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
 											if ($address) {
@@ -227,20 +215,16 @@ if (class_exists('BABE_Functions')) { ?>
 												</div>
 											<?php } ?>
 
-											<?php if ($data['wishlist_position'] == 'bottom') { ?>
-												<div class="wishlist">
-													<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</div>
-											<?php } ?>
+											<div class="wishlist">
+												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+												</svg>
+											</div>
 										</div>
 
-										<?php if ($data['title_position'] == 'bottom') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
+										<h3 class="listing-card-title">
+											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
+										</h3>
 
 										<div class="d-flex justify-content-between tour-info-middle">
 											<?php if ($data['price_display'] == 'yes') { ?>
@@ -258,19 +242,19 @@ if (class_exists('BABE_Functions')) { ?>
 											<?php } ?>
 
 											<?php if ($guide_id) { ?>
-											<div class="d-flex flex-column">
-												<span class="text-gray"><?php echo esc_html('Guided By', 'tripfery-core') ?></span>
-												<div class="d-flex align-items-center">
-													<?php if (!empty($post_thumbnail_url)) { ?>
-														<div>
-															<img src="<?php echo esc_html($post_thumbnail_url); ?>" class="author-avatar" alt="People">
-														</div>
-													<?php } ?>
+												<div class="d-flex flex-column">
+													<span class="text-gray"><?php echo esc_html('Guided By', 'tripfery-core') ?></span>
+													<div class="d-flex align-items-center">
+														<?php if (!empty($post_thumbnail_url)) { ?>
+															<div>
+																<img src="<?php echo esc_html($post_thumbnail_url); ?>" class="author-avatar" alt="People">
+															</div>
+														<?php } ?>
 
-													<h4><a href="<?php echo esc_url($guided_link); ?>" class="author-name"><?php echo esc_html($guided_title); ?></a></h4>
+														<h4><a href="<?php echo esc_url($guided_link); ?>" class="author-name"><?php echo esc_html($guided_title); ?></a></h4>
 
+													</div>
 												</div>
-											</div>
 											<?php } ?>
 										</div>
 
@@ -298,21 +282,23 @@ if (class_exists('BABE_Functions')) { ?>
 									if (!empty($image_srcs)) { ?>
 										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
+											<?php echo wp_kses_post($discount); ?>
 											<?php if ($data['rating_display'] == 'yes') {
 												echo '<span class="booking-top-rating">';
 												echo '<i class="fa-solid fa-star"></i>';
 												echo BABE_Rating::get_post_total_rating($post_id);
 												echo '</span>';
 											} ?>
+											<?php if ('on' == $featured_text) { ?>
+												<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
+											<?php } ?>
 										</a>
 									<?php } ?>
 
-									<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
-										<?php if ($data['title_position'] == 'top') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
+									<div class="listing-card-content">
+										<h3 class="listing-card-title">
+											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
+										</h3>
 										<div class="d-flex justify-content-between">
 											<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
 											if ($address) {
@@ -326,22 +312,13 @@ if (class_exists('BABE_Functions')) { ?>
 												</div>
 											<?php } ?>
 
-											<?php if ($data['wishlist_position'] == 'bottom') { ?>
-												<div class="wishlist">
-													<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</div>
-											<?php } ?>
 
+											<div class="wishlist">
+												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+												</svg>
+											</div>
 										</div>
-
-										<?php if ($data['title_position'] == 'bottom') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
-
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
@@ -371,14 +348,17 @@ if (class_exists('BABE_Functions')) { ?>
 									if (!empty($image_srcs)) { ?>
 										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
-
+											<?php echo wp_kses_post($discount); ?>
 											<div class="wishlist">
 												<i class="fa-regular fa-heart"></i>
 											</div>
+											<?php if ('on' == $featured_text) { ?>
+												<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
+											<?php } ?>
 										</a>
 									<?php } ?>
 
-									<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
+									<div class="listing-card-content">
 										<h3 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 										</h3>
@@ -419,28 +399,14 @@ if (class_exists('BABE_Functions')) { ?>
 									if (!empty($image_srcs)) { ?>
 										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
-											<?php if ($data['rating_display'] == 'yes') { ?>
-												<?php if ($data['rating_position'] == 'top') {
-													echo '<span class="booking-top-rating">';
-													echo '<i class="fa-solid fa-star"></i>';
-													echo BABE_Rating::get_post_total_rating($post_id);
-													echo '</span>';
-												} ?>
-											<?php } ?>
-											<?php if ($data['wishlist_position'] == 'top') { ?>
-												<div class="wishlist">
-													<i class="fa-regular fa-heart"></i>
-												</div>
+											<?php echo wp_kses_post($discount); ?>
+											<?php if ('on' == $featured_text) { ?>
+												<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
 											<?php } ?>
 										</a>
 									<?php } ?>
 
-									<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
-										<?php if ($data['title_position'] == 'top') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
+									<div class="listing-card-content">
 										<div class="d-flex justify-content-between">
 											<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
 											if ($address) {
@@ -454,37 +420,33 @@ if (class_exists('BABE_Functions')) { ?>
 												</div>
 											<?php } ?>
 
-											<?php if ($data['wishlist_position'] == 'bottom') { ?>
-												<div class="wishlist">
-													<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</div>
-											<?php } ?>
+
+											<div class="wishlist">
+												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+												</svg>
+											</div>
 
 										</div>
 
-										<?php if ($data['title_position'] == 'bottom') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
+										<h3 class="listing-card-title">
+											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
+										</h3>
+
 										<?php if ($data['rating_display'] == 'yes') { ?>
-											<?php if ($data['rating_position'] == 'bottom') { ?>
-												<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
-													<div class="d-flex align-item listing-card-review-area">
-														<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-														<div class="rt-bookoing-rating">
-															<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
-														</div>
+											<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
+												<div class="d-flex align-item listing-card-review-area">
+													<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+													<div class="rt-bookoing-rating">
+														<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
 													</div>
-												<?php } ?>
+												</div>
 											<?php } ?>
 										<?php } ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['button_display'] == 'yes') { ?>
 												<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated">
-													<?php echo esc_html($data['btn_text']) ?>
+													<?php echo esc_html($cat['button_text']) ?>
 												</a>
 											<?php } ?>
 										</div>
@@ -496,30 +458,16 @@ if (class_exists('BABE_Functions')) { ?>
 								<div class="listing-card">
 									<?php
 									if (!empty($image_srcs)) { ?>
-										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if(!empty($discount)){ echo 'discount_available '; } ?>text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
-											<?php if ($data['rating_display'] == 'yes') { ?>
-												<?php if ($data['rating_position'] == 'top') {
-													echo '<span class="booking-top-rating">';
-													echo '<i class="fa-solid fa-star"></i>';
-													echo BABE_Rating::get_post_total_rating($post_id);
-													echo '</span>';
-												} ?>
-											<?php } ?>
-											<?php if ($data['wishlist_position'] == 'top') { ?>
-												<div class="wishlist">
-													<i class="fa-regular fa-heart"></i>
-												</div>
+											<?php echo wp_kses_post($discount); ?>
+											<?php if ('on' == $featured_text) { ?>
+												<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
 											<?php } ?>
 										</a>
 									<?php } ?>
 
-									<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
-										<?php if ($data['title_position'] == 'top') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
+									<div class="listing-card-content">
 										<div class="d-flex justify-content-between">
 											<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
 											if ($address) {
@@ -532,32 +480,23 @@ if (class_exists('BABE_Functions')) { ?>
 													<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
 												</div>
 											<?php } ?>
-
-											<?php if ($data['wishlist_position'] == 'bottom') { ?>
-												<div class="wishlist">
-													<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</div>
-											<?php } ?>
-
+											<div class="wishlist">
+												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+												</svg>
+											</div>
 										</div>
-
-										<?php if ($data['title_position'] == 'bottom') { ?>
-											<h3 class="listing-card-title">
-												<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-											</h3>
-										<?php } ?>
+										<h3 class="listing-card-title">
+											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
+										</h3>
 										<?php if ($data['rating_display'] == 'yes') { ?>
-											<?php if ($data['rating_position'] == 'bottom') { ?>
-												<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
-													<div class="d-flex align-item listing-card-review-area">
-														<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-														<div class="rt-bookoing-rating">
-															<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
-														</div>
+											<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
+												<div class="d-flex align-item listing-card-review-area">
+													<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+													<div class="rt-bookoing-rating">
+														<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
 													</div>
-												<?php } ?>
+												</div>
 											<?php } ?>
 										<?php } ?>
 
@@ -575,7 +514,7 @@ if (class_exists('BABE_Functions')) { ?>
 
 											<?php if ($data['button_display'] == 'yes') { ?>
 												<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated">
-													<?php echo esc_html($data['btn_text']) ?>
+													<?php echo $cat['button_text'] ?>
 												</a>
 											<?php } ?>
 										</div>

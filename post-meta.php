@@ -341,6 +341,7 @@ $Postmeta->add_meta_box( 'tripfery_team_skills', __( 'Team Member Skills', 'trip
 		),
 	)
 ) );
+
 $Postmeta->add_meta_box( 'tripfery_team_contact', __( 'Team Member Contact', 'tripfery-core' ), array( 'tripfery_team' ), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_team_contact_form' => array(
@@ -599,6 +600,16 @@ $Postmeta->add_meta_box('tripfery_car_gear', __('Car Gear Position', 'tripfery-c
 		'tripfery_gea_text' => array(
 			'label' => __('Car Gear', 'tripfery-core'),
 			'type'  => 'text',
+		),
+	)
+));
+
+// Featured Post
+$Postmeta->add_meta_box('tripfery_featured_item', __('Featured Item', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_featured_check' => array(
+			'label' => __('Featured Item', 'tripfery-core'),
+			'type'  => 'checkbox',
 		),
 	)
 ));

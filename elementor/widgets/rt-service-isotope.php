@@ -88,7 +88,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'label_block' => true,
 			]
 		);
-
 		$repeater->add_control(
 			'button_text',
 			[
@@ -123,7 +122,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				),
 				'default' => 'style1',
 			),
-
 			array(
 				'type'    => Controls_Manager::REPEATER,
 				'id'      => 'tab_items',
@@ -132,46 +130,10 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'options' => $category_dropdown,
 				'fields' => $repeater->get_controls(),
 			),
-
 			
 			/*Start category*/			
-			array(
-				'id'      => 'catid',
-				'label' => esc_html__( 'Categories', 'tripfery-core' ),
-	            'type' => Controls_Manager::SELECT2,
-	            'options' => $category_dropdown,
-	            'label_block' => true,
-	            'multiple' => true,
-			),
-			array(
-				'type'    => Controls_Manager::TEXT,
-				'id'      => 'btn_text',
-				'label'   => esc_html__('Button Text', 'tripfery-core'),
-				'default' => esc_html__('View Availability', 'tripfery-core'),
-			),
-			array(
-				'type'    => Controls_Manager::TEXT,
-				'id'      => 'act_text',
-				'label'   => esc_html__('Activity Text', 'tripfery-core'),
-			),
-			array(
-				'type'    => Controls_Manager::TEXT,
-				'id'      => 'manual',
-				'label'   => esc_html__('Manual Text', 'tripfery-core'),
-				'default' => esc_html__('Manual', 'tripfery-core'),
-				'condition'   => array('style' => array('style2')),
-			),
-			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'title_position',
-				'label'   => esc_html__('Tilte Position', 'tripfery-core'),
-				'options' => array(
-					'top'	=> esc_html__('Top', 'tripfery-core'),
-					'bottom'	=> esc_html__('Bottom', 'tripfery-core'),
-				),
-				'default' => 'bottom',
-				'condition'   => array('style' => array('style1')),
-			),
+
+
 			array(
 				'type'        => Controls_Manager::SWITCHER,
 				'id'          => 'rating_display',
@@ -181,29 +143,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'default'     => 'yes',
 				'condition'   => array('style' => array('style1')),
 				
-			),
-			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'rating_position',
-				'label'   => esc_html__('Rating Position', 'tripfery-core'),
-				'options' => array(
-					'top'	=> esc_html__('Top', 'tripfery-core'),
-					'bottom'	=> esc_html__('Bottom', 'tripfery-core'),
-				),
-				'default' => 'bottom',
-				'condition'   => array('rating_display' => array('yes')),
-			),
-
-			array(
-				'type'    => Controls_Manager::SELECT2,
-				'id'      => 'wishlist_position',
-				'label'   => esc_html__('Wishlist Position', 'tripfery-core'),
-				'options' => array(
-					'top'	=> esc_html__('Top', 'tripfery-core'),
-					'bottom'	=> esc_html__('Bottom', 'tripfery-core'),
-				),
-				'default' => 'bottom',
-				'condition'   => array('style' => array('style1')),
 			),
 			array(
 				'type'        => Controls_Manager::SWITCHER,
