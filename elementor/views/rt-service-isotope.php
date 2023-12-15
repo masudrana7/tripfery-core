@@ -83,6 +83,8 @@ if (class_exists('BABE_Functions')) { ?>
 					foreach ($posts as $post) {
 						$post_id 	= $post['ID'];
 						$ba_info 	= BABE_Post_types::get_post($post_id);
+						
+
 						$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
 						$item_url = BABE_Functions::get_page_url_with_args($post['ID'], $_GET);
 						$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post['ID']), $thumbnail);
@@ -100,11 +102,12 @@ if (class_exists('BABE_Functions')) { ?>
 						$group_max_size = $ba_info['guests'];
 						$url   		= BABE_Functions::get_page_url_with_args($post_id, $_GET);
 						$item_terms = get_the_terms($post_id, 'categories');
+						$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '% Off</div>' : '';
 
 						$price_from_with_taxes = ($post['price_from'] * (100 + $post['categories_add_taxes'] * $post['categories_tax'])) / 100;
+
 						$price_old = $post['discount_price_from'] < $price_from_with_taxes ? '<span class="item_info_price_old">' . BABE_Currency::get_currency_price($price_from_with_taxes) . '</span>' : '';
 						'';
-						$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '% Off</div>' : '';
 
 						if (!empty($post['discount_price_from'])) {
 							$item_info_price =
@@ -128,11 +131,9 @@ if (class_exists('BABE_Functions')) { ?>
 													<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
 												</div>
 											<?php } ?>
-											<div class="wishlist">
-												<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M13.1455 21.6771C12.7913 21.8021 12.208 21.8021 11.8538 21.6771C8.83301 20.6459 2.08301 16.3438 2.08301 9.05215C2.08301 5.8334 4.67676 3.22923 7.87467 3.22923C9.77051 3.22923 11.4476 4.1459 12.4997 5.56257C13.5518 4.1459 15.2393 3.22923 17.1247 3.22923C20.3226 3.22923 22.9163 5.8334 22.9163 9.05215C22.9163 16.3438 16.1663 20.6459 13.1455 21.6771Z" fill="#F12C5B"></path>
-												</svg>
-											</div>
+											<?php if (class_exists('RTWishlist')) {
+												echo RTWishlist::wishlist_html($post_id);
+											} ?>
 										</div>
 									</div>
 									<?php if (!empty($image_srcs)) { ?>
@@ -214,12 +215,9 @@ if (class_exists('BABE_Functions')) { ?>
 													<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
 												</div>
 											<?php } ?>
-
-											<div class="wishlist">
-												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</div>
+											<?php if (class_exists('RTWishlist')) {
+												echo RTWishlist::wishlist_html($post_id);
+											} ?>
 										</div>
 
 										<h3 class="listing-card-title">
@@ -311,13 +309,9 @@ if (class_exists('BABE_Functions')) { ?>
 													<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
 												</div>
 											<?php } ?>
-
-
-											<div class="wishlist">
-												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</div>
+											<?php if (class_exists('RTWishlist')) {
+												echo RTWishlist::wishlist_html($post_id);
+											} ?>
 										</div>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
@@ -349,9 +343,9 @@ if (class_exists('BABE_Functions')) { ?>
 										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
-											<div class="wishlist">
-												<i class="fa-regular fa-heart"></i>
-											</div>
+											<?php if (class_exists('RTWishlist')) {
+												echo RTWishlist::wishlist_html($post_id);
+											} ?>
 											<?php if ('on' == $featured_text) { ?>
 												<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
 											<?php } ?>
@@ -419,14 +413,9 @@ if (class_exists('BABE_Functions')) { ?>
 													<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
 												</div>
 											<?php } ?>
-
-
-											<div class="wishlist">
-												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</div>
-
+											<?php if (class_exists('RTWishlist')) {
+												echo RTWishlist::wishlist_html($post_id);
+											} ?>
 										</div>
 
 										<h3 class="listing-card-title">
@@ -458,7 +447,9 @@ if (class_exists('BABE_Functions')) { ?>
 								<div class="listing-card">
 									<?php
 									if (!empty($image_srcs)) { ?>
-										<a class="<?php if(!empty($discount)){ echo 'discount_available '; } ?>text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) {
+														echo 'discount_available ';
+													} ?>text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
 											<?php if ('on' == $featured_text) { ?>
@@ -480,11 +471,9 @@ if (class_exists('BABE_Functions')) { ?>
 													<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
 												</div>
 											<?php } ?>
-											<div class="wishlist">
-												<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</div>
+											<?php if (class_exists('RTWishlist')) {
+												echo RTWishlist::wishlist_html($post_id);
+											} ?>
 										</div>
 										<h3 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>

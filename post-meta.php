@@ -605,7 +605,7 @@ $Postmeta->add_meta_box('tripfery_car_gear', __('Car Gear Position', 'tripfery-c
 ));
 
 // Featured Post
-$Postmeta->add_meta_box('tripfery_featured_item', __('Featured Item', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+$Postmeta->add_meta_box('tripfery_featured_item', __('Featured Item', 'tripfery-core'), array('to_book'), '', 'side', 'high', array(
 	'fields' => array(
 		'tripfery_featured_check' => array(
 			'label' => __('Featured Item', 'tripfery-core'),
