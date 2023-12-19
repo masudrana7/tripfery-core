@@ -123,6 +123,16 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 					'type'  => 'color_picker',
 					'desc'  => __('If not selected, default will be used', 'tripfery-core'),
 				),
+				"{$prefix}_footer_fun_fact" => array(
+					'label' 	  => __('Footer Fun Fact', 'tripfery-core'),
+					'type'  	  => 'select',
+					'options' => array(
+						'default' => __('Default', 'tripfery-core'),
+						'on'      => __('Enabled', 'tripfery-core'),
+						'off'     => __('Disabled', 'tripfery-core'),
+					),
+					'default'  	  => 'default',
+				),
 				"{$prefix}_footer" => array(
 					'label'   => __( 'Footer Layout', 'tripfery-core' ),
 					'type'    => 'select',

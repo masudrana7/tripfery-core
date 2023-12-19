@@ -7,7 +7,6 @@ $p_ids = array();
 foreach ($data['posts_not_in'] as $p_idsn) {
 	$p_ids[] = $p_idsn['post_not_in'];
 }
-
 $posts_in = [];
 if (isset($_GET['rating_value'])) {
 	$args = array(
@@ -24,7 +23,6 @@ if (isset($_GET['rating_value'])) {
 	endif;
 	wp_reset_postdata();
 }
-
 if (get_query_var('paged')) {
 	$paged = get_query_var('paged');
 } else if (get_query_var('page')) {
