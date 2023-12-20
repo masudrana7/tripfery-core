@@ -53,7 +53,6 @@ class Custom_Widget_Init {
 			'rt-post-grid'					=> 'RT_Post_Grid',
 			'rt-post-slider'				=> 'RT_Post_Slider',
 			'rt-team'						=> 'RT_Team',
-			'rt-service'					=> 'RT_Service',
 			'rt-service-isotope'			=> 'RT_Service_Isotope',
 			'rt-testimonial'				=> 'RT_Testimonials',
 			'rt-video'						=> 'RT_Video',

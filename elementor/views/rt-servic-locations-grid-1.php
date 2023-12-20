@@ -32,6 +32,7 @@
 					<?php
 						foreach ( $item['sec_cat'] as $term_id) {
 						$catterm = get_term( $term_id, 'categories');
+						$term_link = get_term_link($term_id, 'categories');
 						$args = array(
 							'post_type' => 'to_book',
 							'tax_query' => array(
@@ -49,8 +50,13 @@
 							),
 						);
 						$post_query = new \WP_Query($args);
-						if (! empty($post_query->found_posts )) { ?>
-							<li><span class="feature-name"><?php echo esc_html($post_query->found_posts); ?> <?php echo $catterm->name;?></span></li>
+						if (! empty($post_query->found_posts )) {
+							?>
+							<li>
+								<span class="feature-name"><?php echo esc_html($post_query->found_posts); ?> 
+								<?php echo $catterm->name;?>
+								</span>
+							</li>
 						<?php } 
 						}
 					?>

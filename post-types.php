@@ -35,22 +35,6 @@ $post_types = array(
 		//'rewrite'         => TripferyTheme::$options['team_slug'],
 		'supports'        => array( 'title', 'thumbnail', 'editor', 'comments')
 	),
-
-	'tripfery_service'  => array(
-		'title'           => __( 'Service', 'tripfery-core' ),
-		'plural_title'    => __( 'Services', 'tripfery-core' ),
-		'menu_icon'       => 'dashicons-book',
-		'rewrite'         => TripferyTheme::$options['service_slug'],
-		'supports'        => array( 'title', 'thumbnail', 'editor', 'excerpt', 'page-attributes' ),
-	),
-	'tripfery_booking'  => array(
-		'title'           => __( 'Locations', 'tripfery-core' ),
-		'plural_title'    => __( 'Locationss', 'tripfery-core' ),
-		'menu_icon'       => 'dashicons-book',
-		'rewrite'         => TripferyTheme::$options['booking_slug'],
-		'supports'        => array( 'title', 'thumbnail', 'editor', 'excerpt', 'page-attributes' ),
-		'taxonomies' 	  => array( 'post_tag' ),
-	),
 );
 
 $taxonomies = array(
@@ -73,8 +57,6 @@ $taxonomies = array(
 		'rewrite'      => array( 'slug' => TripferyTheme::$options['booking_cat_slug'] ),
 	),
 );
-
-
 $Posts = RT_Posts::getInstance();
 $Posts->add_post_types( $post_types );
 $Posts->add_taxonomies( $taxonomies );

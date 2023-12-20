@@ -12,7 +12,7 @@ function tripfery_search_form(){
 		<div class="custom-search-input">
 			<div class="input-group">
 			<input type="text" class="search-query form-control" placeholder="' . esc_attr__( 'Search Here  ...', 'tripfery-core' ) . '" value="' . get_search_query() . '" name="s" />
-			<button class="btn" type="submit"><i class="icon-search-icon"></i></button>
+			<button class="btn" type="submit"><i class="icon-tripfery-search"></i></button>
 			</div>
 		</div>
 	</form>
