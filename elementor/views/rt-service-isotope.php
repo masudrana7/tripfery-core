@@ -8,11 +8,6 @@ if (class_exists('BABE_Functions')) { ?>
 						<?php
 						if (!empty($data['tab_items'])) {
 							foreach ($data['tab_items'] as $cat) {
-								$get_color = get_term_meta($cat['sec_cat'], 'rt_category_color', true);
-								$hexcolor = tripferyTheme_Helper::hex2rgb($get_color);
-								$r = hexdec(substr($get_color, 0, 2));
-								$g = hexdec(substr($get_color, 2, 2));
-								$b = hexdec(substr($get_color, 4, 2));
 								$cats = explode(',', $cat['sec_cat']);
 								$terms = get_terms(array(
 									'taxonomy' => 'categories',
@@ -20,13 +15,14 @@ if (class_exists('BABE_Functions')) { ?>
 									'orderby' => 'include',
 								));
 								$name_list = $terms[0]; ?>
-								<button style="--tripfery-red: <?php echo absint($r); ?>;--tripfery-green: <?php echo absint($g); ?>; --tripfery-blue: <?php echo absint($b); ?>;" data-filter=".<?php echo esc_attr($name_list->slug); ?>" class="filter-btn <?php echo esc_attr($name_list->slug); ?>">
+								<button data-filter=".<?php echo esc_attr($name_list->slug); ?>" class="filter-btn <?php echo esc_attr($name_list->slug); ?>">
 									<i class="<?php echo esc_attr($cat['cat_icon']); ?>"></i>
 									<?php echo $name_list->name; ?>
 								</button>
-
 						<?php }
+							echo "<div class='rt-color-track'></div>";
 						} ?>
+
 					</div>
 				</div>
 			</div>
@@ -78,13 +74,11 @@ if (class_exists('BABE_Functions')) { ?>
 					$args['post__in'] = $post_in;
 
 					$posts = BABE_Post_types::get_posts($args);
-					$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
+					$col_class = "col-xl-{$data['col_lg']} col-lg-{$data['col_md']} col-md-{$data['col_sm']} col-sm-{$data['col_xs']}";
 
 					foreach ($posts as $post) {
 						$post_id 	= $post['ID'];
 						$ba_info 	= BABE_Post_types::get_post($post_id);
-						
-
 						$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
 						$item_url = BABE_Functions::get_page_url_with_args($post['ID'], $_GET);
 						$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post['ID']), $thumbnail);
@@ -103,12 +97,9 @@ if (class_exists('BABE_Functions')) { ?>
 						$url   		= BABE_Functions::get_page_url_with_args($post_id, $_GET);
 						$item_terms = get_the_terms($post_id, 'categories');
 						$discount = $post['discount'] ? '<div class="item_info_price_discount">-' . $post['discount'] . '% Off</div>' : '';
-
 						$price_from_with_taxes = ($post['price_from'] * (100 + $post['categories_add_taxes'] * $post['categories_tax'])) / 100;
-
 						$price_old = $post['discount_price_from'] < $price_from_with_taxes ? '<span class="item_info_price_old">' . BABE_Currency::get_currency_price($price_from_with_taxes) . '</span>' : '';
 						'';
-
 						if (!empty($post['discount_price_from'])) {
 							$item_info_price =
 								'' . $price_old . '
@@ -137,7 +128,9 @@ if (class_exists('BABE_Functions')) { ?>
 										</div>
 									</div>
 									<?php if (!empty($image_srcs)) { ?>
-										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) {
+														echo 'discount_available ';
+													} ?> text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
 											<?php if ('on' == $featured_text) { ?>
@@ -188,13 +181,15 @@ if (class_exists('BABE_Functions')) { ?>
 								</div>
 							</div>
 
-						<!-- Tour Style -->
+							<!-- Tour Style -->
 						<?php } elseif ($cat['sec_style'] == 'style3') { ?>
 							<div class="rt_booking_<?php echo esc_attr($cat['sec_style']); ?> <?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($name_list->slug); ?> mb-4">
 								<div class="listing-card">
 									<?php
 									if (!empty($image_srcs)) { ?>
-										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) {
+														echo 'discount_available ';
+													} ?>text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
 											<?php if ('on' == $featured_text) { ?>
@@ -274,13 +269,15 @@ if (class_exists('BABE_Functions')) { ?>
 								</div>
 							</div>
 
-						<!-- Activity Style	 -->
+							<!-- Activity Style	 -->
 						<?php } elseif ($cat['sec_style'] == 'style4') { ?>
 							<div class="rt_booking_<?php echo esc_attr($cat['sec_style']); ?> <?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($name_list->slug); ?> mb-4">
 								<div class="listing-card">
 									<?php
 									if (!empty($image_srcs)) { ?>
-										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) {
+														echo 'discount_available ';
+													} ?> text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
 											<?php if ($data['rating_display'] == 'yes') {
@@ -342,7 +339,9 @@ if (class_exists('BABE_Functions')) { ?>
 								<div class="listing-card">
 									<?php
 									if (!empty($image_srcs)) { ?>
-										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) {
+														echo 'discount_available ';
+													} ?>text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
 											<?php if (class_exists('RTWishlist')) {
@@ -393,7 +392,9 @@ if (class_exists('BABE_Functions')) { ?>
 								<div class="listing-card">
 									<?php
 									if (!empty($image_srcs)) { ?>
-										<a class="text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) {
+														echo 'discount_available ';
+													} ?>text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
 											<?php if ('on' == $featured_text) { ?>
