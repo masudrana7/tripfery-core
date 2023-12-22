@@ -11,10 +11,8 @@ namespace radiustheme\Tripfery_Core;
 extract($data); ?>
 
 <div class="row rt-featured-room">
-    <div class="col-xl-6 col-lg-7 col-md-12">
+    <div class="col-xl-6 col-lg-7 col-md-6">
         <div class="image-column">
-
-
             <?php $i = 0;
             foreach ($data['rt-rooms'] as $item) : ?>
                 <div class="col-img active" data-list-img="<?php echo esc_attr($i); ?>" style="overflow: hidden;">
@@ -22,14 +20,11 @@ extract($data); ?>
                 </div>
             <?php $i++;
             endforeach; ?>
-
-
         </div>
     </div>
-    <div class="col-xl-6 col-lg-5 col-md-12">
+    <div class="col-xl-6 col-lg-5 col-md-6">
         <div class="room-feature-box-1">
             <div class="rooms-feature-info">
-
                 <?php if ($data['subtitle']) { ?>
                     <span class="rooms-info-subtitle"><?php echo wp_kses_post($data['subtitle']) ?></span>
                 <?php } ?>
@@ -41,7 +36,6 @@ extract($data); ?>
                         <?php echo wp_kses_post($data['description']) ?>
                     </p>
                 <?php } ?>
-
             </div>
             <div class="list-feature">
                 <ul>

@@ -1,4 +1,6 @@
 <?php
+
+use Rtrs\Models\Review;
 if (class_exists('BABE_Functions')) { ?>
 	<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
 		<?php if ($data['cat_display'] == 'yes') { ?>
@@ -38,7 +40,6 @@ if (class_exists('BABE_Functions')) { ?>
 						'orderby' => 'include',
 					));
 					$name_list = $terms[0];
-
 					$thumb_size = 'tripfery-size3';
 					$number_of_post = $data['itemnumber'];
 					$post_orderby = $data['post_orderby'];
@@ -104,7 +105,17 @@ if (class_exists('BABE_Functions')) { ?>
 							$item_info_price =
 								'' . $price_old . '
 							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>';
-						} ?>
+						}
+
+						if (class_exists(Review::class)) {
+							$average_rating = Review::getAvgRatings(get_the_ID());
+							$rating_count   = Review::getTotalRatings(get_the_ID());
+							
+						}
+
+						?>
+
+						
 
 						<!--  Car Style	-->
 						<?php if ($cat['sec_style'] == 'style2') { ?>
@@ -128,13 +139,12 @@ if (class_exists('BABE_Functions')) { ?>
 										</div>
 									</div>
 									<?php if (!empty($image_srcs)) { ?>
-										<a class="<?php if (!empty($discount)) {
-														echo 'discount_available ';
-													} ?> text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) { echo 'discount_available '; } ?> text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
+
 											<?php if ('on' == $featured_text) { ?>
-												<?php echo wp_kses_post('Featured', 'tripfery') ?>
+												<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
 											<?php } ?>
 										</a>
 									<?php } ?>
@@ -481,16 +491,25 @@ if (class_exists('BABE_Functions')) { ?>
 										<h3 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 										</h3>
-										<?php if ($data['rating_display'] == 'yes') { ?>
-											<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
+										<?php //mmmmm// if ($data['rating_display'] == 'yes') { ?>
+											<?php //if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
 												<div class="d-flex align-item listing-card-review-area">
+
 													<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+
 													<div class="rt-bookoing-rating">
-														<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
+														<?php
+														echo $average_rating;
+														echo"<br>";
+														echo $rating_count;
+														echo BABE_Rating::post_stars_rendering($post['ID']);
+														
+														?>
 													</div>
+
 												</div>
-											<?php } ?>
-										<?php } ?>
+											<?php // } ?>
+										<?php // } ?>
 
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
