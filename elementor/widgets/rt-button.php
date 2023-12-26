@@ -9,6 +9,7 @@ namespace radiustheme\Tripfery_Core;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Border;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -269,7 +270,21 @@ class RT_Button extends Custom_Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .rt-button .button-style-2' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
-			),	
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Border::get_type(),
+				'name'      => 'btn_border',
+				'label'   => esc_html__('Button Border', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .button-link'
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Border::get_type(),
+				'name'      => 'btn_border_hover',
+				'label'   => esc_html__('Button Border Hover', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .button-link:hover'
+			),
 			array(
 				'mode' => 'section_end',
 			),

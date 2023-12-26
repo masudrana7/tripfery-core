@@ -1,6 +1,6 @@
 <?php
-
 use Rtrs\Models\Review;
+use Rtrs\Helpers\Functions;
 if (class_exists('BABE_Functions')) { ?>
 	<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
 		<?php if ($data['cat_display'] == 'yes') { ?>
@@ -105,17 +105,7 @@ if (class_exists('BABE_Functions')) { ?>
 							$item_info_price =
 								'' . $price_old . '
 							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>';
-						}
-
-						if (class_exists(Review::class)) {
-							$average_rating = Review::getAvgRatings(get_the_ID());
-							$rating_count   = Review::getTotalRatings(get_the_ID());
-							
-						}
-
-						?>
-
-						
+						} ?>
 
 						<!--  Car Style	-->
 						<?php if ($cat['sec_style'] == 'style2') { ?>
@@ -139,7 +129,9 @@ if (class_exists('BABE_Functions')) { ?>
 										</div>
 									</div>
 									<?php if (!empty($image_srcs)) { ?>
-										<a class="<?php if (!empty($discount)) { echo 'discount_available '; } ?> text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+										<a class="<?php if (!empty($discount)) {
+														echo 'discount_available ';
+													} ?> text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
 
@@ -190,7 +182,6 @@ if (class_exists('BABE_Functions')) { ?>
 									</div>
 								</div>
 							</div>
-
 							<!-- Tour Style -->
 						<?php } elseif ($cat['sec_style'] == 'style3') { ?>
 							<div class="rt_booking_<?php echo esc_attr($cat['sec_style']); ?> <?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($name_list->slug); ?> mb-4">
@@ -261,20 +252,25 @@ if (class_exists('BABE_Functions')) { ?>
 												</div>
 											<?php } ?>
 										</div>
-
-										<?php if ($data['rating_display'] == 'yes') { ?>
-											<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
-												<div class="d-flex align-item listing-card-review-area">
-													<div class="listing-card-review-text">
-														<?php echo esc_html('Excellent', 'tripfery-core') ?>
-													</div>
-													<div class="rt-bookoing-rating">
-														<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
+										<?php if ($data['rating_display'] == 'yes' && class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
+											<div class="d-flex align-item listing-card-review-area">
+												<div class="listing-card-review-text">
+													<?php echo esc_html('Excellent', 'tripfery-core') ?>
+												</div>
+												<div class="rtrs-rating-item">
+													<div class="rating-icon">
+														<?php echo Functions::review_stars($avg_rating); ?>
+														<span class="rating-percent">
+															(<?php $total_rating = Review::getTotalRatings($post_id);
+																printf(
+																	esc_html(_n('%s Review', '%s Reviews', $total_rating, 'revieweb')),
+																	esc_html($total_rating)
+																); ?>)
+														</span>
 													</div>
 												</div>
-											<?php } ?>
+											</div>
 										<?php } ?>
-
 									</div>
 								</div>
 							</div>
@@ -290,10 +286,12 @@ if (class_exists('BABE_Functions')) { ?>
 													} ?> text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
 											<img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
 											<?php echo wp_kses_post($discount); ?>
-											<?php if ($data['rating_display'] == 'yes') {
+											<?php if ($data['rating_display'] == 'yes' && class_exists(Review::class)) {
 												echo '<span class="booking-top-rating">';
 												echo '<i class="fa-solid fa-star"></i>';
-												echo BABE_Rating::get_post_total_rating($post_id);
+												if ( $avg_rating = Review::getAvgRatings( get_the_ID() ) ) {
+													echo esc_html($avg_rating);	
+												}
 												echo '</span>';
 											} ?>
 											<?php if ('on' == $featured_text) { ?>
@@ -435,15 +433,22 @@ if (class_exists('BABE_Functions')) { ?>
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 										</h3>
 
-										<?php if ($data['rating_display'] == 'yes') { ?>
-											<?php if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
-												<div class="d-flex align-item listing-card-review-area">
-													<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-													<div class="rt-bookoing-rating">
-														<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
+										<?php if ($data['rating_display'] == 'yes' && class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
+											<div class="d-flex align-item listing-card-review-area">
+												<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+												<div class="rtrs-rating-item">
+													<div class="rating-icon">
+														<?php echo Functions::review_stars($avg_rating); ?>
+														<span class="rating-percent">
+															(<?php $total_rating = Review::getTotalRatings($post_id);
+																printf(
+																	esc_html(_n('%s Review', '%s Reviews', $total_rating, 'revieweb')),
+																	esc_html($total_rating)
+																); ?>)
+														</span>
 													</div>
 												</div>
-											<?php } ?>
+											</div>
 										<?php } ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['button_display'] == 'yes') { ?>
@@ -491,26 +496,23 @@ if (class_exists('BABE_Functions')) { ?>
 										<h3 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 										</h3>
-										<?php //mmmmm// if ($data['rating_display'] == 'yes') { ?>
-											<?php //if (!empty(BABE_Rating::post_stars_rendering($post['ID']))) { ?>
-												<div class="d-flex align-item listing-card-review-area">
-
-													<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-
-													<div class="rt-bookoing-rating">
-														<?php
-														echo $average_rating;
-														echo"<br>";
-														echo $rating_count;
-														echo BABE_Rating::post_stars_rendering($post['ID']);
-														
-														?>
+										<?php if ($data['rating_display'] == 'yes' && class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
+											<div class="d-flex align-item listing-card-review-area">
+												<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+												<div class="rtrs-rating-item">
+													<div class="rating-icon">
+														<?php echo Functions::review_stars($avg_rating); ?>
+														<span class="rating-percent">
+															(<?php $total_rating = Review::getTotalRatings($post_id);
+																printf(
+																	esc_html(_n('%s Review', '%s Reviews', $total_rating, 'revieweb')),
+																	esc_html($total_rating)
+																); ?>)
+														</span>
 													</div>
-
 												</div>
-											<?php // } ?>
-										<?php // } ?>
-
+											</div>
+										<?php } ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
@@ -522,7 +524,6 @@ if (class_exists('BABE_Functions')) { ?>
 													<?php } ?>
 												</div>
 											<?php } ?>
-
 											<?php if ($data['button_display'] == 'yes') { ?>
 												<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated">
 													<?php echo $cat['button_text'] ?>
@@ -530,8 +531,6 @@ if (class_exists('BABE_Functions')) { ?>
 											<?php } ?>
 										</div>
 									</div>
-
-
 								</div>
 							</div>
 						<?php } ?>

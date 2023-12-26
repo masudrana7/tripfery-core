@@ -99,6 +99,17 @@ class RT_BE_Search_Form extends Custom_Widget_Base {
 				],
 			),
 			array(
+				'type'    => Controls_Manager::DIMENSIONS,
+				'mode'          => 'responsive',
+				'size_units' => ['px', '%', 'em'],
+				'id'      => 'content_padding',
+				'label'   => __('Pading', 'tripfery-core'),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-search-customize .babe-search-form' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+				),
+				'separator' => 'before',
+			),
+			array(
 				'mode'    => 'group',
 				'type'    => Group_Control_Box_Shadow::get_type(),
 				'name'      => 'item_boxshadow',

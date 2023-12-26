@@ -1,5 +1,8 @@
 <?php
 
+use Rtrs\Models\Review;
+use Rtrs\Helpers\Functions;
+
 /**
  * @author  RadiusTheme
  * @since   1.0
@@ -52,7 +55,22 @@ if (class_exists('BABE_Functions')) {
 						<?php } ?>
 
 						<h3 class="info-title"><a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a></h3>
-						<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
+						<?php if (class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
+							<div class="d-flex align-item listing-card-review-area">
+								<div class="rtrs-rating-item">
+									<div class="rating-icon">
+										<?php echo Functions::review_stars($avg_rating); ?>
+										<span class="rating-percent">
+											(<?php $total_rating = Review::getTotalRatings($post_id);
+												printf(
+													esc_html(_n('%s Review', '%s Reviews', $total_rating, 'revieweb')),
+													esc_html($total_rating)
+												); ?>)
+										</span>
+									</div>
+								</div>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,6 @@
 <?php
+use Rtrs\Models\Review;
+use Rtrs\Helpers\Functions;
 $thumb_size = 'tripfery-size3';
 $number_of_post = $data['itemnumber'];
 $post_orderby = $data['post_orderby'];
@@ -185,12 +187,23 @@ if (class_exists('BABE_Functions')) {
 							<h3 class="listing-card-title">
 								<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 							</h3>
-							<div class="d-flex align-item listing-card-review-area">
-								<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-								<div class="rt-bookoing-rating">
-									<?php echo BABE_Rating::post_stars_rendering($post['ID']); ?>
+							<?php if (class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
+								<div class="d-flex align-item listing-card-review-area">
+									<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+									<div class="rtrs-rating-item">
+										<div class="rating-icon">
+											<?php echo Functions::review_stars($avg_rating); ?>
+											<span class="rating-percent">
+												(<?php $total_rating = Review::getTotalRatings($post_id);
+													printf(
+														esc_html(_n('%s Review', '%s Reviews', $total_rating, 'revieweb')),
+														esc_html($total_rating)
+													); ?>)
+											</span>
+										</div>
+									</div>
 								</div>
-							</div>
+							<?php } ?>
 							<div class="d-flex align-items-center justify-content-between price-area">
 								<?php echo wp_kses_post($item_info_price); ?>
 								<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated"><?php echo esc_html('View Availability', 'tripfery-core') ?></a>
