@@ -108,9 +108,18 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 					'options' => array(
 						'default' => __( 'Default', 'tripfery-core' ),
 						'1'       => __( 'Layout 1', 'tripfery-core' ),
-						'2'       => __( 'Layout 2', 'tripfery-core' ),
 					),
 					'default'  => 'default',
+				),
+				"{$prefix}_header_width" => array(
+					'label' 	  => __('Header Width', 'tripfery-core'),
+					'type'  	  => 'select',
+					'options' => array(
+						'default' => __('Default', 'tripfery-core'),
+						'off'      => __('Container', 'tripfery-core'),
+						'on'     => __('Full Width Container', 'tripfery-core'),
+					),
+					'default'  	  => 'default',
 				),
 				"{$prefix}_header_bgcolor" => array(
 					'label' => __('Header Background Color', 'tripfery-core'),
@@ -397,6 +406,22 @@ $Postmeta->add_meta_box('tripfery_booking_info', __('Booking Information', 'trip
 		),
 		'tripfery_location_rentals' => array(
 			'label' => __('Location Rentals', 'tripfery-core'),
+			'type'  => 'text',
+		),
+	)
+));
+
+/*-------------------------------------
+#. Hotlel Locations
+---------------------------------------*/
+$Postmeta->add_meta_box('tripfery_hotel_info', __('Hotel Information', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_room_square' => array(
+			'label' => __('Room Square Feet', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_bed_room' => array(
+			'label' => __('Bed Number', 'tripfery-core'),
 			'type'  => 'text',
 		),
 	)

@@ -1,6 +1,8 @@
 <?php
+
 use Rtrs\Models\Review;
 use Rtrs\Helpers\Functions;
+
 if (class_exists('BABE_Functions')) { ?>
 	<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
 		<?php if ($data['cat_display'] == 'yes') { ?>
@@ -170,11 +172,7 @@ if (class_exists('BABE_Functions')) { ?>
 											</div>
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?>
-													<?php if (!empty($cat['activity_text'])) { ?>
-														<span class="activity-person">
-															<?php echo $cat['activity_text'] ?>
-														</span>
+													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?></span>
 													<?php } ?>
 												</div>
 											<?php } ?>
@@ -228,8 +226,7 @@ if (class_exists('BABE_Functions')) { ?>
 													<div class="rt-price">
 														<?php echo wp_kses_post($item_info_price); ?>
 														<?php if (!empty($cat['activity_text'])) { ?>
-															<span class="activity-person">
-																<?php echo $cat['activity_text'] ?>
+															<span class="activity-person"><?php echo $cat['activity_text'] ?>
 															</span>
 														<?php } ?>
 													</div>
@@ -289,8 +286,8 @@ if (class_exists('BABE_Functions')) { ?>
 											<?php if ($data['rating_display'] == 'yes' && class_exists(Review::class)) {
 												echo '<span class="booking-top-rating">';
 												echo '<i class="fa-solid fa-star"></i>';
-												if ( $avg_rating = Review::getAvgRatings( get_the_ID() ) ) {
-													echo esc_html($avg_rating);	
+												if ($avg_rating = Review::getAvgRatings(get_the_ID())) {
+													echo esc_html($avg_rating);
 												}
 												echo '</span>';
 											} ?>
@@ -323,10 +320,7 @@ if (class_exists('BABE_Functions')) { ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?>
-													<?php if (!empty($cat['activity_text'])) { ?>
-														<span class="activity-person">
-															<?php echo $cat['activity_text'] ?>
+													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
 														</span>
 													<?php } ?>
 												</div>
@@ -384,8 +378,7 @@ if (class_exists('BABE_Functions')) { ?>
 												<div class="rt-price">
 													<?php echo wp_kses_post($item_info_price); ?>
 													<?php if (!empty($cat['activity_text'])) { ?>
-														<span class="activity-person">
-															<?php echo $cat['activity_text'] ?>
+														<span class="activity-person"><?php echo $cat['activity_text'] ?>
 														</span>
 													<?php } ?>
 												</div>
@@ -516,11 +509,7 @@ if (class_exists('BABE_Functions')) { ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?>
-													<?php if (!empty($cat['activity_text'])) { ?>
-														<span class="activity-person">
-															<?php echo $cat['activity_text'] ?>
-														</span>
+													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?></span>
 													<?php } ?>
 												</div>
 											<?php } ?>
@@ -541,3 +530,13 @@ if (class_exists('BABE_Functions')) { ?>
 		</div>
 	</div>
 <?php } ?>
+
+<?php
+
+if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+?>
+	<script>
+		jQuery('.cardContainer').isotope();
+	</script>
+<?php
+}

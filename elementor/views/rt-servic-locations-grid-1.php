@@ -21,7 +21,15 @@
 			?>
 			<div class="panel <?php echo esc_attr($data['animation']); ?> <?php echo esc_attr($data['animation_effect']); ?>" data-wow-delay="<?php echo esc_attr($m); ?>s" data-wow-duration="<?php echo esc_attr($n); ?>s" style="background-image: url('<?php echo esc_attr($image_attributes['0']); ?>')">
 
-				<?php if (!empty($term->name)) { ?>
+				<?php if (!empty($term->name)) {
+					if( ! empty( $item['sec_cat'] ) ){
+						$term_link = add_query_arg(
+							[
+								'category_ids' => $item['sec_cat'],
+							] , $term_link 
+						);
+					}
+					?>
 					<h3 class="panel-title"><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a></h3>
 				<?php }
 

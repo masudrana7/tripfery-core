@@ -44,12 +44,6 @@ $taxonomies = array(
 		'post_types'   => 'tripfery_team',
 		'rewrite'      => array( 'slug' => TripferyTheme::$options['team_cat_slug'] ),
 	),	
-	'tripfery_service_category' => array(
-		'title'        => __( 'Service Category', 'tripfery-core' ),
-		'plural_title' => __( 'Service Categories', 'tripfery-core' ),
-		'post_types'   => 'tripfery_service',
-		'rewrite'      => array( 'slug' => TripferyTheme::$options['service_cat_slug'] ),
-	),
 	'tripfery_booking_category' => array(
 		'title'        => __( 'Locations Category', 'tripfery-core' ),
 		'plural_title' => __( 'Locations Categories', 'tripfery-core' ),

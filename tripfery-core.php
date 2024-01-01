@@ -41,6 +41,15 @@ class Tripfery_Core {
 		add_filter( 'widget_form_callback', array( $this, 'rt_widget_form_extend' ), 10, 2);
 		add_filter( 'widget_update_callback', array( $this, 'rt_widget_update'), 10, 2 );
 		add_filter( 'dynamic_sidebar_params', array( $this, 'rt_dynamic_sidebar_params'), 0 );
+		add_action('init', 'rt_remove_comment', 15);
+		function rt_remove_comment()
+		{
+			if (!function_exists('rtrs')) {
+				return;
+			}
+			remove_filter('comment_form_field_comment', array(\BABE_Rating::class, 'comment_form_field_comment'), 10);
+			remove_filter('get_comment_text', array(\BABE_Rating::class, 'get_comment_text'), 10, 3);
+		}
 
 		require_once 'module/rt-post-share.php';
 		$theme = wp_get_theme();
@@ -66,6 +75,8 @@ class Tripfery_Core {
 		require_once 'widget/widget-settings.php';
 		require_once 'lib/optimization/__init__.php';
 	}
+
+
 
 	/*User extra profile fields*/
 	function tripfery_extra_profile_fields( $user_id ) {
@@ -206,6 +217,7 @@ class Tripfery_Core {
 			$params[0]['before_widget'] = preg_replace( '/class="/', "class=\"{$widget_opt[$widget_num]['classes']} ", $params[0]['before_widget'], 1 );
 		return $params;
 	}
+	
 }
 
 new Tripfery_Core;
