@@ -171,8 +171,8 @@ if (class_exists('BABE_Functions')) { ?>
 												<?php } ?>
 											</div>
 											<?php if ($data['price_display'] == 'yes') { ?>
-												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?></span>
+												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
+												</span>
 													<?php } ?>
 												</div>
 											<?php } ?>
@@ -224,9 +224,7 @@ if (class_exists('BABE_Functions')) { ?>
 												<div class="d-flex flex-column">
 													<span class="text-gray"><?php echo esc_html('Start from', 'tripfery-core') ?></span>
 													<div class="rt-price">
-														<?php echo wp_kses_post($item_info_price); ?>
-														<?php if (!empty($cat['activity_text'])) { ?>
-															<span class="activity-person"><?php echo $cat['activity_text'] ?>
+														<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
 															</span>
 														<?php } ?>
 													</div>
@@ -375,10 +373,7 @@ if (class_exists('BABE_Functions')) { ?>
 
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
-												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?>
-													<?php if (!empty($cat['activity_text'])) { ?>
-														<span class="activity-person"><?php echo $cat['activity_text'] ?>
+												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
 														</span>
 													<?php } ?>
 												</div>
