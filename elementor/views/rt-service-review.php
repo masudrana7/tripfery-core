@@ -44,7 +44,7 @@ if (class_exists('BABE_Functions')) {
 			$post_id = $post['ID'];
 			$item_url = BABE_Functions::get_page_url_with_args($post_id, $_GET);
 			$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), $thumb_size);
-			$image = $image_srcs ? '<figure class="item-img"><a href="' . $item_url . '"><img src="' . $image_srcs[0] . '"></a></figure>' : '';
+			$image = $image_srcs ? '<figure class="item-img"><a href="' . $item_url . '"><img src="' . $image_srcs[0] . '" alt="item-image"></a></figure>' : '';
 			$url = BABE_Functions::get_page_url_with_args($post_id, $_GET); ?>
 			<div class="col-md-12 <?php echo esc_attr($col_class); ?>">
 				<div class="hotel-info-card d-flex flex-column align-items-center <?php echo esc_attr($data['animation']); ?> <?php echo esc_attr($data['animation_effect']); ?>" data-wow-delay="<?php echo esc_attr($data['delay']); ?>s" data-wow-duration="<?php echo esc_attr($data['duration']); ?>s">

@@ -21,8 +21,6 @@ namespace radiustheme\Tripfery_Core; ?>
 		?>
 			<article class="col-sm-6 col-md-4 col-xl mb-4 mb-lg-0 <?php echo esc_attr($data['animation']); ?> <?php echo esc_attr($data['animation_effect']); ?>" data-wow-delay="<?php echo esc_attr($m); ?>s" data-wow-duration="<?php echo esc_attr($n); ?>s">
 				<div class="top-activity-wrapper d-flex flex-column m-auto align-items-center">
-
-
 					<?php if (!empty($item['image']['id'])) { ?>
 						<div class="top-activity-thumb-wrapper">
 							<?php echo wp_get_attachment_image($item['image']['id'], 'full') ?>
@@ -35,7 +33,8 @@ namespace radiustheme\Tripfery_Core; ?>
 								<?php echo esc_html($term->name); ?>
 							</h3>
 						<?php } ?>
-						<?php $locterms = get_terms(array(
+						<?php
+						$locterms = get_terms(array(
 							'taxonomy' => 'ba_locations',
 							'parent'   => 0
 						));
@@ -49,13 +48,13 @@ namespace radiustheme\Tripfery_Core; ?>
 								'relation' => 'AND',
 								array(
 									'taxonomy' => 'ba_our-activitys',
-									'field' => 'term_id',
-									'terms' => $item['category_list'],
+									'field'    => 'term_id',
+									'terms'    => $item['category_list'],
 								),
 								array(
 									'taxonomy' => 'ba_locations',
-									'field' => 'term_id',
-									'terms' => $terms_ids,
+									'field'    => 'term_id',
+									'terms'    => $terms_ids,
 								),
 							),
 						);
@@ -72,9 +71,10 @@ namespace radiustheme\Tripfery_Core; ?>
 									}
 								}
 							endwhile;
-							echo '</div';
+							echo '</div>';
 							wp_reset_postdata();
-						endif; ?>
+						endif;
+						?>
 					</div>
 				</div>
 			</article>
