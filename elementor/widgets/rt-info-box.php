@@ -10,6 +10,7 @@ namespace radiustheme\Tripfery_Core;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -478,6 +479,14 @@ class RT_Info_Box extends Custom_Widget_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .rt-info-item .rt-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Box_Shadow::get_type(),
+				'name'      => 'icon_boxshadow',
+				'label'   => esc_html__('Icon Box Shadow', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .rt-info-item .rt-icon',
+				'condition'   => array('style' => array('style1')),
 			),		
 			array(
 				'mode' => 'section_end',

@@ -452,6 +452,56 @@ $Postmeta->add_meta_box('tripfery_booking_property', __('Booking Property', 'tri
 	)
 ));
 
+$Postmeta->add_meta_box('tripfery_booking_type', __('Booking Type', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_type_title' => array(
+			'label' => __('Type Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_type' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Type', 'tripfery-core'),
+			'value'  => array(
+				'type_name' => array(
+					'label' => __('Type Title', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+				'type_image' => array(
+					'label' => __('Type Image', 'tripfery-core'),
+					'type'  => 'image',
+					'desc'  => __('Add Icon Image', 'tripfery-core'),
+				),
+			)
+		),
+	)
+));
+
+$Postmeta->add_meta_box('tripfery_booking_suitability', __('Booking Suitability', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_booking_suitability_title' => array(
+			'label' => __('Suitability Title', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_booking_suitability' => array(
+			'type'  => 'repeater',
+			'button' => __('Add New Suitability', 'tripfery-core'),
+			'value'  => array(
+				'suitability_name' => array(
+					'label' => __('Suitability Title', 'tripfery-core'),
+					'type'  => 'text',
+					'desc'  => __('City Centre', 'tripfery-core'),
+				),
+				'suitability_image' => array(
+					'label' => __('Suitability Image', 'tripfery-core'),
+					'type'  => 'image',
+					'desc'  => __('Add Icon Image', 'tripfery-core'),
+				),
+			)
+		),
+	)
+));
+
 $Postmeta->add_meta_box('tripfery_booking_rules', __('Booking Rules', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_booking_rules_title' => array(
@@ -525,6 +575,8 @@ $Postmeta->add_meta_box('tripfery_booking_included', __('Booking Included/Exclud
 		),
 	)
 ));
+
+
 
 $Postmeta->add_meta_box('tripfery_booking_durations', __('Booking Durations', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
