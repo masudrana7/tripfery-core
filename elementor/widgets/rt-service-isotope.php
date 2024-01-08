@@ -81,14 +81,6 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 			]
 		);
 		$repeater->add_control(
-			'activity_text',
-			[
-				'type'    => Controls_Manager::TEXT,
-				'label'   => esc_html__('Activity Text', 'tripfery-core'),
-				'label_block' => true,
-			]
-		);
-		$repeater->add_control(
 			'button_text',
 			[
 				'type'    => Controls_Manager::TEXT,

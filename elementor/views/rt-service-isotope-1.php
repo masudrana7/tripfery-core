@@ -96,6 +96,7 @@
 				foreach ($posts as $post) {
 					$post_id 	= $post['ID'];
 					$ba_info 	= BABE_Post_types::get_post($post_id);
+					$tripfery_per_rate = get_post_meta($post_id, 'tripfery_per_rate', true);
 					$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
 					$item_url = BABE_Functions::get_page_url_with_args($post['ID'], $_GET);
 					$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post['ID']), $thumbnail);

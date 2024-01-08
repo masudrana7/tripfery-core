@@ -384,6 +384,29 @@ $Postmeta->add_meta_box('tripfery_booking_layout', __('Booking Layout', 'tripfer
 ));
 
 /*-------------------------------------
+#. Per Stay Rates
+---------------------------------------*/
+$Postmeta->add_meta_box('tripfery_rat', __('Per Stay Rates', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_per_rate' => array(
+			'label' => __('Per Rates (Night/Day/Person)', 'tripfery-core'),
+			'type'  => 'text',
+		),
+	)
+));
+/*-------------------------------------
+#. Booking Video
+---------------------------------------*/
+$Postmeta->add_meta_box('tripfery_video', __('Video Link', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+	'fields' => array(
+		'tripfery_video_link' => array(
+			'label' => __('Video Link Here', 'tripfery-core'),
+			'type'  => 'text',
+		),
+	)
+));
+
+/*-------------------------------------
 #. Locations
 ---------------------------------------*/
 $Postmeta->add_meta_box('tripfery_booking_info', __('Booking Information', 'tripfery-core'), array('to_book'), '', '', 'high', array(
@@ -452,22 +475,22 @@ $Postmeta->add_meta_box('tripfery_booking_property', __('Booking Property', 'tri
 	)
 ));
 
-$Postmeta->add_meta_box('tripfery_booking_type', __('Booking Type', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+$Postmeta->add_meta_box('tripfery_rental_type', __('Rental Type', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
-		'tripfery_booking_type_title' => array(
+		'tripfery_rental_type_title' => array(
 			'label' => __('Type Title', 'tripfery-core'),
 			'type'  => 'text',
 		),
-		'tripfery_booking_type' => array(
+		'tripfery_rental_type' => array(
 			'type'  => 'repeater',
 			'button' => __('Add New Type', 'tripfery-core'),
 			'value'  => array(
-				'type_name' => array(
+				'rental_type_name' => array(
 					'label' => __('Type Title', 'tripfery-core'),
 					'type'  => 'text',
 					'desc'  => __('City Centre', 'tripfery-core'),
 				),
-				'type_image' => array(
+				'rental_type_image' => array(
 					'label' => __('Type Image', 'tripfery-core'),
 					'type'  => 'image',
 					'desc'  => __('Add Icon Image', 'tripfery-core'),
@@ -617,7 +640,7 @@ $Postmeta->add_meta_box('tripfery_booking_languages', __('Booking Language', 'tr
 ));
 
 // car service features
-$Postmeta->add_meta_box('tripfery_car_specifications', __('Car Specifications', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+$Postmeta->add_meta_box('tripfery_car_specifications', __('Specifications Featured', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_car_specifications' => array(
 			'type'  => 'repeater',

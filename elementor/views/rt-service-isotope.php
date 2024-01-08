@@ -82,6 +82,7 @@ if (class_exists('BABE_Functions')) { ?>
 					foreach ($posts as $post) {
 						$post_id 	= $post['ID'];
 						$ba_info 	= BABE_Post_types::get_post($post_id);
+						$tripfery_per_rate = get_post_meta($post_id, 'tripfery_per_rate', true);
 						$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
 						$item_url = BABE_Functions::get_page_url_with_args($post['ID'], $_GET);
 						$image_srcs = wp_get_attachment_image_src(get_post_thumbnail_id($post['ID']), $thumbnail);
@@ -171,8 +172,8 @@ if (class_exists('BABE_Functions')) { ?>
 												<?php } ?>
 											</div>
 											<?php if ($data['price_display'] == 'yes') { ?>
-												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
-												</span>
+												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+														</span>
 													<?php } ?>
 												</div>
 											<?php } ?>
@@ -224,9 +225,9 @@ if (class_exists('BABE_Functions')) { ?>
 												<div class="d-flex flex-column">
 													<span class="text-gray"><?php echo esc_html('Start from', 'tripfery-core') ?></span>
 													<div class="rt-price">
-														<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
-															</span>
-														<?php } ?>
+														<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+														</span>
+													<?php } ?>
 													</div>
 												</div>
 											<?php } ?>
@@ -318,9 +319,9 @@ if (class_exists('BABE_Functions')) { ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
-														</span>
-													<?php } ?>
+													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+													</span>
+												<?php } ?>
 												</div>
 											<?php } ?>
 											<?php if ($data['button_display'] == 'yes') { ?>
@@ -373,9 +374,9 @@ if (class_exists('BABE_Functions')) { ?>
 
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
-												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?>
-														</span>
-													<?php } ?>
+												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+													</span>
+												<?php } ?>
 												</div>
 											<?php } ?>
 										</div>
@@ -504,8 +505,9 @@ if (class_exists('BABE_Functions')) { ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($cat['activity_text'])) { ?><span class="activity-person"><?php echo $cat['activity_text'] ?></span>
-													<?php } ?>
+													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+													</span>
+												<?php } ?>
 												</div>
 											<?php } ?>
 											<?php if ($data['button_display'] == 'yes') { ?>

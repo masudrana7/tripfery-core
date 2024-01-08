@@ -98,11 +98,6 @@ class RT_Reviews_Filter extends Custom_Widget_Base {
 			),
 			array(
 				'type'    => Controls_Manager::TEXT,
-				'id'      => 'act_text',
-				'label'   => esc_html__('Activity Text', 'tripfery-core'),
-			),
-			array(
-				'type'    => Controls_Manager::TEXT,
 				'id'      => 'manual',
 				'label'   => esc_html__('Manual Text', 'tripfery-core'),
 				'default' => esc_html__('Manual', 'tripfery-core'),
