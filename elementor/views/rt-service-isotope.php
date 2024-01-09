@@ -297,7 +297,7 @@ if (class_exists('BABE_Functions')) { ?>
 									<?php } ?>
 
 									<div class="listing-card-content">
-										<h3 class="listing-card-title mt-0 mb-2">
+										<h3 class="listing-card-title mt-0 mb-1">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
 										</h3>
 										<div class="d-flex justify-content-between">
