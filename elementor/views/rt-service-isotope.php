@@ -172,7 +172,8 @@ if (class_exists('BABE_Functions')) { ?>
 												<?php } ?>
 											</div>
 											<?php if ($data['price_display'] == 'yes') { ?>
-												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?>
+												<?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
 														</span>
 													<?php } ?>
 												</div>
@@ -450,6 +451,7 @@ if (class_exists('BABE_Functions')) { ?>
 								</div>
 							</div>
 						<?php } else { ?>
+							<!-- Hotel Style  -->
 							<div class="rt_booking_<?php echo esc_attr($cat['sec_style']); ?> <?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($name_list->slug); ?> mb-4">
 								<div class="listing-card">
 									<?php
