@@ -143,6 +143,7 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 						'default' => __( 'Default', 'tripfery-core' ),
 						'1'       => __( 'Layout 1', 'tripfery-core' ),
 						'2'       => __( 'Layout 2', 'tripfery-core' ),
+						'3'       => __( 'Layout 3', 'tripfery-core' ),
 					),
 					'default'  => 'default',
 				),

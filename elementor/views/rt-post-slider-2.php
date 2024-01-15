@@ -94,7 +94,7 @@ $temp = TripferyTheme_Helper::wp_set_temp_query( $query );
 					</a>					
 					</div>
 					<div class="entry-content">
-						<h3 class="entry-title"><a href="<?php the_permalink();?>"><?php echo esc_html( $title );?></a></h3>
+						<h4 class="entry-title"><a href="<?php the_permalink();?>"><?php echo esc_html( $title );?></a></h4>
 						<?php if ( $tripfery_has_entry_meta ) { ?>
 						<ul class="entry-meta">
 							<?php if ( $data['post_author'] == 'yes' ) { ?>

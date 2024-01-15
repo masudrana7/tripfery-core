@@ -154,7 +154,8 @@ if (class_exists('BABE_Functions')) {
 					$item_info_price = '
 						<div class="rt-price">	
 							' . $price_old . '
-							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span><span class="activity-person">' . $tripfery_per_rate . '</span>
+							<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>
+							<span class="activity-person">' . $tripfery_per_rate . '</span>
 						</div>';
 				}
 			?>
@@ -186,9 +187,9 @@ if (class_exists('BABE_Functions')) {
 									echo RTWishlist::wishlist_html($post_id);
 								} ?>
 							</div>
-							<h3 class="listing-card-title">
+							<h4 class="listing-card-title">
 								<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-							</h3>
+							</h4>
 							<?php if (class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
 								<div class="d-flex align-item listing-card-review-area">
 									<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>

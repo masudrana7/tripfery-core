@@ -83,7 +83,7 @@
 					<div class="rt-price">	
 						' . $price_old . '
 						<span class="price-text item_info_price_new">' . BABE_Currency::get_currency_price($post['discount_price_from']) . '</span>
-						' . $discount . '<span class="activity-person">' . $tripfery_per_rate . '</span>
+						' . $discount . ' <span class="activity-person">' . $tripfery_per_rate . '</span>
 
 					</div>';
 				}
@@ -114,9 +114,9 @@
 
 						<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
 							<?php if ($data['title_position'] == 'top') { ?>
-								<h3 class="listing-card-title">
+								<h4 class="listing-card-title">
 									<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-								</h3>
+								</h4>
 							<?php } ?>
 							<div class="d-flex justify-content-between">
 								<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
@@ -142,9 +142,9 @@
 							</div>
 
 							<?php if ($data['title_position'] == 'bottom') { ?>
-								<h3 class="listing-card-title">
+								<h4 class="listing-card-title">
 									<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-								</h3>
+								</h4>
 							<?php } ?>
 							<?php if ($data['rating_display'] == 'yes') { ?>
 								<?php if ($data['rating_position'] == 'bottom') { ?>

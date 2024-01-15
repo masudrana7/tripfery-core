@@ -115,7 +115,7 @@ $temp = TripferyTheme_Helper::wp_set_temp_query($query);
 											<?php } ?>
 										</ul>
 									<?php } ?>
-									<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php echo esc_html($title); ?></a></h3>
+									<h4 class="entry-title"><a href="<?php the_permalink(); ?>"><?php echo esc_html($title); ?></a></h4>
 									<?php if ($data['content_display'] == 'yes') { ?>
 										<div class="post_excerpt"><?php echo wp_kses_post($content); ?></div>
 									<?php } ?>

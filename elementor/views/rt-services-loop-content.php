@@ -33,10 +33,10 @@
                     echo RTWishlist::wishlist_html($post_id);
                 } ?>
             </div>
-            <h3 class="listing-card-title">
+            <h4 class="listing-card-title">
                 <a href="<?php the_permalink(); ?>"><?php //echo esc_html($title); 
                                                     ?></a>
-            </h3>
+            </h4>
 
             <div class="d-flex align-item listing-card-review-area">
                 <div class="listing-card-review-text">Excellent</div>
@@ -44,29 +44,6 @@
                 <div class="rt-bookoing-rating">
                     <?php echo BABE_Rating::post_stars_rendering(get_the_ID()); ?>
                 </div>
-
-
-                <!-- <div class="d-flex align-items-center rating-stars-area">
-							<ul class="rating-stars d-flex">
-								<li class="star-item">
-								<i class="fa-solid fa-star"></i>
-								</li>
-								<li class="star-item">
-								<i class="fa-solid fa-star"></i>
-								</li>
-								<li class="star-item">
-								<i class="fa-solid fa-star"></i>
-								</li>
-								<li class="star-item">
-								<i class="fa-solid fa-star"></i>
-								</li>
-								<li class="star-item">
-								<i class="fa-solid fa-star"></i>
-								</li>
-							</ul>
-							<div class="number-of-reviews">(3 Reviews)</div>
-						</div> -->
-
 
             </div>
             <div class="d-flex align-items-center justify-content-between price-area">

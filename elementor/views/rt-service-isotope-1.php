@@ -47,21 +47,11 @@
 		$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
 		if ($posts != null) {
 	?>
-
-
-
 		<div class="rt-case-isotope case-multi-isotope-1 rt-isotope-wrapper">
-
-
-
-
 			<?php if ($data['cat_display'] == 'yes') { ?>
 				<div class="row justify-content-center rt-menu-cats-<?php echo esc_attr($menuClass); ?>">
 					<div class="col-auto">
 						<div class="listing-filter-btns d-flex align-items-center justify-content-center flex-wrap">
-
-
-
 							<?php
 							$terms = get_terms(array(
 								'taxonomy' => 'categories',
@@ -79,16 +69,10 @@
 								<i class="icon-tripfery-hotel"></i>
 								<?php echo esc_html($term->name); ?></button>
 							<?php } ?>
-
-
-
 						</div>
 					</div>
 				</div>
 			<?php } ?>
-
-
-
 
 
 			<div class="row cardContainer">
@@ -144,9 +128,9 @@
 
 							<div class="listing-card-content title_postion_<?php echo esc_attr($data['title_position']); ?>">
 								<?php if ($data['title_position'] == 'top') { ?>
-									<h3 class="listing-card-title">
+									<h4 class="listing-card-title">
 										<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-									</h3>
+									</h4>
 								<?php } ?>
 								<div class="d-flex justify-content-between">
 									<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
@@ -172,9 +156,9 @@
 								</div>
 
 								<?php if ($data['title_position'] == 'bottom') { ?>
-									<h3 class="listing-card-title">
+									<h4 class="listing-card-title">
 										<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-									</h3>
+									</h4>
 								<?php } ?>
 								<?php if ($data['rating_display'] == 'yes') { ?>
 									<?php if ($data['rating_position'] == 'bottom') { ?>
@@ -189,7 +173,6 @@
 									<?php } ?>
 								<?php } ?>
 
-
 								<div class="d-flex align-items-center justify-content-between price-area">
 									<?php if ($data['price_display'] == 'yes') { ?>
 									<?php echo wp_kses_post($item_info_price); ?>
@@ -201,8 +184,6 @@
 										</a>
 									<?php } ?>
 								</div>
-
-
 							</div>
 						</div>
 					</div>

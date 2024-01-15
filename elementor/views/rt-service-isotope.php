@@ -115,9 +115,9 @@ if (class_exists('BABE_Functions')) { ?>
 							<div class="rt_booking_<?php echo esc_attr($cat['sec_style']); ?> <?php echo esc_attr($col_class); ?> card-item <?php echo esc_attr($name_list->slug); ?> mb-4 rt-car-style">
 								<div class="listing-card">
 									<div class="top-title">
-										<h3 class="listing-card-title">
+										<h4 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-										</h3>
+										</h4>
 										<div class="d-flex justify-content-between">
 											<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
 											if ($address) {
@@ -172,9 +172,12 @@ if (class_exists('BABE_Functions')) { ?>
 												<?php } ?>
 											</div>
 											<?php if ($data['price_display'] == 'yes') { ?>
-												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?>
-												<?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
-														</span>
+												<div class="rt-price">
+													<?php echo wp_kses_post($item_info_price); ?>
+													<?php if (!empty($tripfery_per_rate)) { ?>
+													<span class="activity-person">
+														<?php echo esc_html($tripfery_per_rate); ?>
+													</span>
 													<?php } ?>
 												</div>
 											<?php } ?>
@@ -217,16 +220,18 @@ if (class_exists('BABE_Functions')) { ?>
 											} ?>
 										</div>
 
-										<h3 class="listing-card-title">
+										<h4 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-										</h3>
+										</h4>
 
 										<div class="d-flex justify-content-between tour-info-middle">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="d-flex flex-column">
 													<span class="text-gray"><?php echo esc_html('Start from', 'tripfery-core') ?></span>
 													<div class="rt-price">
-														<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+														<?php echo wp_kses_post($item_info_price); ?>
+														<?php if (!empty($tripfery_per_rate)) { ?>
+															<span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
 														</span>
 													<?php } ?>
 													</div>
@@ -298,9 +303,9 @@ if (class_exists('BABE_Functions')) { ?>
 									<?php } ?>
 
 									<div class="listing-card-content">
-										<h3 class="listing-card-title mt-0 mb-1">
+										<h4 class="listing-card-title mt-0 mb-1">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-										</h3>
+										</h4>
 										<div class="d-flex justify-content-between">
 											<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
 											if ($address) {
@@ -356,9 +361,9 @@ if (class_exists('BABE_Functions')) { ?>
 									<?php } ?>
 
 									<div class="listing-card-content">
-										<h3 class="listing-card-title">
+										<h4 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-										</h3>
+										</h4>
 
 										<div class="d-flex justify-content-between">
 											<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
@@ -375,7 +380,10 @@ if (class_exists('BABE_Functions')) { ?>
 
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
-												<div class="rt-price"><?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+												<div class="rt-price">
+												<?php echo wp_kses_post($item_info_price); ?>
+													<?php if (!empty($tripfery_per_rate)) { ?>
+														<span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
 													</span>
 												<?php } ?>
 												</div>
@@ -419,9 +427,9 @@ if (class_exists('BABE_Functions')) { ?>
 											} ?>
 										</div>
 
-										<h3 class="listing-card-title">
+										<h4 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-										</h3>
+										</h4>
 
 										<?php if ($data['rating_display'] == 'yes' && class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
 											<div class="d-flex align-item listing-card-review-area">
@@ -484,9 +492,9 @@ if (class_exists('BABE_Functions')) { ?>
 												echo RTWishlist::wishlist_html($post_id);
 											} ?>
 										</div>
-										<h3 class="listing-card-title">
+										<h4 class="listing-card-title">
 											<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-										</h3>
+										</h4>
 										<?php if ($data['rating_display'] == 'yes' && class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
 											<div class="d-flex align-item listing-card-review-area">
 												<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
@@ -507,9 +515,11 @@ if (class_exists('BABE_Functions')) { ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+													<?php echo wp_kses_post($item_info_price); ?>
+													<?php if (!empty($tripfery_per_rate)) { ?>
+													<span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
 													</span>
-												<?php } ?>
+													<?php } ?>
 												</div>
 											<?php } ?>
 											<?php if ($data['button_display'] == 'yes') { ?>
