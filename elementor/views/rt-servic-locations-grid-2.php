@@ -29,10 +29,8 @@ namespace radiustheme\Tripfery_Core; ?>
 						<?php } ?>
 						<div class="destination-info text-center">
 							<?php if (!empty($term->name)) { ?>
-								<h3 class="destination-name"><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a></h3>
-
+								<h4 class="destination-name"><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a></h4>
 							<?php } ?>
-
 							<?php if (is_array($item['sec_cat']) && count($item['sec_cat'])) {  ?>
 								<?php foreach ($item['sec_cat'] as $term_id) {
 									$catterm = get_term($term_id, 'categories');

@@ -58,7 +58,7 @@ if ( is_array( $icon_class['value'] ) ) {
 		</div>
 		<div class="rt-content">
 			<?php if ( !empty( $data['title'] ) ) { ?>
-			<h3 class="rt-title"><?php echo wp_kses_post( $title );?></h3>
+			<h4 class="rt-title"><?php echo wp_kses_post( $title );?></h4>
 			<?php } if ( !empty( $data['content'] ) ) { ?>
 			<div class="rt-text"><?php echo wp_kses_post( $data['content'] );?></div>
 			<?php } ?>

@@ -325,7 +325,10 @@ if (class_exists('BABE_Functions')) { ?>
 										<div class="d-flex align-items-center justify-content-between price-area">
 											<?php if ($data['price_display'] == 'yes') { ?>
 												<div class="rt-price">
-													<?php echo wp_kses_post($item_info_price); ?><?php if (!empty($tripfery_per_rate)) { ?><span class="activity-person"><?php echo esc_html($tripfery_per_rate); ?>
+													<?php echo wp_kses_post($item_info_price); ?>
+													<?php if (!empty($tripfery_per_rate)) { ?>
+													<span class="activity-person">
+														<?php echo esc_html($tripfery_per_rate); ?>
 													</span>
 												<?php } ?>
 												</div>

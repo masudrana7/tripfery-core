@@ -11,7 +11,7 @@ namespace radiustheme\Tripfery_Core;
 extract($data); ?>
 
 <div class="row rt-featured-room">
-    <div class="col-xl-6 col-lg-7 col-md-6">
+    <div class="col-xl-8 col-lg-7 col-md-6">
         <div class="image-column">
             <?php $i = 0;
             foreach ($data['rt-rooms'] as $item) : ?>
@@ -22,7 +22,7 @@ extract($data); ?>
             endforeach; ?>
         </div>
     </div>
-    <div class="col-xl-6 col-lg-5 col-md-6">
+    <div class="col-xl-4 col-lg-5 col-md-6">
         <div class="room-feature-box-1">
             <div class="rooms-feature-info">
                 <?php if ($data['subtitle']) { ?>
