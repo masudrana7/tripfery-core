@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class RT_Service_Search_Result extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Services Search Result', 'tripfery-core' );
+		$this->rt_name = esc_html__( 'RT Booking Search Result', 'tripfery-core' );
 		$this->rt_base = 'rt-services-search-result';
 		$this->rt_translate = array(
 			'cols'  => array(
@@ -50,21 +50,63 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
 			),
-			/*Start category*/
 			array(
-				'type'        => Controls_Manager::SWITCHER,
-				'id'          => 'cat_display',
-				'label'       => esc_html__('Category Name Display', 'tripfery-core'),
-				'label_on'    => esc_html__('Show', 'tripfery-core'),
-				'label_off'   => esc_html__('Hide', 'tripfery-core'),
-				'default'     => 'yes',
-			),		
+				'id'      => 'sec_style',
+				'type' => Controls_Manager::SELECT2,
+				'label' => esc_html__('Select Style', 'tripfery-core'),
+				'options' => array(
+					'style1' => esc_html__('Style Hotel', 'tripfery-core'),
+					'style2' => esc_html__('Style Car', 'tripfery-core'),
+					'style3' => esc_html__('Style Tour', 'tripfery-core'),
+					'style4' => esc_html__('Style Activity', 'tripfery-core'),
+					'style7' => esc_html__('Style Activity Two', 'tripfery-core'),
+					'style5' => esc_html__('Style Rental', 'tripfery-core'),
+					'style6' => esc_html__('Style Restaurant', 'tripfery-core'),
+				),
+				'default' => 'style1',
+			),
+			/*Start category*/	
 			array(
 				'id'      => 'catid',
 				'label' => esc_html__( 'Categories', 'tripfery-core' ),
 	            'type' => Controls_Manager::SELECT2,
 	            'options' => $category_dropdown,
 	            'label_block' => true,
+			),
+			array(
+				'id' 	  	  => 'button_text',
+				'type'    	  => Controls_Manager::TEXT,
+				'label'   	  => esc_html__('Button Text', 'tripfery-core'),
+				'default' 	  => 'View Availability',
+			),
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'rating_display',
+				'label'       => esc_html__('Rating Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+				'condition'   => array('style' => array('style1')),
+			),
+
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'button_display',
+				'label'       => esc_html__('Button Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
+				'condition'   => array('style' => array('style1')),
+				
+			),
+
+			array(
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'price_display',
+				'label'       => esc_html__('Price Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
 			),
 
 			/*Post Order*/
@@ -108,12 +150,12 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'post_layout',
-				'label'   => esc_html__('Post Ordering', 'tripfery-core'),
+				'label'   => esc_html__('Post Style', 'tripfery-core'),
 				'options' => array(
 					'rt_grid_service'	=> esc_html__('Grid Style', 'tripfery-core'),
 					'rt_list_service'	=> esc_html__('List Style', 'tripfery-core'),
 				),
-				'default' => 'DESC',
+				'default' => 'rt_grid_service',
 			),
 			array(
 				'mode' => 'section_end',

@@ -71,13 +71,22 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'multiple' => true,
 			]
 		); 
-
 		$repeater->add_control(
 			'image',
 			[
 				'type'  => Controls_Manager::MEDIA,
 				'label' => esc_html__('Image', 'tripfery-core'),
 				'label_block' => true,
+			]
+		);
+		$repeater->add_control(
+			'view_all',
+			[
+				'type'  => Controls_Manager::TEXT,
+				'label' => esc_html__('View All', 'tripfery-core'),
+				'label_block' => true,
+				'default' => 'View All',
+				'condition'   => array('style' => array('style6')),
 			]
 		);
 		$fields = array(
@@ -95,7 +104,9 @@ class RT_Service_Locations extends Custom_Widget_Base {
 					'style2' => esc_html__('Style 2', 'tripfery-core'),
 					'style3' => esc_html__('Style 3', 'tripfery-core'),
 					'style4' => esc_html__('Style 4(Slider)', 'tripfery-core'),
-					'style5' => esc_html__('Style 5(Grid)', 'tripfery-core'),
+					'style5' => esc_html__('Style 5', 'tripfery-core'),
+					'style6' => esc_html__('Style 6', 'tripfery-core'),
+					'style7' => esc_html__('Style 7', 'tripfery-core'),
 				),
 				'default' => 'style1',
 			),
@@ -268,7 +279,7 @@ class RT_Service_Locations extends Custom_Widget_Base {
 				'mode'    => 'section_start',
 				'id'      => 'sec_responsive',
 				'label'   => esc_html__('Number of Responsive Columns', 'tripfery-core'),
-				'condition'   => array('style' => array('style5')),
+				'condition'   => array('style' => array('style5', 'style6')),
 			),
 			array(
 				'type'    => Controls_Manager::SELECT2,
@@ -383,6 +394,12 @@ class RT_Service_Locations extends Custom_Widget_Base {
 	{
 		$data = $this->get_settings();
 		switch ($data['style']) {
+			case 'style7':
+				$template = 'rt-servic-locations-grid-7';
+				break;
+			case 'style6':
+				$template = 'rt-servic-locations-grid-6';
+				break;
 			case 'style5':
 				$template = 'rt-servic-locations-grid-5';
 				break;

@@ -457,7 +457,6 @@ class RT_Counter extends Custom_Widget_Base {
 			$template = 'rt-counter-1';
 			break;
 		}
-
 		return $this->rt_template( $template, $data );
 	}
 

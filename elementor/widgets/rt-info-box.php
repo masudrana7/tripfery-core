@@ -11,6 +11,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Border;
 use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -228,6 +229,43 @@ class RT_Info_Box extends Custom_Widget_Base {
 				'condition'   => array( 'hover_animation' => array( 'yes' ), 'style' => array( 'style1', 'style3', 'style5' ) ),
 			),
 			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'style2_gap',
+				'mode'          => 'responsive',
+				'label'   => esc_html__( 'Icon Space', 'tripfery-core' ),
+				'size_units' => array( '%', 'px' ),
+				'range' => array(
+					'%' => array(
+						'min' => 0,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 0,
+						'max' => 100,
+					),
+				),
+				'selectors' => array( 
+					'{{WRAPPER}} .rt-info-item' => 'column-gap: {{SIZE}}{{UNIT}};',
+				),
+				'condition'   => array( 'style' => array( 'yes' ), 'style' => array( 'style2' ) ),
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Border::get_type(),
+				'name'      => 'style2_border',
+				'label'   => esc_html__('Border', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .rt-info-box .rt-info-item',
+				'condition'   => array('style' => array('style2', 'style3')),
+			),
+			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Border::get_type(),
+				'name'      => 'style2_border_hover',
+				'label'   => esc_html__('Border Hover', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .rt-info-box .rt-info-item:hover',
+				'condition'   => array('style' => array('style2', 'style3')),
+			),
+			array(
 				'mode' => 'section_end',
 			),
 
@@ -358,7 +396,7 @@ class RT_Info_Box extends Custom_Widget_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .rt-info-box .rt-info-item .rt-icon' => 'background-color: {{VALUE}}',
 				),
-				'condition'   => array( 'style' => array( 'style1', 'style3', 'style5' ) ),
+				'condition'   => array( 'style' => array( 'style1','style2', 'style3', 'style5' ) ),
 			),
 			array(
 				'type'    => Controls_Manager::COLOR,
@@ -427,6 +465,7 @@ class RT_Info_Box extends Custom_Widget_Base {
 					),
 				),
 				'selectors' => array(
+					'{{WRAPPER}} .rt-info-item .rt-img img' => 'max-width: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .rt-info-item .rt-icon' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			),		
@@ -471,6 +510,15 @@ class RT_Info_Box extends Custom_Widget_Base {
 				),
 			),
 			array(
+				'mode'    => 'group',
+				'type'    => Group_Control_Border::get_type(),
+				'name'      => 'icon_border',
+				'label'   => esc_html__('Icon Border', 'tripfery-core'),
+				'selector' => '{{WRAPPER}} .rt-info-box .rt-info-item .rt-icon',
+				'condition'   => array('style' => array('style2')),
+			),
+
+			array(
 				'type'    => Controls_Manager::DIMENSIONS,
 				'mode'          => 'responsive',
 				'size_units' => ['px', '%', 'em'],
@@ -487,7 +535,31 @@ class RT_Info_Box extends Custom_Widget_Base {
 				'label'   => esc_html__('Icon Box Shadow', 'tripfery-core'),
 				'selector' => '{{WRAPPER}} .rt-info-item .rt-icon',
 				'condition'   => array('style' => array('style1')),
-			),		
+			),
+			array(
+				'type' => Controls_Manager::CHOOSE,
+				'id'      => 'icon_align',
+				'mode'	  => 'responsive',
+				'label'   => esc_html__('Alignment', 'tripfery-core'),
+				'options' => array(
+					'left' => array(
+						'title' => __('Left', 'elementor'),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => __('Center', 'elementor'),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => __('Right', 'elementor'),
+						'icon' => 'eicon-text-align-right',
+					),
+				),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .rt-info-item .rt-icon' => 'text-align: {{VALUE}};',
+				),
+			),	
 			array(
 				'mode' => 'section_end',
 			),

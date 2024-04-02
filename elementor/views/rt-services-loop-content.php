@@ -34,8 +34,7 @@
                 } ?>
             </div>
             <h4 class="listing-card-title">
-                <a href="<?php the_permalink(); ?>"><?php //echo esc_html($title); 
-                                                    ?></a>
+                <a href="<?php the_permalink(); ?>"><?php echo esc_html($title); ?></a>
             </h4>
 
             <div class="d-flex align-item listing-card-review-area">

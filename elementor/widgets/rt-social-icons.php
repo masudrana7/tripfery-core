@@ -83,7 +83,7 @@ class RT_Social_Icons extends Custom_Widget_Base {
 					[
 						'title' => 'Twitter',
 						'social_icon' => [
-							'value' => 'fab fa-twitter',
+							'value' => 'fab fa-x-twitter',
 							'library' => 'fa-brands',
 						],
 					],

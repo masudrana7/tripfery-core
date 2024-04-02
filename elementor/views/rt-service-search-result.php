@@ -79,9 +79,9 @@ if (class_exists('BABE_Functions')) {
 	$results['posts_count']    = BABE_Post_types::$get_posts_count;
 	$results['sort_by_filter'] = $sort_by_filter = BABE_html::input_select_field_with_order('sr_sort_by', '', BABE_Post_types::get_search_filter_sort_by_args(), $args['search_results_sort_by']);
 	$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}"; ?>
-	<div class="rt-fillter-inner babe_search_results">
-		<div class="d-flex align-items-center justify-content-between view-switch-bar position-relative">
-			<p class="search-result mb-0">
+    <div class="rt-fillter-inner babe_search_results">
+        <div class="d-flex align-items-center justify-content-between view-switch-bar position-relative">
+            <p class="search-result mb-0">
 				<?php echo esc_html($results['posts_count']) . ' ';
 				if (empty($data['cat_display'])) {
 					echo (1 < $results['posts_count']) ? esc_html__('services', 'tripfery-core') : esc_html__('service', 'tripfery-core');
@@ -96,43 +96,43 @@ if (class_exists('BABE_Functions')) {
 					}
 				}
 				echo esc_html(' found', 'tripfery'); ?>
-			</p>
-			<div class="d-flex view-switch-right">
+            </p>
+            <div class="d-flex view-switch-right">
 				<?php if (isset($results['posts_count']) && !empty($results['posts_count'])) { ?>
-					<div class="babe_search_results_filters">
-						<div class="sort-and-filter">
+                    <div class="babe_search_results_filters">
+                        <div class="sort-and-filter">
 							<?php if (isset($results['sort_by_filter']) && !empty($results['sort_by_filter'])) {
 								printf('<div class="filter-sort d-flex"><span>' . esc_html__('Sort by', 'tripfery-color') . '</span>%s</div>', $results['sort_by_filter']);
 							} ?>
-						</div>
-					</div>
+                        </div>
+                    </div>
 				<?php } ?>
-				<ul class="nav" id="pills-tab" role="tablist">
-					<li class="rt_grid_btn nav-item" role="presentation">
-						<button class="nav-btn">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-							</svg>
-						</button>
-					</li>
-					<li class="rt_list_btn nav-item" role="presentation">
-						<button class="nav-btn">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M12.3711 8.88H17.6211" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M6.37891 8.88L7.12891 9.63L9.37891 7.38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M12.3711 15.88H17.6211" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M6.37891 15.88L7.12891 16.63L9.37891 14.38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg>
-						</button>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="row rt-search-services">
+                <ul class="nav" id="pills-tab" role="tablist">
+                    <li class="rt_grid_btn nav-item" role="presentation">
+                        <button class="nav-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </li>
+                    <li class="rt_list_btn nav-item" role="presentation">
+                        <button class="nav-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.3711 8.88H17.6211" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M6.37891 8.88L7.12891 9.63L9.37891 7.38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12.3711 15.88H17.6211" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M6.37891 15.88L7.12891 16.63L9.37891 14.38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row rt-search-services">
 			<?php
 			foreach ($posts as $post) {
 				$post_id 	= $post['ID'];
@@ -158,67 +158,67 @@ if (class_exists('BABE_Functions')) {
 							<span class="activity-person">' . $tripfery_per_rate . '</span>
 						</div>';
 				}
-			?>
-				<div class="<?php echo esc_attr($col_class); ?> mb-4">
-					<div class="listing-card">
-						<div class="<?php if (!empty($discount)) {
-										echo 'discount_available ';
-									} ?>rt-service-image">
+				?>
+                <div class="<?php echo esc_attr($col_class); ?> mb-4">
+                    <div class="listing-card">
+                        <div class="<?php if (!empty($discount)) {
+							echo 'discount_available ';
+						} ?>rt-service-image">
 							<?php echo wp_kses_post($image); ?>
 							<?php echo wp_kses_post($discount); ?>
 							<?php if ('on' == $featured_text) { ?>
-								<div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
+                                <div class="feature-text"><?php echo wp_kses_post('Featured', 'tripfery') ?></div>
 							<?php } ?>
-						</div>
-						<div class="listing-card-content">
-							<div class="d-flex justify-content-between">
+                        </div>
+                        <div class="listing-card-content">
+                            <div class="d-flex justify-content-between">
 								<?php $address = isset($ba_info['address']) ? $ba_info['address'] : false;
 								if ($address) {
-								?>
-									<div class="badge bage-pink">
-										<svg class="badge-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M5.99994 6.71503C6.86151 6.71503 7.55994 6.0166 7.55994 5.15503C7.55994 4.29347 6.86151 3.59503 5.99994 3.59503C5.13838 3.59503 4.43994 4.29347 4.43994 5.15503C4.43994 6.0166 5.13838 6.71503 5.99994 6.71503Z" stroke="currentColor" stroke-opacity="0.99" />
-											<path d="M1.8101 4.24506C2.7951 -0.0849378 9.2101 -0.0799377 10.1901 4.25006C10.7651 6.79006 9.1851 8.94006 7.8001 10.2701C6.7951 11.2401 5.2051 11.2401 4.1951 10.2701C2.8151 8.94006 1.2351 6.78506 1.8101 4.24506Z" stroke="currentColor" stroke-opacity="0.99" />
-										</svg>
-										<span class="badge-text"><?php echo esc_html($address['address']); ?></span>
-									</div>
+									?>
+                                    <div class="badge bage-pink">
+                                        <svg class="badge-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5.99994 6.71503C6.86151 6.71503 7.55994 6.0166 7.55994 5.15503C7.55994 4.29347 6.86151 3.59503 5.99994 3.59503C5.13838 3.59503 4.43994 4.29347 4.43994 5.15503C4.43994 6.0166 5.13838 6.71503 5.99994 6.71503Z" stroke="currentColor" stroke-opacity="0.99" />
+                                            <path d="M1.8101 4.24506C2.7951 -0.0849378 9.2101 -0.0799377 10.1901 4.25006C10.7651 6.79006 9.1851 8.94006 7.8001 10.2701C6.7951 11.2401 5.2051 11.2401 4.1951 10.2701C2.8151 8.94006 1.2351 6.78506 1.8101 4.24506Z" stroke="currentColor" stroke-opacity="0.99" />
+                                        </svg>
+                                        <span class="badge-text"><?php echo esc_html($address['address']); ?></span>
+                                    </div>
 								<?php } ?>
 								<?php if (class_exists('RTWishlist')) {
 									echo RTWishlist::wishlist_html($post_id);
 								} ?>
-							</div>
-							<h4 class="listing-card-title">
-								<a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
-							</h4>
+                            </div>
+                            <h3 class="listing-card-title">
+                                <a href="<?php echo esc_url($url); ?>"><?php echo apply_filters('translate_text', $post['post_title']); ?></a>
+                            </h3>
 							<?php if (class_exists(Review::class) && $avg_rating = Review::getAvgRatings($post_id)) { ?>
-								<div class="d-flex align-item listing-card-review-area">
-									<div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
-									<div class="rtrs-rating-item">
-										<div class="rating-icon">
+                                <div class="d-flex align-item listing-card-review-area">
+                                    <div class="listing-card-review-text"><?php echo esc_html('Excellent', 'tripfery-core') ?></div>
+                                    <div class="rtrs-rating-item">
+                                        <div class="rating-icon">
 											<?php echo Functions::review_stars($avg_rating); ?>
-											<span class="rating-percent">
+                                            <span class="rating-percent">
 												(<?php $total_rating = Review::getTotalRatings($post_id);
-													printf(
-														esc_html(_n('%s Review', '%s Reviews', $total_rating, 'revieweb')),
-														esc_html($total_rating)
-													); ?>)
+												printf(
+													esc_html(_n('%s Review', '%s Reviews', $total_rating, 'revieweb')),
+													esc_html($total_rating)
+												); ?>)
 											</span>
-										</div>
-									</div>
-								</div>
+                                        </div>
+                                    </div>
+                                </div>
 							<?php } ?>
-							<div class="d-flex align-items-center justify-content-between price-area">
+                            <div class="d-flex align-items-center justify-content-between price-area">
 								<?php echo wp_kses_post($item_info_price); ?>
-								<a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated"><?php echo esc_html('View Availability', 'tripfery-core') ?></a>
-							</div>
-						</div>
-					</div>
-				</div>
+                                <a href="<?php echo esc_url($url); ?>" class="btn-light-sm btn-light-animated"><?php echo esc_html('View Availability', 'tripfery-core') ?></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			<?php }
 			$posts_pages = BABE_Post_types::$get_posts_pages;
 			$pagination = BABE_Functions::pager($posts_pages);
 			echo $pagination;
 			?>
-		</div>
-	</div>
+        </div>
+    </div>
 <?php } ?>

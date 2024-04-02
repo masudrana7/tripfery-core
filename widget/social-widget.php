@@ -39,7 +39,7 @@ class TripferyTheme_Social_Widget extends WP_Widget {
 					?><li class="facebook"><a href="<?php echo esc_url( $instance['facebook'] ); ?>" target="_blank" aria-label="Social Link"><i class="fab fa-facebook-f"></i></a></li><?php
 				}
 				if( !empty( $instance['twitter'] ) ){
-					?><li class="twitter"><a href="<?php echo esc_url( $instance['twitter'] ); ?>" target="_blank" aria-label="Social Link"><i class="fab fa-twitter"></i></a></li><?php
+					?><li class="twitter"><a href="<?php echo esc_url( $instance['twitter'] ); ?>" target="_blank" aria-label="Social Link"><i class="fab fa-x-twitter"></i></a></li><?php
 				}
 				if( !empty( $instance['linkedin'] ) ){
 					?><li class="linkedin"><a href="<?php echo esc_url( $instance['linkedin'] ); ?>" target="_blank" aria-label="Social Link"><i class="fab fa-linkedin-in"></i></a></li><?php

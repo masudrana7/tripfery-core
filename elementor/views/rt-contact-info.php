@@ -36,7 +36,7 @@ if ( is_array( $icon_class['value'] ) ) {
 	        <?php }  ?> 
 	    </div>
 	    <div class="rt-item-content">
-	        <h4 class="entry-title"><?php echo wp_kses_post( $data['item_title'] );?></h4>
+	        <h3 class="entry-title"><?php echo wp_kses_post( $data['item_title'] );?></h3>
 	        <ul class="contact-list">
 	            <?php
 	            foreach ( $data['rt_lists'] as $index => $item ) { 

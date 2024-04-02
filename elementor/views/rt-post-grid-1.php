@@ -108,7 +108,7 @@ $col_class = "col-xl-{$data['col_xl']} col-lg-{$data['col_lg']} col-md-{$data['c
 							<?php } ?>
 						</ul>
 						<?php } ?>
-						<h4 class="entry-title"><a href="<?php the_permalink();?>"><?php echo esc_html( $title );?></a></h4>
+						<h3 class="entry-title"><a href="<?php the_permalink();?>"><?php echo esc_html( $title );?></a></h3>
 						<?php if ( $data['content_display'] == 'yes' ) { ?>
 							<div class="post_excerpt"><?php echo wp_kses_post( $content );?></div>
 						<?php } ?>

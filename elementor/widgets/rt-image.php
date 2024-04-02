@@ -122,6 +122,26 @@ class RT_Image extends Custom_Widget_Base {
 	            'tab'     => Controls_Manager::TAB_STYLE,
 	        ),
 			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'img_width',
+				'mode'          => 'responsive',
+				'label'   => esc_html__('Image Width', 'tripfery-core'),
+				'size_units' => array('%', 'px'),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 300,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .rt-banner-item' => 'max-width: {{SIZE}}{{UNIT}}; overflow:hidden;',
+				),
+			),
+			array(
 				'type'    => Controls_Manager::SELECT2,
 				'id'      => 'image_efect_style',
 				'label'   => esc_html__('Image Effect', 'tripfery-core'),

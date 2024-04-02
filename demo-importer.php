@@ -43,34 +43,49 @@ class Demo_Importer {
 				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/',
 			),
 			'demo2' => array(
-				'title' => __( 'Factory', 'tripfery-core' ),
+				'title' => __('Hotel Boking', 'tripfery-core' ),
 				'screenshot' => plugins_url( 'screenshots/screenshot2.jpg', __FILE__ ),
-				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-02/',
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-2/',
 			),
 			'demo3' => array(
-				'title' => __( 'Industry', 'tripfery-core' ),
+				'title' => __('Tour Package', 'tripfery-core' ),
 				'screenshot' => plugins_url( 'screenshots/screenshot3.jpg', __FILE__ ),
-				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-03/',
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-3/',
 			),
 			'demo4' => array(
-				'title' => __( 'Construction', 'tripfery-core' ),
+				'title' => __('Activity Place', 'tripfery-core' ),
 				'screenshot' => plugins_url( 'screenshots/screenshot4.jpg', __FILE__ ),
-				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-04/',
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-4/',
 			),
 			'demo5' => array(
-				'title' => __( 'Manufacture', 'tripfery-core' ),
+				'title' => __('Rental House', 'tripfery-core' ),
 				'screenshot' => plugins_url( 'screenshots/screenshot5.jpg', __FILE__ ),
-				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-05/',
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-5/',
 			),
 			'demo6' => array(
-				'title' => __( 'Industry 02', 'tripfery-core' ),
+				'title' => __('Rent A Car', 'tripfery-core' ),
 				'screenshot' => plugins_url( 'screenshots/screenshot6.jpg', __FILE__ ),
-				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-06/',
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-6/',
 			),
 			'demo7' => array(
-				'title' => __( 'Factory Black', 'tripfery-core' ),
+				'title' => __('Restaurant Booking', 'tripfery-core' ),
 				'screenshot' => plugins_url( 'screenshots/screenshot7.jpg', __FILE__ ),
-				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-07/',
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-7/',
+			),
+			'demo8' => array(
+				'title' => __('City Tour Activity', 'tripfery-core' ),
+				'screenshot' => plugins_url( 'screenshots/screenshot8.jpg', __FILE__ ),
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-8/',
+			),
+			'demo9' => array(
+				'title' => __('Tour Agency', 'tripfery-core' ),
+				'screenshot' => plugins_url( 'screenshots/screenshot9.jpg', __FILE__ ),
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-9/',
+			),
+			'demo10' => array(
+				'title' => __('Hotel Room', 'tripfery-core' ),
+				'screenshot' => plugins_url( 'screenshots/screenshot10.jpg', __FILE__ ),
+				'preview_link' => 'https://radiustheme.com/demo/wordpress/themes/tripfery/home-10/',
 			),
 		);
 
@@ -96,13 +111,16 @@ class Demo_Importer {
 	public function after_demo_install( $collection ){
 		// Update front page id
 		$demos = array(
-			'demo1'  => 6,
-			'demo2'  => 8,
-			'demo3'  => 3914,
-			'demo4'  => 4007,
-			'demo5'  => 4023,
-			'demo6'  => 4170,
-			'demo7'  => 4359,
+			'demo1'  => 14,
+			'demo2'  => 833,
+			'demo3'  => 1076,
+			'demo4'  => 1335,
+			'demo5'  => 1543,
+			'demo6'  => 1657,
+			'demo7'  => 1770,
+			'demo8'  => 6169,
+			'demo9'  => 6219,
+			'demo10'  => 6286,
 		);
 
 		$data = $collection->to_array();

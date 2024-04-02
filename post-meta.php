@@ -77,8 +77,6 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 						'default' => __( 'Default', 'tripfery-core' ),
 						'1'       => __( 'Layout 1', 'tripfery-core' ),
 						'2'       => __( 'Layout 2', 'tripfery-core' ),
-						'3'       => __( 'Layout 3', 'tripfery-core' ),
-						'4'       => __( 'Layout 4', 'tripfery-core' ),
 					),
 					'default'   => 'default',
 				),
@@ -95,10 +93,11 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 				"{$prefix}_tr_header" => array(
 					'label'    	  => __( 'Transparent Header', 'tripfery-core' ),
 					'type'     	  => 'select',
-					'options'  	  => array(
-						'default' => __( 'Default', 'tripfery-core' ),
-						'on'      => __( 'Enabled', 'tripfery-core' ),
-						'off'     => __( 'Disabled', 'tripfery-core' ),
+					'options'  	  		=> array(
+						'default' 		=> __( 'Default', 'tripfery-core' ),
+						'on'      		=> __( 'Enabled', 'tripfery-core' ),
+						'without_menu'  => __( 'Enabled Without Menu', 'tripfery-core' ),
+						'off'     		=> __( 'Disabled', 'tripfery-core' ),
 					),
 					'default'  => 'default',
 				),
@@ -108,6 +107,7 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 					'options' => array(
 						'default' => __( 'Default', 'tripfery-core' ),
 						'1'       => __( 'Layout 1', 'tripfery-core' ),
+						'2'       => __( 'Layout 2', 'tripfery-core' ),
 					),
 					'default'  => 'default',
 				),
@@ -116,8 +116,8 @@ $Postmeta->add_meta_box( "{$prefix}_page_settings", __( 'Layout Settings', 'trip
 					'type'  	  => 'select',
 					'options' => array(
 						'default' => __('Default', 'tripfery-core'),
-						'off'      => __('Container', 'tripfery-core'),
-						'on'     => __('Full Width Container', 'tripfery-core'),
+						'on'      => __('Container', 'tripfery-core'),
+						'off'     => __('Full Width Container', 'tripfery-core'),
 					),
 					'default'  	  => 'default',
 				),
@@ -407,33 +407,6 @@ $Postmeta->add_meta_box('tripfery_video', __('Video Link', 'tripfery-core'), arr
 	)
 ));
 
-/*-------------------------------------
-#. Locations
----------------------------------------*/
-$Postmeta->add_meta_box('tripfery_booking_info', __('Booking Information', 'tripfery-core'), array('to_book'), '', '', 'high', array(
-	'fields' => array(
-		'tripfery_languages' => array(
-			'label' => __('Languages', 'tripfery-core'),
-			'type'  => 'text',
-		),
-		'tripfery_itinerary_title' => array(
-			'label' => __('Itinerary Title', 'tripfery-core'),
-			'type'  => 'text',
-		),
-		'tripfery_faq_title' => array(
-			'label' => __('Faqs Title', 'tripfery-core'),
-			'type'  => 'text',
-		),
-		'tripfery_map_title' => array(
-			'label' => __('Map Title', 'tripfery-core'),
-			'type'  => 'text',
-		),
-		'tripfery_location_rentals' => array(
-			'label' => __('Location Rentals', 'tripfery-core'),
-			'type'  => 'text',
-		),
-	)
-));
 
 /*-------------------------------------
 #. Hotlel Locations
@@ -446,6 +419,10 @@ $Postmeta->add_meta_box('tripfery_hotel_info', __('Hotel Information', 'tripfery
 		),
 		'tripfery_bed_room' => array(
 			'label' => __('Bed Number', 'tripfery-core'),
+			'type'  => 'text',
+		),
+		'tripfery_kids' => array(
+			'label' => __('Max Kids', 'tripfery-core'),
 			'type'  => 'text',
 		),
 	)
@@ -468,31 +445,6 @@ $Postmeta->add_meta_box('tripfery_booking_property', __('Booking Property', 'tri
 				),
 				'property_image' => array(
 					'label' => __('Property Image', 'tripfery-core'),
-					'type'  => 'image',
-					'desc'  => __('Add Icon Image', 'tripfery-core'),
-				),
-			)
-		),
-	)
-));
-
-$Postmeta->add_meta_box('tripfery_rental_type', __('Rental Type', 'tripfery-core'), array('to_book'), '', '', 'high', array(
-	'fields' => array(
-		'tripfery_rental_type_title' => array(
-			'label' => __('Type Title', 'tripfery-core'),
-			'type'  => 'text',
-		),
-		'tripfery_rental_type' => array(
-			'type'  => 'repeater',
-			'button' => __('Add New Type', 'tripfery-core'),
-			'value'  => array(
-				'rental_type_name' => array(
-					'label' => __('Type Title', 'tripfery-core'),
-					'type'  => 'text',
-					'desc'  => __('City Centre', 'tripfery-core'),
-				),
-				'rental_type_image' => array(
-					'label' => __('Type Image', 'tripfery-core'),
 					'type'  => 'image',
 					'desc'  => __('Add Icon Image', 'tripfery-core'),
 				),
@@ -656,8 +608,8 @@ $Postmeta->add_meta_box('tripfery_car_specifications', __('Specifications Featur
 	)
 ));
 
-// Car features
-$Postmeta->add_meta_box('tripfery_booking_features', __('Car Feature', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+// Booking features
+$Postmeta->add_meta_box('tripfery_booking_features', __('Car & Restaurant Features', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_booking_feature_title' => array(
 			'label' => __('Feature Title', 'tripfery-core'),
@@ -678,7 +630,7 @@ $Postmeta->add_meta_box('tripfery_booking_features', __('Car Feature', 'tripfery
 
 
 // Car Brands
-$Postmeta->add_meta_box('tripfery_booking_brands', __('Car Brand', 'tripfery-core'), array('to_book'), '', '', 'high', array(
+$Postmeta->add_meta_box('tripfery_booking_brands', __('Car & Restaurant Brands', 'tripfery-core'), array('to_book'), '', '', 'high', array(
 	'fields' => array(
 		'tripfery_booking_brand_title' => array(
 			'label' => __('Brand Title', 'tripfery-core'),
