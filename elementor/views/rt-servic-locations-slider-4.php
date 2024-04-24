@@ -20,13 +20,13 @@
 				<div class="swiper-slide <?php echo esc_attr($data['animation']); ?> <?php echo esc_attr($data['animation_effect']); ?>" data-wow-delay="<?php echo esc_attr($m); ?>s" data-wow-duration="<?php echo esc_attr($n); ?>s">
 					<div class="destination-wrapper">
 						<figure class="item-img">
-							<a href="<?php echo esc_url($term_link); ?>" class="destination-thumb-wrapper">
+							<a href="<?php if (!is_wp_error($term_link)) { echo esc_url($term_link); }; ?>" class="destination-thumb-wrapper">
 								<?php echo wp_get_attachment_image($item['image']['id'], 'full') ?>
 							</a>
 						</figure>
 						<div class="destination-info">
 							<?php if (!empty($term->name)) { ?>
-								<h4 class="hotel-name"><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a></h4>
+								<h4 class="hotel-name"><a href="<?php if (!is_wp_error($term_link)) { echo esc_url($term_link); }; ?>"><?php echo esc_html($term->name); ?></a></h4>
 							<?php } ?>
 
 							<?php if (is_array($item['sec_cat']) && count($item['sec_cat'])) {  ?>

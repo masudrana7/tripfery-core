@@ -18,7 +18,9 @@
                 <a class="<?php if (!empty($discount)) {
                                 echo 'discount_available ';
                             } ?>text-decoration-none listing-thumb-wrapper" href="<?php echo esc_url($item_url); ?>">
+
                     <img src="<?php echo esc_attr($image_srcs[0]); ?>" alt="featured-image" />
+
                     <?php echo wp_kses_post($discount); ?>
                     <?php if ('on' == $featured_text) { ?>
                         <div class="feature-text"><?php echo esc_html__('Featured', 'tripfery-core') ?></div>
@@ -66,14 +68,12 @@
                         <div class="d-flex flex-column">
                             <span class="text-gray"><?php echo esc_html('Guided By', 'tripfery-core') ?></span>
                             <div class="d-flex align-items-center">
-                                <?php if (!empty($post_thumbnail_url)) { ?>
+	                            <?php if (!empty($post_thumbnail_url)) { ?>
                                     <div>
                                         <img src="<?php echo esc_html($post_thumbnail_url); ?>" class="author-avatar" alt="People">
                                     </div>
                                 <?php } ?>
-
                                 <h4><a href="<?php echo esc_url($guided_link); ?>" class="author-name"><?php echo esc_html($guided_title); ?></a></h4>
-
                             </div>
                         </div>
                     <?php } ?>

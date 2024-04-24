@@ -6,7 +6,9 @@
  * @version 1.0
  */
 
-namespace radiustheme\Tripfery_Core; ?>
+namespace radiustheme\Tripfery_Core;
+if (class_exists('BABE_Functions')) {
+?>
 <div class="rt-car-categories">
 	<div class="row justify-content-center <?php echo esc_attr($data['item_space']); ?>">
 		<?php
@@ -37,3 +39,4 @@ namespace radiustheme\Tripfery_Core; ?>
 		?>
 	</div>
 </div>
+<?php } ?>

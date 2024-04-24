@@ -1,4 +1,5 @@
 <?php
+if (class_exists('BABE_Functions')) {
 $taxonomies_list = $this->rt_fields(); ?>
 <div class="rt-search-customize menu_bar_<?php echo esc_attr($data['display_menu']); ?> content_align_<?php echo esc_attr($data['content_align']); ?>">
 
@@ -27,4 +28,4 @@ $taxonomies_list = $this->rt_fields(); ?>
 
     </div>
   </div>
-  <?php ?>
+  <?php } ?>

@@ -50,28 +50,21 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
 			),
+			/*Start category*/
 			array(
-				'id'      => 'sec_style',
-				'type' => Controls_Manager::SELECT2,
-				'label' => esc_html__('Select Style', 'tripfery-core'),
-				'options' => array(
-					'style1' => esc_html__('Style Hotel', 'tripfery-core'),
-					'style2' => esc_html__('Style Car', 'tripfery-core'),
-					'style3' => esc_html__('Style Tour', 'tripfery-core'),
-					'style4' => esc_html__('Style Activity', 'tripfery-core'),
-					'style7' => esc_html__('Style Activity Two', 'tripfery-core'),
-					'style5' => esc_html__('Style Rental', 'tripfery-core'),
-					'style6' => esc_html__('Style Restaurant', 'tripfery-core'),
-				),
-				'default' => 'style1',
+				'type'        => Controls_Manager::SWITCHER,
+				'id'          => 'cat_display',
+				'label'       => esc_html__('Category Name Display', 'tripfery-core'),
+				'label_on'    => esc_html__('Show', 'tripfery-core'),
+				'label_off'   => esc_html__('Hide', 'tripfery-core'),
+				'default'     => 'yes',
 			),
-			/*Start category*/	
 			array(
 				'id'      => 'catid',
 				'label' => esc_html__( 'Categories', 'tripfery-core' ),
-	            'type' => Controls_Manager::SELECT2,
-	            'options' => $category_dropdown,
-	            'label_block' => true,
+				'type' => Controls_Manager::SELECT2,
+				'options' => $category_dropdown,
+				'label_block' => true,
 			),
 			array(
 				'id' 	  	  => 'button_text',

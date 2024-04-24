@@ -1,6 +1,8 @@
 <?php
+
 use Rtrs\Models\Review;
 use Rtrs\Helpers\Functions;
+if (class_exists('BABE_Functions')) {
 $thumb_size = 'tripfery-size3';
 $number_of_post = $data['itemnumber'];
 $post_orderby = $data['post_orderby'];
@@ -63,7 +65,6 @@ if (isset($_GET['guests'])) {
 foreach ($args as $arg_key => $arg_value) {
 	$args[sanitize_title($arg_key)] = is_array($arg_value) ? array_map('absint', $arg_value) : sanitize_text_field($arg_value);
 }
-if (class_exists('BABE_Functions')) {
 	if (!empty(BABE_Search_From::$search_form_tabs) && is_array(BABE_Search_From::$search_form_tabs) && isset($_GET['search_tab']) && isset(BABE_Search_From::$search_form_tabs[$_GET['search_tab']])) {
 		$args['categories'] = BABE_Search_From::$search_form_tabs[$_GET['search_tab']]['categories'];
 	}

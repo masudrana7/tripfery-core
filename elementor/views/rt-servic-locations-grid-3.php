@@ -28,7 +28,7 @@ namespace radiustheme\Tripfery_Core; ?>
 						<?php } ?>
 						<div class="city-info text-center">
 							<?php if (!empty($term->name)) { ?>
-								<h3 class="city-name"><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a></h3>
+								<h3 class="city-name"><a href="<?php if (!is_wp_error($term_link)) { echo esc_url($term_link); }; ?>"><?php echo esc_html($term->name); ?></a></h3>
 							<?php } ?>
 
 							<?php if (is_array($item['sec_cat']) && count($item['sec_cat'])) {  ?>

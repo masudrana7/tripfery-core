@@ -8,6 +8,7 @@
 namespace radiustheme\Tripfery_Core;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Image_Size;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class RT_Service_Isotope extends Custom_Widget_Base {
@@ -134,6 +135,13 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 				'default'     => 'yes',
 				'condition'   => array('style' => array('style1')),
 				
+			),
+
+			array(
+				'name' => 'image_size',
+				'type'    => Group_Control_Image_Size::get_type(),
+				'mode'    => 'group',
+				'label'   => esc_html__( 'Image Size', 'tripfery-core' ),
 			),
 
 			array(
@@ -328,6 +336,60 @@ class RT_Service_Isotope extends Custom_Widget_Base {
 					'{{WRAPPER}} .listing-card-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			),
+			array(
+				'mode' => 'section_end',
+			),
+
+
+			// Image style
+			array(
+				'mode'    => 'section_start',
+				'id'      => 'sec_image_style',
+				'label'   => esc_html__( 'Image', 'tripfery-core' ),
+				'tab'     => Controls_Manager::TAB_STYLE,
+			),
+			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'image_width',
+				'mode'          => 'responsive',
+				'label'   => esc_html__( 'Width', 'tripfery-core' ),
+				'size_units' => array( '%', 'px' ),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 1000,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .listing-card img' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			),
+
+			array(
+				'type'    => Controls_Manager::SLIDER,
+				'id'      => 'image_height',
+				'mode'          => 'responsive',
+				'label'   => esc_html__( 'Height', 'tripfery-core' ),
+				'size_units' => array( '%', 'px' ),
+				'range' => array(
+					'%' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+					'px' => array(
+						'min' => 1,
+						'max' => 1000,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .listing-card img' => 'height: {{SIZE}}{{UNIT}};',
+				),
+			),
+
 			array(
 				'mode' => 'section_end',
 			),
