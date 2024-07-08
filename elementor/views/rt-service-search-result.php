@@ -1,107 +1,120 @@
 <?php
+    use Rtrs\Models\Review;
+    use Rtrs\Helpers\Functions;
+    if (class_exists('BABE_Functions')) {
+    $thumb_size = 'tripfery-size3';
+    $number_of_post = $data['itemnumber'];
+    $post_orderby = $data['post_orderby'];
+    $post_order = $data['post_order'];
+    $p_ids = array();
+    foreach ($data['posts_not_in'] as $p_idsn) {
+        $p_ids[] = $p_idsn['post_not_in'];
+    }
+    $posts_in = [];
+    if (isset($_GET['rating_value'])) {
+        $args = array(
+            'post_type'            => 'to_book',
+            'posts_per_page'     => -1,
+            'meta_key'     => '_rating',
+            'meta_value'     => $_GET['rating_value'],
+        );
+        $query = new WP_Query($args);
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                $posts_in[] = get_the_ID();
+            endwhile;
+        endif;
+        wp_reset_postdata();
+    }
+    if (get_query_var('paged')) {
+        $paged = get_query_var('paged');
+    } else if (get_query_var('page')) {
+        $paged = get_query_var('page');
+    } else {
+        $paged = 1;
+    }
+    $args = array(
+        'post_type'            => 'to_book',
+        'posts_per_page'     => $number_of_post,
+        'order'             => $post_order,
+        'orderby'             => $post_orderby,
+        'post__not_in'       => $p_ids,
+        'post_status'		=> 'publish',
+        'paged'             => $paged,
+    );
 
-use Rtrs\Models\Review;
-use Rtrs\Helpers\Functions;
-if (class_exists('BABE_Functions')) {
-$thumb_size = 'tripfery-size3';
-$number_of_post = $data['itemnumber'];
-$post_orderby = $data['post_orderby'];
-$post_order = $data['post_order'];
-$p_ids = array();
-foreach ($data['posts_not_in'] as $p_idsn) {
-	$p_ids[] = $p_idsn['post_not_in'];
-}
-$posts_in = [];
-if (isset($_GET['rating_value'])) {
-	$args = array(
-		'post_type'            => 'to_book',
-		'posts_per_page'     => -1,
-		'meta_key'     => '_rating',
-		'meta_value'     => $_GET['rating_value'],
-	);
-	$query = new WP_Query($args);
-	if ($query->have_posts()) :
-		while ($query->have_posts()) : $query->the_post();
-			$posts_in[] = get_the_ID();
-		endwhile;
-	endif;
-	wp_reset_postdata();
-}
-if (get_query_var('paged')) {
-	$paged = get_query_var('paged');
-} else if (get_query_var('page')) {
-	$paged = get_query_var('page');
-} else {
-	$paged = 1;
-}
-$args = array(
-	'post_type'            => 'to_book',
-	'posts_per_page'     => $number_of_post,
-	'order'             => $post_order,
-	'orderby'             => $post_orderby,
-	'post__not_in'       => $p_ids,
-	'post_status'		=> 'publish',
-	'paged'             => $paged,
-);
-$args = wp_parse_args($args, array(
-	'request_search_results' 	=> '',
-	'date_from' 				 	=> '',
-	'date_to' 					 	=> '',
-	'time_from' 				 	=> '00:00',
-	'time_to' 					 	=> '00:00',
-	'categories' 				 	=> [],
-	'terms' 						 	=> [],
-	'search_results_sort_by' 	=> 'title_asc',
-	'keyword' 					 	=> '',
-	'return_total_count'     	=> 1
-));
+    $args = wp_parse_args($args, array(
+        'request_search_results' 	=> '',
+        'date_from' 				 	=> '',
+        'date_to' 					 	=> '',
+        'time_from' 				 	=> '00:00',
+        'time_to' 					 	=> '00:00',
+        'categories' 				 	=> [],
+        'terms' 						 	=> [],
+        'search_results_sort_by' 	=> 'title_asc',
+        'keyword' 					 	=> '',
+        'return_total_count'     	=> 1
+    ));
 
-$args = wp_parse_args($_GET, $args);
-$args = apply_filters('babe_search_result_args', $args);
-if (isset($_GET['guests'])) {
-	$guests = array_map('absint', $_GET['guests']);
-	$args['guests'] = array_sum($guests);
-}
-foreach ($args as $arg_key => $arg_value) {
-	$args[sanitize_title($arg_key)] = is_array($arg_value) ? array_map('absint', $arg_value) : sanitize_text_field($arg_value);
-}
-	if (!empty(BABE_Search_From::$search_form_tabs) && is_array(BABE_Search_From::$search_form_tabs) && isset($_GET['search_tab']) && isset(BABE_Search_From::$search_form_tabs[$_GET['search_tab']])) {
-		$args['categories'] = BABE_Search_From::$search_form_tabs[$_GET['search_tab']]['categories'];
-	}
-	$args = apply_filters('babe_search_result_args', $args);
+    $args = wp_parse_args($_GET, $args);
+    $args = apply_filters('babe_search_result_args', $args);
+
+    if (isset($_GET['guests'])) {
+        $guests = array_map('absint', $_GET['guests']);
+        $args['guests'] = array_sum($guests);
+    }
+    foreach ($args as $arg_key => $arg_value) {
+        $args[sanitize_title($arg_key)] = is_array($arg_value) ? array_map('absint', $arg_value) : sanitize_text_field($arg_value);
+    }
+    if (!empty(BABE_Search_From::$search_form_tabs) && is_array(BABE_Search_From::$search_form_tabs) && isset($_GET['search_tab']) && isset(BABE_Search_From::$search_form_tabs[$_GET['search_tab']])) {
+
+        $args['categories'] = BABE_Search_From::$search_form_tabs[$_GET['search_tab']]['categories'];
+
+    }
+    $args = apply_filters('babe_search_result_args', $args);
 	$args = BABE_Post_types::search_filter_to_get_posts_args($args);
-	if ($data['cat_display']) {
+
+	if (!empty($data['catid'])) {
 		$args['categories'] = [$data['catid']];
+
 	}
+
 	if (!empty($posts_in)) {
 		$args['post__in'] = $posts_in;
 	}
+
 	$posts = BABE_Post_types::get_posts($args);
 	$results['posts_count']    = BABE_Post_types::$get_posts_count;
 	$results['sort_by_filter'] = $sort_by_filter = BABE_html::input_select_field_with_order('sr_sort_by', '', BABE_Post_types::get_search_filter_sort_by_args(), $args['search_results_sort_by']);
-	$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}"; ?>
+	$col_class = "col-lg-{$data['col_lg']} col-md-{$data['col_md']} col-sm-{$data['col_sm']} col-xs-{$data['col_xs']}";
+    $post_count = count($posts);
+
+    ?>
+
+
     <div class="rt-fillter-inner babe_search_results">
         <div class="d-flex align-items-center justify-content-between view-switch-bar position-relative">
             <p class="search-result mb-0">
-				<?php echo esc_html($results['posts_count']) . ' ';
-				if (empty($data['cat_display'])) {
-					echo (1 < $results['posts_count']) ? esc_html__('services', 'tripfery-core') : esc_html__('service', 'tripfery-core');
-				} else {
+				<?php echo esc_html($post_count) . ' ';
+				if (empty($data['catid'])) {
+					echo (1 < $post_count) ? esc_html__('services', 'tripfery-core') : esc_html__('service', 'tripfery-core');
+				}
+                else {
 					$terms = get_terms(array(
 						'taxonomy' => 'categories',
 						'include'  => $data['catid'],
 						'orderby' => 'include',
 					));
 					foreach ($terms as $term) {
-						echo esc_html($term->name);
+						echo esc_html($term->name)." ";
 					}
 				}
-				echo esc_html(' found', 'tripfery'); ?>
+                esc_html_e(' found', 'tripfery'); ?>
             </p>
             <div class="d-flex view-switch-right">
 				<?php if (isset($results['posts_count']) && !empty($results['posts_count'])) { ?>
                     <div class="babe_search_results_filters">
-                        <div class="sort-and-filter">
+                        <div class="sort-and-filter oooooooooo">
 							<?php if (isset($results['sort_by_filter']) && !empty($results['sort_by_filter'])) {
 								printf('<div class="filter-sort d-flex"><span>' . esc_html__('Sort by', 'tripfery-color') . '</span>%s</div>', $results['sort_by_filter']);
 							} ?>
@@ -133,9 +146,11 @@ foreach ($args as $arg_key => $arg_value) {
                 </ul>
             </div>
         </div>
+
         <div class="row rt-search-services">
 			<?php
 			foreach ($posts as $post) {
+                error_log( print_r( $posts, true ) . "\n\n", 3, __DIR__.'/log.txt');
 				$post_id 	= $post['ID'];
 				$thumbnail = apply_filters('babe_search_result_img_thumbnail', 'full');
 				$item_url = BABE_Functions::get_page_url_with_args($post['ID'], $_GET);

@@ -19,11 +19,30 @@ class RT_BE_Search_Form extends Custom_Widget_Base {
 	}
 
 	public function rt_fields(){
+
+		$terms = get_terms(array(
+			'taxonomy' => 'categories',
+			'fields' => 'id=>slug',
+			'hide_empty' => false,
+		));
+		$category_dropdown = array();
+		foreach ($terms as $id => $slug) {
+			$category_dropdown[$id] = $slug;
+		}
+
 		$fields = array(
+
 			array(
 				'mode'    => 'section_start',
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
+			),
+			array(
+				'id'      => 'catid',
+				'label' => esc_html__( 'Categories', 'tripfery-core' ),
+				'type' => Controls_Manager::SELECT2,
+				'options' => $category_dropdown,
+				'label_block' => true,
 			),
 			array(
 				'type'        => Controls_Manager::SWITCHER,

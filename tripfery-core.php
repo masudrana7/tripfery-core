@@ -3,7 +3,7 @@
 Plugin Name: Tripfery Core
 Plugin URI: https://www.radiustheme.com
 Description: Tripfery Core Plugin for Tripfery Theme
-Version: 1.4.4
+Version: 1.4.6
 Author: RadiusTheme
 Author URI: https://www.radiustheme.com
 */

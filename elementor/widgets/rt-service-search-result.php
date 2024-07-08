@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class RT_Service_Search_Result extends Custom_Widget_Base {
 	public function __construct( $data = [], $args = null ){
-		$this->rt_name = esc_html__( 'RT Booking Search Result', 'tripfery-core' );
+		$this->rt_name = esc_html__( 'BA Search Result', 'tripfery-core' );
 		$this->rt_base = 'rt-services-search-result';
 		$this->rt_translate = array(
 			'cols'  => array(
@@ -30,11 +30,16 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 		parent::__construct( $data, $args );
 	}
 	public function rt_fields(){
-		$terms  = get_terms( array( 'taxonomy' => 'categories', 'fields' => 'id=>name' ) );
+
+		$terms  = get_terms( array( 'taxonomy' => 'categories', 'fields' => 'id=>slug' ) );
+
 		$category_dropdown = array( '0' => __( 'Please Selecet category', 'tripfery-core' ) );
 		foreach ( $terms as $id => $name ) {
 			$category_dropdown[$id] = $name;
 		}
+
+		error_log( print_r( $category_dropdown, true ) . "\n\n", 3, __DIR__.'/log.txt');
+
 		$repeater = new \Elementor\Repeater();
 		$repeater->add_control(
 			'post_not_in', [
@@ -49,15 +54,6 @@ class RT_Service_Search_Result extends Custom_Widget_Base {
 				'mode'    => 'section_start',
 				'id'      => 'sec_general',
 				'label'   => esc_html__( 'General', 'tripfery-core' ),
-			),
-			/*Start category*/
-			array(
-				'type'        => Controls_Manager::SWITCHER,
-				'id'          => 'cat_display',
-				'label'       => esc_html__('Category Name Display', 'tripfery-core'),
-				'label_on'    => esc_html__('Show', 'tripfery-core'),
-				'label_off'   => esc_html__('Hide', 'tripfery-core'),
-				'default'     => 'yes',
 			),
 			array(
 				'id'      => 'catid',
